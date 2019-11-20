@@ -1,0 +1,18 @@
+#logo{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    margin-right: 15px !important;
+}
+
+.show-inline{
+    display: inline;
+}
+
+.padding-none{
+    padding: 0px !important;
+}
+
+#footer{
+    height: 130px;
+    bottom: 0%;
+}

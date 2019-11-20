@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入senmanticUI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <title>首页</title>
+</head>
+<body>
+    <!-- 导航 -->
+    <!-- 为导航栏设置semanticUI提供的组件 -->
+    <nav class="ui inverted attached segment">
+        <div class="ui container">
+            <div id="menu" class="ui inverted secondary menu">
+                <h2 id="logo" class="ui teal header">MyBlog</h2>
+                <a href="#" class="item"><i class="home icon"></i>首页</a>
+                <a href="#" class="item"><i class="idea icon"></i>分类</a>
+                <a href="#" class="item"><i class="tags icon"></i>标签</a>
+                <a href="#" class="item"><i class="info icon"></i>关于</a>
+                <div class="right item">
+                    <div id="searchbar" class="ui input inverted transparent">
+                        <input type="search" name="" id="search" placeholder="search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 中间内容 -->
+    <div id="center">
+        <div class="ui container">
+            <div class="ui grid">
+                <!-- 中间的左边博客部分布局 -->
+                <div class="eleven wide column">
+                    <!-- content header -->
+                    <div class="ui segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <h3 class="ui teal header">博客</h3>
+                            </div>
+                            <div class="right aligned column">
+                                共 <h3 class="ui blue header show-inline">11</h3> 篇
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content -->
+                    <div class="ui top attached segment">
+                        <div class="ui segment">
+                            <div class="ui grid">
+                                <!-- 内容部分 -->
+                                <div class="eleven wide column ">
+                                    <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut at beatae illum labore fugiat?</p>
+                                </div>
+                                <div class="ui grid">
+                                    <!-- <div class="eleven wide column"> -->
+                                        <div class="twelve wide column">
+                                            <div class="ui horizontal link list">
+                                                <div class="item">
+                                                    <img src="static/img/avatar2.jpg" alt="" class="ui avator image">
+                                                    <div class="item padding-none"><a href="#" class="header">watermelon</a></div>
+                                                </div>
+                                                <div class="item padding-none">
+                                                    <i class="calenar icon"></i>2019-11-20
+                                                </div>
+                                                <div class="item padding-none">
+                                                    <i class="eye icon"></i>1234
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
+                                        </div>
+                                    <!-- </div> -->
+                                </div>
+                                <!-- 图片部分 -->
+                                <div class="four wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://www.gamersky.com/showimage/id_gamersky.shtml?https://img1.gamersky.com/image2019/11/20191115_lr_red_176_10/gamersky_001origin_001_2019" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content footer -->
+                    <div class="ui top attached segment">
+                        <div class="ui two column grid">
+                            <div class="column show-inline">
+                                <a href="#" class="ui teal basic button">上一页</a>
+                            </div>
+                            <div class="right aligned column show-inline">
+                                <a href="#" class="ui teal basic button">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 中间的右边部分布局 -->
+                <div class="five wide column">
+                    <div class="ui segment">
+                        <!-- 缺少内容 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部footer -->
+    <footer id="footer" class="ui inverted vertical segment">
+        <div class="ui center aligned container">
+            <div class="ui grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <!-- 缺少一张图片 -->
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">博客1</a>
+                        <a href="#" class="item">博客3</a>
+                        <a href="#" class="item">博客2</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">友情链接</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">链接1</a>
+                        <a href="#" class="item">链接3</a>
+                        <a href="#" class="item">链接2</a>
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <div class="ui inverted header">个人说明</div>
+                    <p>不要温顺地走进这凉夜，咆哮吧，痛斥这光的退缩</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider">
+                <p>Copyright@ 1999-2019 created by watermelon</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- 引入jquery -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- 引入semanticUI -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
