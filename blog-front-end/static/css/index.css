@@ -4,6 +4,10 @@
     margin-right: 15px !important;
 }
 
+#center{
+    margin-top: 20px !important;
+}
+
 .show-inline{
     display: inline;
 }
@@ -12,7 +16,35 @@
     padding: 0px !important;
 }
 
+.content-img{
+    padding-top: 35px !important;
+    margin-left: 20px !important;
+    float: right !important;
+}
+
+.margin-bottom{
+    margin-bottom: 5px !important;
+}
+
 #footer{
-    height: 130px;
+    height: 190px;
     bottom: 0%;
+}
+
+#copyright{
+    margin-top: 15px;
+    color: #cccccc;
+}
+
+.clear-fix{
+    *zoom: 1;
+}
+
+.clear-fix::after{
+    content: ".";
+    display: block;
+    clear: both;
+
+    height: 0;
+    visibility: hidden;
 }
