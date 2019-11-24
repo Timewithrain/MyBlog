@@ -14,26 +14,29 @@
     <!-- 为导航栏设置semanticUI提供的组件 -->
     <nav class="ui inverted attached segment">
         <div class="ui container">
-            <div id="menu" class="ui inverted secondary menu">
+            <div id="menu" class="ui inverted stackable secondary menu">
                 <h2 id="logo" class="ui teal header">MyBlog</h2>
-                <a href="#" class="item"><i class="home icon"></i>首页</a>
-                <a href="#" class="item"><i class="idea icon"></i>分类</a>
-                <a href="#" class="item"><i class="tags icon"></i>标签</a>
-                <a href="#" class="item"><i class="info icon"></i>关于</a>
-                <div class="right item">
+                <a href="#" class="menu item mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="#" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" class="menu item mobile-hide"><i class="info icon"></i>关于</a>
+                <div class="menu right item mobile-hide">
                     <div id="searchbar" class="ui input inverted transparent">
                         <input type="search" name="" id="search" placeholder="search...">
-                        <i class="search link icon"></i>
+                        <i classs="search link icon"></i>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="#" class="ui menu toggle black icon button pos-top-right mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
     </nav>
 
     <!-- 中间内容 -->
     <div id="center" class="clear-fix">
         <div class="ui container">
-            <div class="ui grid">
+            <div class="ui stackable grid">
                 <!-- 中间的左边博客部分布局 -->
                 <div class="eleven wide column">
                     <!-- content header -->
@@ -51,7 +54,7 @@
                     <div class="ui attached segment">
                         
                         <div class="ui segment">
-                            <div class="ui grid">
+                            <div class="ui stackable grid">
                                 <!-- 内容部分 -->
                                 <div class="eleven wide column ">
                                     <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
@@ -85,7 +88,7 @@
                             </div>
                         </div>
                         <div class="ui segment">
-                            <div class="ui grid">
+                            <div class="ui stackable grid">
                                 <!-- 内容部分 -->
                                 <div class="eleven wide column ">
                                     <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
@@ -119,7 +122,7 @@
                             </div>
                         </div>
                         <div class="ui segment">
-                            <div class="ui grid">
+                            <div class="ui stackable grid">
                                 <!-- 内容部分 -->
                                 <div class="eleven wide column ">
                                     <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
@@ -153,7 +156,7 @@
                             </div>
                         </div>
                         <div class="ui segment">
-                            <div class="ui grid">
+                            <div class="ui stackable grid">
                                 <!-- 内容部分 -->
                                 <div class="eleven wide column ">
                                     <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
@@ -187,7 +190,7 @@
                             </div>
                         </div>
                         <div class="ui segment">
-                            <div class="ui grid">
+                            <div class="ui stackable grid">
                                 <!-- 内容部分 -->
                                 <div class="eleven wide column ">
                                     <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
@@ -286,44 +289,44 @@
                             </div>
                         </div>
                         <div class="ui teal segment">
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                             JAVA SE <div class="detail">6</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 JAVA EE <div class="detail">13</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 python  <div class="detail">9</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 数据处理 <div class="detail">7</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 算法 <div class="detail">6</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 SpringBoot <div class="detail">7</div>
                             </a>
-                            <a href="#" target="_blank" class="ui teal basic label margin-bottom">
+                            <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                                 Github <div class="detail">5</div>
                             </a>
                         </div>
                     </div>
                     <!-- 推荐卡片 -->
-                    <div class="ui segment">
-                        <div class="secondary segment">
-                            <div class="ui two column grid">
-                                <div class="column">
-                                    <i class="bookmark icon"></i>最新推荐
-                                </div>
-                                <div class="right aligned column">
-                                    <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
-                                </div>
+                    <div class="ui segments">
+                        <div class="ui secondary segment">
+                            <i class="bookmark icon margin-bottom-big"></i>最新推荐
+                            <div class="ui segment padding-small margin-none">
+                                <a href="#" target="_blank" class="text-black">双生子佯谬的闵氏几何解</a>
+                            </div>
+                            <div class="ui segment padding-small margin-none" >
+                                <a href="#" target="_blank" class="text-black">弱相互作用下宇称不守恒</a>
+                            </div>
+                            <div class="ui segment padding-small margin-none">
+                                <a href="#" target="_blank" class="text-black">简并态物质化学性质</a>
                             </div>
                         </div>
-                        <!-- <div class="ui teal segment">
-
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
@@ -333,7 +336,7 @@
     <!-- 底部footer -->
     <footer id="footer" class="ui inverted vertical segment">
         <div class="ui center aligned container">
-            <div class="ui grid">
+            <div class="ui stackable grid">
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <!-- 缺少一张图片 -->
@@ -370,5 +373,6 @@
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="static/js/index.js"></script>
 </body>
 </html>
