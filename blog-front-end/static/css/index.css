@@ -1,3 +1,7 @@
+body{
+    background: url("../img/playstation-pattern.png");
+}
+
 #logo{
     margin-top: 0px !important;
     margin-bottom: 0px !important;
