@@ -18,6 +18,10 @@ body{
     float: right !important;
 }
 
+#planar{
+    margin: 3.5px;
+}
+
 #footer{
     bottom: 0%;
 }
@@ -43,6 +47,22 @@ body{
     .mobile-show{
         display: block !important;
     }
+
+    .mobile-expand{
+        width: 100% !important;
+        margin-bottom: 5px !important;
+    }
+}
+
+
+
+.container-width{
+    max-width: 850px !important;
+    margin: auto !important;    
+}
+
+.planar-width{
+    width: 150px;
 }
 
 .pos-top-right{
@@ -61,6 +81,10 @@ body{
 
 .padding-none{
     padding: 0px !important;
+}
+
+.margin-auto{
+    margin: auto;
 }
 
 .margin-bottom-small{

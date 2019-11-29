@@ -4,3 +4,14 @@ $(function(){
         $('.menu.item').toggleClass('mobile-hide');
     });
 });
+
+/****************************blog page functions******************************/
+
+$(function(){
+    $("#payButton").popup({
+        popup: $(".planar.popup"),
+        on: "click",
+        position: 'bottom center'
+    });
+});
+
