@@ -15,3 +15,18 @@ $(function(){
     });
 });
 
+/****************************about page functions****************************************/
+
+$(function(){
+    $(".qq").popup();
+
+    $(".github").popup();
+
+    $(".wechat").popup({
+        popup: $(".wechat-planar.popup"),
+        on: "hover",
+        position: "bottom center"
+    });
+
+});
+

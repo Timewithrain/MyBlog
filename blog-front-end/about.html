@@ -18,8 +18,8 @@
                 <h2 id="logo" class="ui teal header">MyBlog</h2>
                 <a href="index.html" class="menu item mobile-hide"><i class="home icon"></i>首页</a>
                 <a href="types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="tags.html" class="active menu item mobile-hide"><i class="tags icon"></i>标签</a>
-                <a href="#" class="menu item mobile-hide"><i class="info icon"></i>关于</a>
+                <a href="tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" class="active menu item mobile-hide"><i class="info icon"></i>关于</a>
                 <div class="menu right item mobile-hide">
                     <div id="searchbar" class="ui input inverted transparent">
                         <input type="search" name="" id="search" placeholder="search...">
@@ -36,190 +36,46 @@
     <!-- 中间内容 -->
     <div id="center" class="container-width clear-fix">
         <div class="ui container">
-            <!-- 中部content header -->
-            <div class="ui top attached segment">
-                <div class="ui middle aligned two column grid">
-                    <div class="column">
-                        <h3 class="ui teal header">标签</h3>
+
+            <div class="ui grid">
+                <div class="eleven wide column">
+                    <img src="https://unsplash.it/800/700?image=180 " alt="" class="ui rounded image">
+                </div>
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于我</div>
                     </div>
-                    <div class="right aligned column">
-                        共<h3 class="ui blue header show-inline"> 10 </h3>个
+                    <div class="ui attached segment">
+                        <p>watermleon,一个不那么标准的理工狗，物理化学计算机，思维历史古文学都喜欢，但不精通，立志成为一个专精一术的杂家。</p>
+                        <p>热爱生活，热爱美食，正为生活努力上下求索...</p>
                     </div>
+                    <div class="ui attached segment">
+                        <div class="ui violet basic label margin-small">学习日志</div>
+                        <div class="ui violet basic label margin-small">思维实验</div>
+                        <div class="ui violet basic label margin-small">寰宇记录</div>
+                        <div class="ui violet basic label margin-small">技术前沿</div>
+                        <div class="ui violet basic label margin-small">史海拾遗</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui teal basic label margin-small">Java SE</div>
+                        <div class="ui teal basic label margin-small">Java EE</div>
+                        <div class="ui teal basic label margin-small">Python</div>
+                        <div class="ui teal basic label margin-small">3D建模</div>
+                        <div class="ui teal basic label margin-small">数据库</div>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <a href="https://github.com/Timewithrain" class="ui github circular icon button" data-content="URL:github.com/Timewithrain" data-position="bottom center"><i class="github icon"></i></a>
+                        <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                        <a href="#" class="ui qq circular icon button" data-content="QQ:1050364782" data-position="bottom center"><i class="qq icon"></i></a>
+                    </div>
+
+                    <div class="ui wechat-planar flowing popup transition hidden">
+                        <img src="static/img/planar.jpg" alt="" class="ui rounded image planar-width">
+                    </div>
+
                 </div>
             </div>
-            <!-- 分类栏 -->
-            <div class="ui attached segment">
-                <div class="ui top attached segment">
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        JAVA SE <div class="detail">6</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        JAVA EE <div class="detail">13</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        python  <div class="detail">9</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        数据处理 <div class="detail">6</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        算法 <div class="detail">13</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        GitHub  <div class="detail">9</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        SpringBoot <div class="detail">6</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        Django <div class="detail">13</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        卷曲神经网络  <div class="detail">9</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        分布式计算 <div class="detail">6</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        3D建模 <div class="detail">13</div>
-                    </a>
-                    <a href="#" target="_blank" class="ui teal basic large label margin-bottom-small">
-                        计算机材料学  <div class="detail">9</div>
-                    </a>
-                </div>
-            </div>
-            <!-- 博客内容 -->
-            <div class="ui teal attached segment">
-                <!-- 内容部分 -->
-                <div class="ui stackable grid">
-                    <div class="eleven wide column ">
-                        <h3 class="ui header">托卡马克方式的实现原理</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut at beatae illum labore fugiat?</p>
-                        <div class="ui grid">
-                            <div class="row">
-                                <div class="twelve wide column">
-                                    <div class="ui horizontal link list">
-                                        <div class="item">
-                                            <img src="static/img/avatar3.jpg" alt="" class="ui avatar image">
-                                            <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="calenar icon"></i>2019-11-20
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="eye icon"></i>1234
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="right aligned four wide column">
-                                    <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <a href="#" class="ui basice teal label">热核物理</a>
-                                    <a href="#" class="ui basice teal label">材料化学</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 图片部分 -->
-                    <div class="four wide column content-img">
-                        <a href="#" target="_blank">
-                            <img src="https://unsplash.it/800/450?image=137" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-                <div class="ui stackable grid">
-                    <div class="eleven wide column ">
-                        <h3 class="ui header">北大西洋暖流的推动原理</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut at beatae illum labore fugiat?</p>
-                        <div class="ui grid">
-                            <div class="row">
-                                <div class="twelve wide column">
-                                    <div class="ui horizontal link list">
-                                        <div class="item">
-                                            <img src="static/img/avatar3.jpg" alt="" class="ui avatar image">
-                                            <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="calenar icon"></i>2019-11-20
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="eye icon"></i>1234
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="right aligned four wide column">
-                                    <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <a href="#" class="ui basice teal label">地球物理</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 图片部分 -->
-                    <div class="four wide column content-img">
-                        <a href="#" target="_blank">
-                            <img src="https://unsplash.it/800/450?image=1041" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-                <div class="ui stackable grid">
-                    <div class="eleven wide column ">
-                        <h3 class="ui header">拉格朗日点平衡解析</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut at beatae illum labore fugiat?</p>
-                        <div class="ui grid">
-                            <div class="row">
-                                <div class="twelve wide column">
-                                    <div class="ui horizontal link list">
-                                        <div class="item">
-                                            <img src="static/img/avatar3.jpg" alt="" class="ui avatar image">
-                                            <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="calenar icon"></i>2019-11-20
-                                        </div>
-                                        <div class="item padding-none">
-                                            <i class="eye icon"></i>1234
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="right aligned four wide column">
-                                    <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="column">
-                                    <a href="#" class="ui basice teal label">天体物理</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 图片部分 -->
-                    <div class="four wide column content-img">
-                        <a href="#" target="_blank">
-                            <img src="https://unsplash.it/800/450?image=1032" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- content footer -->
-            <div class="ui attached segment">
-                <div class="ui two column grid">
-                    <div class="column show-inline">
-                        <a href="#" class="ui teal basic button">上一页</a>
-                    </div>
-                    <div class="right aligned column show-inline">
-                        <a href="#" class="ui teal basic button">下一页</a>
-                    </div>
-                </div>
-            </div>
-            
+
         </div>
     </div>
 

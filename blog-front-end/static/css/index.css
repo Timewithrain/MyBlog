@@ -87,6 +87,10 @@ body{
     margin: auto;
 }
 
+.margin-small{
+    margin: 2px !important;
+}
+
 .margin-bottom-small{
     margin-bottom: 5px !important;
 }
