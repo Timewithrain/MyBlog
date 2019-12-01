@@ -15,7 +15,7 @@ $(function(){
     });
 });
 
-/****************************about page functions****************************************/
+/****************************about page functions******************************/
 
 $(function(){
     $(".qq").popup();
@@ -28,5 +28,12 @@ $(function(){
         position: "bottom center"
     });
 
+});
+
+/****************************admin page functions******************************/
+$(function(){
+    $(".ui.dropdown").dropdwon({
+        on: "hover"
+    });
 });
 
