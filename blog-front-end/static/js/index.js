@@ -32,8 +32,10 @@ $(function(){
 
 /****************************admin page functions******************************/
 $(function(){
-    $(".ui.dropdown").dropdwon({
-        on: "hover"
+    // var obj = $(".ui .dropdown")[0];
+    // alert(obj.innerHTML);
+    $(".ui .dropdown").dropdown({
+        on: 'hover'
     });
 });
 
