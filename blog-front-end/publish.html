@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入senmanticUI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <title>博客发布</title>
+</head>
+<body>
+    <!-- 导航 -->
+    <!-- 为导航栏设置semanticUI提供的组件 -->
+    <nav class="ui inverted attached segment">
+        <div class="ui container">
+            <div id="menu" class="ui inverted stackable secondary menu">
+                <h2 id="logo" class="ui teal header">MyBlog后台</h2>
+                <a href="#" class="active menu item mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class="right menu mobile-hide">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
+                            watermelon  
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">切换用户</a>
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button pos-top-right mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <!-- 二级导航栏 -->
+    <div class="ui attached pointing menu">
+        <div class="ui container container-width">
+            <div class="right menu ">
+                <a href="#" class="active teal item">发布</a>
+                <a href="#" class="item">列表</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 中间内容 -->
+    <div id="center" class="container-width clear-fix">
+        <div class="ui container">
+            <form action="#" method="post" class="ui form">
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <div class="ui selection compact teal dropdown label">
+                            <input type="hidden" name="原创">
+                            <i class="dropdown icon"></i>
+                            <div class="text">原创</div>
+                            <div class="menu">
+                                <div class="item" data-value="原创">原创</div>
+                                <div class="item" data-value="转载">转载</div> 
+                                <div class="item" data-value="翻译">翻译</div>
+                            </div>
+                        </div>
+                        <input type="text" name="title" id="" placeholder="标题">
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea name="content" id="" cols="30" rows="10" placeholder="博客内容"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!-- 底部footer -->
+    <footer id="footer" class="ui inverted vertical segment">
+        <div class="ui center aligned container">
+            <div class="ui stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <!-- 缺少一张图片 -->
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">博客1</a>
+                        <a href="#" class="item">博客3</a>
+                        <a href="#" class="item">博客2</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">友情链接</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">链接1</a>
+                        <a href="#" class="item">链接3</a>
+                        <a href="#" class="item">链接2</a>
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <div class="ui inverted header">个人说明</div>
+                    <p>不要温顺地走进这凉夜，咆哮吧，痛斥这光的退缩</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider">
+                <p id="copyright">Copyright@ 1999-2019 created by watermelon</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- 引入jquery -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- 引入semanticUI -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="static/js/index.js"></script>
+</body>
+</html>
