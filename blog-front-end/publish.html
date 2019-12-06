@@ -52,9 +52,9 @@
     <div id="center" class="container-width clear-fix">
         <div class="ui container">
             <form action="#" method="post" class="ui form">
-                <div class="field">
+                <div class="required field">
                     <div class="ui left labeled input">
-                        <div class="ui selection compact teal dropdown label">
+                        <div class="ui selection compact teal basic dropdown label">
                             <input type="hidden" name="原创">
                             <i class="dropdown icon"></i>
                             <div class="text">原创</div>
@@ -104,6 +104,13 @@
                     </div>
                 </div>
 
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <label for="" class="ui teal basic label">首图</label>
+                        <input type="text" name="indexPicture" id="" placeholder="首图引用地址">
+                    </div>
+                </div>
+
                 <div class="inline fields">
                     <div class="field">
                         <div class="ui checkbox">
@@ -129,6 +136,14 @@
                             <label for="comment">评论</label>
                         </div>
                     </div>
+                </div>
+
+                <div class="ui error message"></div>
+
+                <div class="ui right aligned container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button class="ui secondary button">保存</button>
+                    <button class="ui teal button">发布</button>
                 </div>
 
             </form>

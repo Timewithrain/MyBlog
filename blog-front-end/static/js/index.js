@@ -32,10 +32,22 @@ $(function(){
 
 /****************************admin page functions******************************/
 $(function(){
-    // var obj = $(".ui .dropdown")[0];
-    // alert(obj.innerHTML);
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
 });
 
+/****************************publish page functions******************************/
+$(function(){
+    $(".ui .form").form({
+        fields:{
+            title:{
+                identifier: 'title',
+                rules: [{
+                    type: 'empty',
+                    prompt: '标题：请输入博客标题'  
+                }]
+            }
+        }
+    });
+});
