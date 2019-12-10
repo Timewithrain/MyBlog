@@ -50,4 +50,16 @@ $(function(){
             }
         }
     });
+
+    // 页面插件markdown集成部分js
+    var contentEditor;
+    $(function() {
+        contentEditor = editormd("md-content", {
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "static/lib/editormd/lib/"
+        });
+    });
 });
+
