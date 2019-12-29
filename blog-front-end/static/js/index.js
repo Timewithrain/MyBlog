@@ -13,6 +13,18 @@ $(function(){
         on: "click",
         position: 'bottom center'
     });
+
+    tocbot.init({
+        tocSelector: 'js-toc',
+        contentSelector: 'js-toc-content',
+        headingSelector: 'h1 h2 h3',
+    });
+
+    $("#categoryButton").popup({
+        popup: $(".category.popup"),
+        on: "click",
+        position: 'left center'
+    });
 });
 
 /****************************about page functions******************************/
@@ -32,10 +44,34 @@ $(function(){
 
 /****************************admin page functions******************************/
 $(function(){
-    // var obj = $(".ui .dropdown")[0];
-    // alert(obj.innerHTML);
     $(".ui .dropdown").dropdown({
         on: 'hover'
+    });
+});
+
+/****************************publish page functions******************************/
+$(function(){
+    $(".ui .form").form({
+        fields:{
+            title:{
+                identifier: 'title',
+                rules: [{
+                    type: 'empty',
+                    prompt: '标题：请输入博客标题'  
+                }]
+            }
+        }
+    });
+
+    // 页面插件markdown集成部分js
+    var contentEditor;
+    $(function() {
+        contentEditor = editormd("md-content", {
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "static/lib/editormd/lib/"
+        });
     });
 });
 

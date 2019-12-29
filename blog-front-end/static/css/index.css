@@ -71,8 +71,22 @@ body{
     right: 0px;
 }
 
+.pos-right-bottom{
+    bottom: 0px !important;
+    right: 0px !important;
+}
+
+.pos-fixed{
+    position: fixed !important;
+    z-index: 10 !important;
+}
+
 .show-inline{
     display: inline;
+}
+
+.padding-middle{
+    padding: 25px !important;
 }
 
 .padding-small{

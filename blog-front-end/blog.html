@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- 引入senmanticUI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- 引入typo排版 -->
+    <link rel="stylesheet" href="static/css/typo.css">
+    <!-- 引入animate动画css -->
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!-- 引入tocbot目录css -->
+    <link rel="stylesheet" href="static/lib/tocbot/tocbot-4.3.1/dist/tocbot.css">
     <link rel="stylesheet" href="static/css/index.css">
     <title>博客</title>
 </head>
@@ -34,7 +40,7 @@
     </nav>
 
     <!-- 中间内容 -->
-    <div id="center" class="container-width clear-fix">
+    <div id="center" class="container-width clear-fix animated zoomIn">
         <div class="ui container">
             <div class="ui top attached segment">
                 <div class="two wide column">
@@ -61,7 +67,7 @@
                     <div class="ui teal basic label">原创</div>
                 </div>
                 <h2 class="ui center aligned header">可控核聚变的实现方式</h2>
-                <div id="content">
+                <div id="content" class="typo typo-selection js-toc-content">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quis minus doloremque a nemo veritatis ullam provident omnis modi voluptatibus dicta, quaerat ratione iusto inventore, quos sequi voluptatum. Aliquam, nisi?</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis dicta placeat dolore totam, eum delectus quaerat saepe magnam tempore porro nulla inventore velit corporis rerum, architecto nam assumenda provident.Possimus laboriosam, asperiores iure ab vitae laudantium facere inventore atque perspiciatis soluta excepturi? Consectetur veniam optio ad quo obcaecati! Voluptas vitae adipisci voluptates voluptatem mollitia! Reprehenderit excepturi laudantium ipsa veritatis?</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, aliquid. Iusto incidunt illo dicta harum aliquam amet magni eaque enim. Impedit, aut. Numquam illum esse quos architecto. Vitae, mollitia esse?
@@ -103,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui bottom attached segment">
+            <div id="comment-container" class="ui bottom attached segment">
                 <!-- 留言区域 -->
                 <div class="ui teal segment">
                     <div class="ui small comments">
@@ -206,6 +212,20 @@
         </div>
     </div>
 
+    <div class="uicategory flowing popup transition hidden">
+        <ol class="js-toc">
+        </ol>
+    </div>
+
+    <div class="padding-middle pos-fixed pos-right-bottom">
+        <div class="ui vertical icon buttons">
+            <button id="categoryButton" class="ui teal button">目录</button>
+            <a href="#comment-container" class="ui teal button">评论</a>
+            <button class="ui teal icon button"><i class="weixin icon"></i></button>
+            <a href="#" class="ui teal icon button"><i class="chevron up icon"></i></a>
+        </div>
+    </div>
+
     <!-- 底部footer -->
     <footer id="footer" class="ui inverted vertical segment">
         <div class="ui center aligned container">
@@ -247,5 +267,7 @@
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="static/js/index.js"></script>
+<script src="static/static/lib/tocbot/tocbot-4.3.1/dist/tocbot.min.js"></script>
+
 </body>
 </html>
