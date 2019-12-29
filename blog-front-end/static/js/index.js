@@ -13,6 +13,18 @@ $(function(){
         on: "click",
         position: 'bottom center'
     });
+
+    tocbot.init({
+        tocSelector: 'js-toc',
+        contentSelector: 'js-toc-content',
+        headingSelector: 'h1 h2 h3',
+    });
+
+    $("#categoryButton").popup({
+        popup: $(".category.popup"),
+        on: "click",
+        position: 'left center'
+    });
 });
 
 /****************************about page functions******************************/
