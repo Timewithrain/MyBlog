@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="static/css/typo.css">
     <!-- 引入animate动画css -->
     <link rel="stylesheet" href="static/css/animate.css">
+    <!-- 引入prism代码检测 -->
+    <link rel="stylesheet" href="static/lib/prism/prism.css">
     <!-- 引入tocbot目录css -->
     <link rel="stylesheet" href="static/lib/tocbot/tocbot-4.3.1/dist/tocbot.css">
     <link rel="stylesheet" href="static/css/index.css">
@@ -62,13 +64,17 @@
                 <img src="https://picsum.photos/id/1079/800/400" alt="" class="ui fluid rounded image">
             </div>
             <!-- 博客内容 -->
+            <!-- 注意代码引入需要使用pre标签和code标签，在class中标明使用的语言才能正常显示代码语法高亮 -->
+            <pre><code class="language-css">p{color: red}</code></pre>
+            <pre><code class="language-java">System.out.println("Hello prism!");</code></pre>
+            <pre><code class="language-c">printf("this really good");</code></pre>
             <div class="ui attached segment">
                 <div class="ui right aligned basic segment">
                     <div class="ui teal basic label">原创</div>
                 </div>
                 <h2 class="ui center aligned header">可控核聚变的实现方式</h2>
                 <div id="content" class="typo typo-selection js-toc-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quis minus doloremque a nemo veritatis ullam provident omnis modi voluptatibus dicta, quaerat ratione iusto inventore, quos sequi voluptatum. Aliquam, nisi?</p>
+                    <p>Lorem ipsum dolor sit amet co    nsectetur adipisicing elit. Alias quis minus doloremque a nemo veritatis ullam provident omnis modi voluptatibus dicta, quaerat ratione iusto inventore, quos sequi voluptatum. Aliquam, nisi?</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis dicta placeat dolore totam, eum delectus quaerat saepe magnam tempore porro nulla inventore velit corporis rerum, architecto nam assumenda provident.Possimus laboriosam, asperiores iure ab vitae laudantium facere inventore atque perspiciatis soluta excepturi? Consectetur veniam optio ad quo obcaecati! Voluptas vitae adipisci voluptates voluptatem mollitia! Reprehenderit excepturi laudantium ipsa veritatis?</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, aliquid. Iusto incidunt illo dicta harum aliquam amet magni eaque enim. Impedit, aut. Numquam illum esse quos architecto. Vitae, mollitia esse?
                     Mollitia, libero? Corrupti consequatur quisquam voluptatum aliquid dolorem laborum repellat! At, culpa alias. Tempore mollitia necessitatibus repellendus aliquid quisquam maxime soluta, nesciunt, ea minima officiis sint nisi quia cumque a.
@@ -266,8 +272,11 @@
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-<script src="static/js/index.js"></script>
+<!-- 引入prism语法检测 -->
+<script src="static/lib/prism/prism.js"></script>
+<!-- 引入tocbot目录生成插件 -->
 <script src="static/static/lib/tocbot/tocbot-4.3.1/dist/tocbot.min.js"></script>
+<script src="static/js/index.js"></script>
 
 </body>
 </html>
