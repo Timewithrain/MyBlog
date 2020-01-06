@@ -35,6 +35,10 @@ body{
     color: #cccccc;
 }
 
+#popuped-toc{
+    width: 250px;
+}
+
 /***************uitilities*****************/
 /* 在移动端显现，PC端隐藏 */
 .mobile-show{
@@ -58,7 +62,12 @@ body{
     }
 }
 
-
+.typo p{
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: justify;
+}
 
 .container-width{
     max-width: 900px !important;
@@ -76,8 +85,8 @@ body{
 }
 
 .pos-right-bottom{
-    bottom: 0px !important;
-    right: 0px !important;
+    bottom: 0 !important;
+    right: 0 !important;
 }
 
 .pos-fixed{
@@ -87,6 +96,10 @@ body{
 
 .show-inline{
     display: inline;
+}
+
+.padding-big{
+    padding: 50px !important;
 }
 
 .padding-middle{

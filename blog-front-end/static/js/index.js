@@ -15,13 +15,13 @@ $(function(){
     });
 
     tocbot.init({
-        tocSelector: 'js-toc',
-        contentSelector: 'js-toc-content',
-        headingSelector: 'h1 h2 h3',
+        tocSelector: '.js-toc',
+        contentSelector: '.js-toc-content',
+        headingSelector: 'h1, h2, h3',
     });
 
     $("#categoryButton").popup({
-        popup: $(".category.popup"),
+        popup: $(".toc-container.popup"),
         on: "click",
         position: 'left center'
     });
