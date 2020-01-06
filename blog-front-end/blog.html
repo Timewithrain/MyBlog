@@ -68,32 +68,12 @@
             <pre><code class="language-css">p{color: red}</code></pre>
             <pre><code class="language-java">System.out.println("Hello prism!");</code></pre>
             <pre><code class="language-c">printf("this really good");</code></pre>
-            <div class="ui attached segment">
+            <div class="ui attached segment padding-big">
                 <div class="ui right aligned basic segment">
                     <div class="ui teal basic label">原创</div>
                 </div>
                 <h2 class="ui center aligned header">可控核聚变的实现方式</h2>
                 <div id="content" class="typo typo-selection js-toc-content">
-                    
-<h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
-
-<h2 id="tagline" class="serif">一致化浏览器排版效果，构建最适合中文阅读的网页排版</h2>
-
-<ol id="table">
-  <li><a href="#section1">关于 <i class="serif">Typo.css</i></a></li>
-  <li><a href="#section2">排版实例</a>
-    <ul>
-      <li><a href="#section2-1">例1：论语学而篇第一</a></li>
-      <li><a href="#section2-2">例2：英文排版</a></li>
-    </ul>
-  </li>
-  <li><a href="#section3">附录</a>
-    <ul>
-      <li><a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a></li>
-      <li><a href="#appendix2">开源许可</a></li>
-    </ul>
-  </li>
-</ol>
 
 <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
 
@@ -104,7 +84,7 @@
   Yahoo、Eric Meyer 和 Alice base.css 中采用的 Reset 都没有很好地考虑中文排版。<i class="serif">Typo.css</i> 要做的就是解决中文排版的问题。</p>
 
 <p><strong><i class="serif">Typo.css</i> 测试于如下平台：</strong></p>
-<table summary="Typo.css 的测试平台列表">
+<table class="ui table" summary="Typo.css 的测试平台列表">
   <thead>
   <tr>
     <th>OS/浏览器</th>
@@ -430,11 +410,6 @@ h5,h6{font-size:1em;}
         </div>
     </div>
 
-    <div class="uicategory flowing popup transition hidden">
-        <ol class="js-toc">
-        </ol>
-    </div>
-
     <div class="padding-middle pos-fixed pos-right-bottom">
         <div class="ui vertical icon buttons">
             <button id="categoryButton" class="ui teal button">目录</button>
@@ -442,6 +417,12 @@ h5,h6{font-size:1em;}
             <button class="ui teal icon button"><i class="weixin icon"></i></button>
             <a href="#" class="ui teal icon button"><i class="chevron up icon"></i></a>
         </div>
+    </div>
+
+    <!-- 生成的目录列表 -->
+    <div id="popuped-toc" class="ui toc-container flowing popup transition hidden">
+      <ol class="js-toc">
+      </ol>
     </div>
 
     <!-- 底部footer -->
@@ -487,7 +468,7 @@ h5,h6{font-size:1em;}
 <!-- 引入prism语法检测 -->
 <script src="static/lib/prism/prism.js"></script>
 <!-- 引入tocbot目录生成插件 -->
-<script src="static/static/lib/tocbot/tocbot-4.3.1/dist/tocbot.min.js"></script>
+<script src="static/lib/tocbot/tocbot-4.3.1/dist/tocbot.min.js"></script>
 <script src="static/js/index.js"></script>
 
 </body>
