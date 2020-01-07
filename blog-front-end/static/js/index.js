@@ -25,6 +25,36 @@ $(function(){
         on: "click",
         position: 'left center'
     });
+
+    $("#qrcodeButton").popup({
+        popup: $("#qrcode"),
+        on: "click",
+        position: "left center"
+    });
+
+    var qrcode = new QRCode("qrcode", {
+        text: "file:///D:/Programs/MyBlog/blog-front-end/blog.html",
+        width: 120,
+        height: 120,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    $("#up").click(function(){
+        $(window).scrollTo(0, 500);
+    });
+
+    var waypoint = new Waypoint({
+        element: document.getElementById('center'),
+        handler: function(direction) {
+            if(direction=="down"){
+                $("#v-toolbar").show(200);
+            }else{
+                $("#v-toolbar").hide(500);
+            }
+        }
+      })
 });
 
 /****************************about page functions******************************/

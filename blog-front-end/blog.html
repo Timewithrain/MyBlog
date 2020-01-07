@@ -410,12 +410,12 @@ h5,h6{font-size:1em;}
         </div>
     </div>
 
-    <div class="padding-middle pos-fixed pos-right-bottom">
+    <div id="v-toolbar" class="padding-big pos-fixed pos-right-bottom">
         <div class="ui vertical icon buttons">
             <button id="categoryButton" class="ui teal button">目录</button>
             <a href="#comment-container" class="ui teal button">评论</a>
-            <button class="ui teal icon button"><i class="weixin icon"></i></button>
-            <a href="#" class="ui teal icon button"><i class="chevron up icon"></i></a>
+            <button id="qrcodeButton" class="ui teal icon button"><i class="large qrcode icon"></i></button>
+            <a id="up" class="ui teal icon button"><i class="chevron up icon"></i></a>
         </div>
     </div>
 
@@ -423,6 +423,10 @@ h5,h6{font-size:1em;}
     <div id="popuped-toc" class="ui toc-container flowing popup transition hidden">
       <ol class="js-toc">
       </ol>
+    </div>
+
+    <div id="qrcode" class="ui flowing popup transition hidden">
+      <!-- <img src="static/img/planar.jpg" alt="" class="ui rounded image planar-width"> -->
     </div>
 
     <!-- 底部footer -->
@@ -469,6 +473,12 @@ h5,h6{font-size:1em;}
 <script src="static/lib/prism/prism.js"></script>
 <!-- 引入tocbot目录生成插件 -->
 <script src="static/lib/tocbot/tocbot-4.3.1/dist/tocbot.min.js"></script>
+<!-- 引入qrcode二维码生成插件 -->
+<script src="static/lib/qrcode/qrcode.js"></script>
+<!-- 引入waypoints平滑滚动插件 -->
+<script src="static/lib/waypoints/jquery.waypoints.js"></script>
+<!-- 引入平滑滚动插件 -->
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <script src="static/js/index.js"></script>
 
 </body>
