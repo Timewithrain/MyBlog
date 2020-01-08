@@ -2,12 +2,12 @@
     overflow-y: auto
 }
 
-.toc>.toc-list {
+.toc > .toc-list {
     overflow: hidden;
     position: relative
 }
 
-.toc>.toc-list li {
+.toc > .toc-list li {
     list-style: none
 }
 
@@ -16,12 +16,12 @@
     padding-left: 10px
 }
 
-.toc-list li a{
+.toc-list li a {
     display: block;
     padding: 4px 0;
 }
 
-.toc-list li a:hover{
+.toc-list li a:hover {
     text-decoration: none;
     color: #00B5AD !important;
 }

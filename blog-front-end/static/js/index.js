@@ -1,13 +1,13 @@
-$(function(){
+$(function () {
     // 设置导航栏按钮在移动端时点击展示导航栏item，再点击收回item
-    $('.menu.toggle').click(function(){
+    $('.menu.toggle').click(function () {
         $('.menu.item').toggleClass('mobile-hide');
     });
 });
 
 /****************************blog page functions******************************/
 
-$(function(){
+$(function () {
     $("#payButton").popup({
         popup: $(".planar.popup"),
         on: "click",
@@ -36,30 +36,30 @@ $(function(){
         text: "file:///D:/Programs/MyBlog/blog-front-end/blog.html",
         width: 120,
         height: 120,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
     });
 
-    $("#up").click(function(){
+    $("#up").click(function () {
         $(window).scrollTo(0, 500);
     });
 
     var waypoint = new Waypoint({
         element: document.getElementById('center'),
-        handler: function(direction) {
-            if(direction=="down"){
+        handler: function (direction) {
+            if (direction == "down") {
                 $("#v-toolbar").show(200);
-            }else{
+            } else {
                 $("#v-toolbar").hide(500);
             }
         }
-      })
+    })
 });
 
 /****************************about page functions******************************/
 
-$(function(){
+$(function () {
     $(".qq").popup();
 
     $(".github").popup();
@@ -73,21 +73,21 @@ $(function(){
 });
 
 /****************************admin page functions******************************/
-$(function(){
+$(function () {
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
 });
 
 /****************************publish page functions******************************/
-$(function(){
+$(function () {
     $(".ui .form").form({
-        fields:{
-            title:{
+        fields: {
+            title: {
                 identifier: 'title',
                 rules: [{
                     type: 'empty',
-                    prompt: '标题：请输入博客标题'  
+                    prompt: '标题：请输入博客标题'
                 }]
             }
         }
@@ -95,12 +95,12 @@ $(function(){
 
     // 页面插件markdown集成部分js
     var contentEditor;
-    $(function() {
+    $(function () {
         contentEditor = editormd("md-content", {
-            width   : "90%",
-            height  : 640,
-            syncScrolling : "single",
-            path    : "static/lib/editormd/lib/"
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "static/lib/editormd/lib/"
         });
     });
 });

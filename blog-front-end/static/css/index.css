@@ -1,156 +1,157 @@
-body{
+body {
     background: url("../img/playstation-pattern.png");
 }
 
-#logo{
+#logo {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     margin-right: 15px !important;
 }
 
-#center{
+#center {
     margin-top: 20px !important;
 }
 
-#md-content{
+#md-content {
     width: 100% !important;
 }
 
-.content-img{
+.content-img {
     padding-top: 35px !important;
     margin-left: 20px !important;
     float: right !important;
 }
 
-#v-toolbar{
+#v-toolbar {
     display: none;
 }
 
-#planar{
+#planar {
     margin: 3.5px;
 }
 
-#qrcode{
+#qrcode {
     padding: 10px;
 }
 
-#footer{
+#footer {
     bottom: 0%;
 }
 
-#copyright{
+#copyright {
     margin-top: 15px;
     color: #cccccc;
 }
 
-#popuped-toc{
+#popuped-toc {
     width: 250px;
 }
 
 /***************uitilities*****************/
 /* 在移动端显现，PC端隐藏 */
-.mobile-show{
+.mobile-show {
     display: none !important;
 }
 
 /* 设置适应移动端显示 */
-@media screen and (max-width:720px){
+@media screen and (max-width: 720px) {
     /* 移动端显示时导航菜单隐藏 */
-    .mobile-hide{
+    .mobile-hide {
         display: none !important;
     }
+
     /* 菜单按键显现 */
-    .mobile-show{
+    .mobile-show {
         display: block !important;
     }
 
-    .mobile-expand{
+    .mobile-expand {
         width: 100% !important;
         margin-bottom: 5px !important;
     }
 }
 
-.typo p{
+.typo p {
     font-size: 16px;
     font-weight: 300;
     line-height: 1.7;
     text-align: justify;
 }
 
-.container-width{
+.container-width {
     max-width: 900px !important;
-    margin: auto !important;    
+    margin: auto !important;
 }
 
-.planar-width{
+.planar-width {
     width: 150px;
 }
 
-.pos-top-right{
+.pos-top-right {
     position: absolute;
     top: 0px;
     right: 0px;
 }
 
-.pos-right-bottom{
+.pos-right-bottom {
     bottom: 0 !important;
     right: 0 !important;
 }
 
-.pos-fixed{
+.pos-fixed {
     position: fixed !important;
     z-index: 10 !important;
 }
 
-.show-inline{
+.show-inline {
     display: inline;
 }
 
-.padding-big{
+.padding-big {
     padding: 50px !important;
 }
 
-.padding-middle{
+.padding-middle {
     padding: 25px !important;
 }
 
-.padding-small{
+.padding-small {
     padding: 5px !important;
 }
 
-.padding-none{
+.padding-none {
     padding: 0px !important;
 }
 
-.margin-auto{
+.margin-auto {
     margin: auto;
 }
 
-.margin-small{
+.margin-small {
     margin: 2px !important;
 }
 
-.margin-bottom-small{
+.margin-bottom-small {
     margin-bottom: 5px !important;
 }
 
-.margin-bottom-big{
+.margin-bottom-big {
     margin-bottom: 15px !important;
 }
 
-.margin-none{
+.margin-none {
     margin: 0px !important;
 }
 
-.text-black{
-    color: #333333!important;
+.text-black {
+    color: #333333 !important;
 }
 
-.clear-fix{
+.clear-fix {
     *zoom: 1;
 }
 
-.clear-fix::after{
+.clear-fix::after {
     content: ".";
     display: block;
     clear: both;
