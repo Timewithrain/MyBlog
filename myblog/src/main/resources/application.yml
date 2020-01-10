@@ -15,9 +15,9 @@ spring:
       ddl-auto: update
     show-sql: true
 
-logging:
-  level:
-    root: info
-    com.watermleon: debug
-  file: log\blog.log
+#logging:
+#  level:
+#    root: info
+#    com.watermleon: debug
+#  file: log\blog.log
 
