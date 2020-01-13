@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +14,11 @@
 <body>
 <!-- 导航 -->
 <!-- 为导航栏设置semanticUI提供的组件 -->
-<nav class="ui inverted attached segment">
+<nav th:replace="fragments :: menu(1)" class="ui inverted attached segment">
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog</h2>
-            <a href="#" class="active menu item mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="menu item mobile-hide"><i class="home icon"></i>首页</a>
             <a href="types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
             <a href="tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
             <a href="about.html" class="menu item mobile-hide"><i class="info icon"></i>关于</a>

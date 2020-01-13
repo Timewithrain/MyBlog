@@ -17,4 +17,22 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/types.html")
+    public String types(){
+        System.out.println("-----------types-------------");
+        return "types";
+    }
+
+    @GetMapping("/tags.html")
+    public String tags(){
+        System.out.println("-----------tags-------------");
+        return "tags";
+    }
+
+    @GetMapping("/about.html")
+    public String about(){
+        System.out.println("-----------about-------------");
+        return "about";
+    }
+
 }

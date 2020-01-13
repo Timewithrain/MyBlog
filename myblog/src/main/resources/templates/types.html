@@ -14,7 +14,7 @@
 <body>
 <!-- 导航 -->
 <!-- 为导航栏设置semanticUI提供的组件 -->
-<nav class="ui inverted attached segment">
+<nav th:replace="fragments :: menu(2)" class="ui inverted attached segment">
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog</h2>
