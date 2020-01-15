@@ -3,6 +3,9 @@ package com.watermelon.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -15,6 +18,10 @@ public class User {
     private String email;
     private String avatar;
     private Integer type;
+
+    //建立数据库关系，通过blog中的user属性进行关联
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogs = new ArrayList<Blog>();
 
     public User() {
     }
@@ -73,6 +80,14 @@ public class User {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 
     @Override

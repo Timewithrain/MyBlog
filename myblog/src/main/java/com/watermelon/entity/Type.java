@@ -3,6 +3,9 @@ package com.watermelon.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Type {
@@ -10,6 +13,10 @@ public class Type {
     @GeneratedValue
     private Long id;
     private String name;
+
+    //设置数据库对应关系，一个type中包含多个blog，设置blog中的type进行主动关系维护
+    @OneToMany(mappedBy = "type")
+    private List<Blog> blogs = new ArrayList<>();
 
     public Type() {
     }
@@ -28,6 +35,14 @@ public class Type {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 
     @Override
