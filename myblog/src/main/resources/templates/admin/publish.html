@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,8 @@
     <!-- 引入senmanticUI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- 引入页面md插件css -->
-    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
-    <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}">
     <title>博客发布</title>
 </head>
 <body>
@@ -19,8 +19,8 @@
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog后台</h2>
             <a href="#" class="active menu item mobile-hide"><i class="home icon"></i>博客</a>
-            <a href="types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
-            <a href="tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="../types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="../tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
             <div class="right menu mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -72,7 +72,7 @@
             <div class="field">
                 <!-- 引入页面markdown插件 -->
                 <div id="md-content">
-                    <textarea name="content" id="" style="display:none;" placeholder="博客内容"></textarea>
+                    <textarea name="content" style="display:none;" placeholder="博客内容"></textarea>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@
             <div class="field">
                 <div class="ui left labeled input">
                     <label for="" class="ui teal basic label">首图</label>
-                    <input type="text" name="indexPicture" id="" placeholder="首图引用地址">
+                    <input type="text" name="indexPicture" placeholder="首图引用地址">
                 </div>
             </div>
 
@@ -198,7 +198,7 @@
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!-- 引入页面md插件js -->
-<script src="../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
-<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+<script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
 </body>
 </html>

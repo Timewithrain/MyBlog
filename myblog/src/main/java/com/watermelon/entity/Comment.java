@@ -1,9 +1,12 @@
 package com.watermelon.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "comment")
 public class Comment {
     @Id
     @GeneratedValue
@@ -17,6 +20,12 @@ public class Comment {
 
     @ManyToOne
     private Blog blog;
+
+    @OneToMany(mappedBy = "parentComment")
+    private List<Comment> replies = new ArrayList<Comment>();
+
+    @ManyToOne
+    private Comment parentComment;
 
     public Comment() {
     }
@@ -75,6 +84,22 @@ public class Comment {
 
     public void setBlog(Blog blog) {
         this.blog = blog;
+    }
+
+    public List<Comment> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Comment> replies) {
+        this.replies = replies;
+    }
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
     }
 
     @Override

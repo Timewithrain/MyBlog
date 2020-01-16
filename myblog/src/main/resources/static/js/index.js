@@ -100,7 +100,7 @@ $(function () {
             width: "90%",
             height: 640,
             syncScrolling: "single",
-            path: "../static/lib/editormd/lib/"
+            path: "../../static/lib/editormd/lib/"
         });
     });
 });

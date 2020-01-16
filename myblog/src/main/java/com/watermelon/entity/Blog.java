@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "blog")
 public class Blog {
     //将id设为数据库中的主键并自动生成
     @Id

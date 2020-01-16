@@ -1,13 +1,11 @@
 package com.watermelon.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "type")
 public class Type {
     @Id
     @GeneratedValue
@@ -16,7 +14,7 @@ public class Type {
 
     //设置数据库对应关系，一个type中包含多个blog，设置blog中的type进行主动关系维护
     @OneToMany(mappedBy = "type")
-    private List<Blog> blogs = new ArrayList<>();
+    private List<Blog> blogs = new ArrayList<Blog>();
 
     public Type() {
     }

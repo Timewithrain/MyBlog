@@ -47,6 +47,10 @@ body {
     width: 250px;
 }
 
+#login-container{
+    width: 470px;
+}
+
 /***************uitilities*****************/
 /* 在移动端显现，PC端隐藏 */
 .mobile-show {
