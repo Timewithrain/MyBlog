@@ -22,6 +22,7 @@ public class LoginController {
     public String login(@RequestParam String username, @RequestParam String password, HttpSession session){
         LoginService loginService = new LoginService();
         User user = loginService.checkUser(username,password);
+        System.out.println("login");
         if(user!=null){
             //删除密码以后再传入session，避免密码泄露
             user.setPassword(null);
@@ -33,6 +34,7 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/logout")
     public String  logout(HttpSession session){
         session.setAttribute("user",null);
         return "redirect:/admin";

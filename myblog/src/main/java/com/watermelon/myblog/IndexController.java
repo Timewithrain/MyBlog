@@ -13,6 +13,7 @@ public class IndexController {
 //        if(blog==null){
 //            throw new NotFoundException("page is not found");
 //        }
+        int a = 9/0;
         System.out.println("-----------index-------------");
         return "index";
     }
