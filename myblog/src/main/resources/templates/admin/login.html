@@ -18,7 +18,7 @@
                 管理员后台登录
             </div>
           </h2>
-          <form class="ui large form" method="post" action="#" th:action="@{/login}">
+          <form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
             <div class="ui segment">
               <div class="field">
                 <div class="ui left icon input">
@@ -36,12 +36,9 @@
             </div>
       
             <div class="ui error message"></div>
+            <div class="ui mini negative messae" th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名或密码输入错误！</div>
       
           </form>
-      
-          <!-- <div class="ui message">
-            New to us? <a href="#">Sign Up</a>
-          </div> -->
         </div>
     </div>
 </div>
