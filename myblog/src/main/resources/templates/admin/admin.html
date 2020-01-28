@@ -11,8 +11,7 @@
 </head>
 <body>
 <!-- 导航 -->
-<!-- 为导航栏设置semanticUI提供的组件 -->
-<nav th:replace="admin/fragments :: menu(1)" class="ui inverted attached segment">
+<nav th:replace="admin/fragments :: menu(0)" class="ui inverted attached segment">
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog后台</h2>
@@ -42,7 +41,7 @@
 <div class="ui attached pointing menu">
     <div class="ui container container-width">
         <div class="right menu ">
-            <a href="publish.html" class="item">发布</a>
+            <a href="publish.html" class="item" th:href="@{publish.html}">发布</a>
             <a href="#" class="active teal item">列表</a>
         </div>
     </div>

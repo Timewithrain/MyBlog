@@ -6,9 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-
 @EntityScan("com.watermelon.entity")
-@EnableJpaRepositories("com.watermelon.DAO")
+@EnableJpaRepositories(basePackages="com.watermelon.DAO")
 @ComponentScan({"com.watermelon.myblog","com.watermelon.service"})
 @SpringBootApplication(scanBasePackages = "com.watermelon")
 public class MyblogApplication {
@@ -18,3 +17,4 @@ public class MyblogApplication {
 	}
 
 }
+

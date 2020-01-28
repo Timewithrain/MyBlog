@@ -20,9 +20,14 @@ public class LoginController {
 
     @PostMapping("/admin/login")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession session, RedirectAttributes attributes){
-        LoginService loginService = new LoginService();
-        User user = loginService.checkUser(username,password);
-        System.out.println("login");
+//        LoginService loginService = new LoginService();
+//        User user = loginService.checkUser(username,password);
+        User user = null;
+        if (username.equals("watermelon")&&password.equals("123")){
+            user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+        }
         if(user!=null){
             //删除密码以后再传入session，避免密码泄露
             user.setPassword(null);
@@ -30,8 +35,31 @@ public class LoginController {
             //跳转至admin后台管理页面
             return "admin/admin";
         }else{
+            //当检测出用户输入错误则返回错误信息
             attributes.addFlashAttribute("message","用户名密码错误，请重新输入！");
             //通过重定向的方式，执行loginPage()方法跳转到login页面，
+            return "redirect:/admin";
+        }
+    }
+
+    @GetMapping("/admin/publish.html")
+    public String publish(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        if(user!=null){
+            System.out.println("-----------publish-------------");
+            return "admin/publish";
+        }else{
+            return "redirect:/admin";
+        }
+    }
+
+    @GetMapping("/admin/admin.html")
+    public String admin(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        if(user!=null){
+            System.out.println("-----------admin-------------");
+            return "admin/admin";
+        }else{
             return "redirect:/admin";
         }
     }

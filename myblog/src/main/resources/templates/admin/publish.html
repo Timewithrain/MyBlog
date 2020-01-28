@@ -7,14 +7,14 @@
     <!-- 引入senmanticUI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- 引入页面md插件css -->
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/static/lib/editormd/css/editormd.min.css" th:href="@{/static/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}">
     <title>博客发布</title>
 </head>
 <body>
 <!-- 导航 -->
 <!-- 为导航栏设置semanticUI提供的组件 -->
-<nav class="ui inverted attached segment">
+<nav th:replace="admin/fragments :: menu(0)" class="ui inverted attached segment">
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog后台</h2>
@@ -45,7 +45,7 @@
     <div class="ui container container-width">
         <div class="right menu ">
             <a href="#" class="active teal item">发布</a>
-            <a href="admin.html" class="item">列表</a>
+            <a href="admin.html" class="item" th:href="@{admin.html}">列表</a>
         </div>
     </div>
 </div>
@@ -198,7 +198,7 @@
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!-- 引入页面md插件js -->
-<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+<script src="../../static/static/lib/editormd/editormd.min.js" th:src="@{/static/lib/editormd/editormd.min.js}"></script>
 <script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping("/")
+    @GetMapping({"/","/index.html"})
     public String index(){
 //        String blog = null;
 //        if(blog==null){
@@ -15,6 +15,12 @@ public class IndexController {
 //        }
         System.out.println("-----------index-------------");
         return "index";
+    }
+
+    @GetMapping("/blog.html")
+    public String blog(){
+        System.out.println("-----------blog-------------");
+        return "blog";
     }
 
     @GetMapping("/types.html")
