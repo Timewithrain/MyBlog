@@ -44,24 +44,28 @@ public class LoginController {
 
     @GetMapping("/admin/publish.html")
     public String publish(HttpSession session){
-        User user = (User)session.getAttribute("user");
-        if(user!=null){
-            System.out.println("-----------publish-------------");
-            return "admin/publish";
-        }else{
-            return "redirect:/admin";
-        }
+//        User user = (User)session.getAttribute("user");
+//        if(user!=null){
+//            System.out.println("-----------publish-------------");
+//            return "admin/publish";
+//        }else{
+//            return "redirect:/admin";
+//        }
+        System.out.println("-----------publish-------------");
+        return "admin/publish";
     }
 
     @GetMapping("/admin/admin.html")
     public String admin(HttpSession session){
-        User user = (User)session.getAttribute("user");
-        if(user!=null){
-            System.out.println("-----------admin-------------");
-            return "admin/admin";
-        }else{
-            return "redirect:/admin";
-        }
+//        User user = (User)session.getAttribute("user");
+//        if(user!=null){
+//            System.out.println("-----------admin-------------");
+//            return "admin/admin";
+//        }else{
+//            return "redirect:/admin";
+//        }
+        System.out.println("-----------admin-------------");
+        return "admin/admin";
     }
 
     @GetMapping("/admin/logout")
