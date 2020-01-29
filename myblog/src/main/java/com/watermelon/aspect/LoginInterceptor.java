@@ -17,7 +17,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect("/admin");
             return false;
         }
-        System.out.println(user.getUsername());
         return true;
     }
 }
