@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class LoginController {
+public class AdminController {
 
     @Autowired
     public LoginService loginService;
@@ -63,6 +63,12 @@ public class LoginController {
 //        }
         System.out.println("-----------admin-------------");
         return "admin/admin";
+    }
+
+    @GetMapping("/admin/types.html")
+    public String types(){
+        System.out.println("-----------types-------------");
+        return "admin/types";
     }
 
     @GetMapping("/admin/logout")

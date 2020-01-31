@@ -6,10 +6,6 @@
 </head>
 <body>
 
-</body>
-</html>
-
-<!-- 导航 -->
 <!--通过thymeleaf模板对导航栏进行对应的样式改变-->
 <nav th:fragment="menu(n)" class="ui inverted attached segment">
     <div class="ui container">
@@ -31,3 +27,43 @@
         <i class="sidebar icon"></i>
     </a>
 </nav>
+
+<!-- 底部footer -->
+<footer th:fragment="footer" id="footer" class="ui inverted vertical segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <!-- 缺少一张图片 -->
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item" title="亚音速涡扇发动机最优涵道比">亚音速涡扇发动机最优涵道比</a>
+                    <a href="#" class="item" title="博客3">博客3</a>
+                    <a href="#" class="item" title="博客2">博客2</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">友情链接</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">链接1</a>
+                    <a href="#" class="item">链接3</a>
+                    <a href="#" class="item">链接2</a>
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui inverted header">个人说明</div>
+                <p>不要温顺地走进这凉夜，咆哮吧，痛斥这光的退缩</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider">
+            <p id="copyright">Copyright@ 1999-2019 created by watermelon</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
