@@ -7,7 +7,7 @@
     <!-- 引入senmanticUI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}">
-    <title>分类管理</title>
+    <title>添加分类</title>
 </head>
 <body>
 <!-- 导航 -->
@@ -15,9 +15,9 @@
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog后台</h2>
-            <a href="#" class="active menu item mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
-            <a href="../types.html" class="menu item mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
-            <a href="../tags.html" class="menu item mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+            <a href="#" class="active menu item mobile-hide"><i class="home icon"></i>博客</a>
+            <a href="../types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="../tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
             <div class="right menu mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -27,7 +27,7 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a href="#" class="item">切换用户</a>
-                        <a href="#" class="item" th:href="@{admin/logout}">注销</a>
+                        <a href="#" class="item">注销</a>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container container-width">
         <div class="right menu ">
-            <a href="publish.html" class="item" th:href="@{publish.html}">发布</a>
-            <a href="#" class="active teal item">列表</a>
+            <a href="#" class="active teal item">发布</a>
+            <a href="admin.html" class="item" th:href="@{admin.html}">列表</a>
         </div>
     </div>
 </div>
@@ -50,39 +50,23 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <table class="ui table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>名称</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--/* thymeleaf标签，通过后台返回的page遍历依次获取每个type和其对应的索引值 */-->
-            <tr th:each="type,iterStat : ${page.content}}">
-                <!--/* 将获取的type对象和其索引渲染为页面内容显示 */-->
-                <td th:text="iterStat.count">1</td>
-                <td th:text="${type.name}">学习清单</td>
-                <td>
-                    <a href="#" class="ui mini teal button" th:href="@{/admin/types/{id}/input(id=${type.id})}">编辑</a>
-                    <a href="#" class="ui mini red button" th:href="@{/admin/types/{id}/delete(id=${type.id})}">删除</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="6">
-                    <div class="ui pagination menu">
-                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}-1)}">上一页</a>
-                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}+1)}">下一页</a>
-                    </div>
-                    <a href="#" class="ui right floated teal basic button" th:href="@{/admin/types/add}">新增</a>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+        <form action="#" method="post" class="ui form">
 
+            <div class="field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">名称</label>
+                    <input type="text" name="name" placeholder="分类名称">
+                </div>
+            </div>
+
+            <div class="ui error message"></div>
+
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal button">提交</button>
+            </div>
+
+        </form>
     </div>
 </div>
 
