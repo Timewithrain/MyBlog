@@ -26,6 +26,10 @@ public class TypeService {
         return typeRepository.getOne(id);
     }
 
+    public Type getTypeByName(String name){
+        return typeRepository.findByName(name);
+    }
+
     public Type updateType(Long id, Type type){
         Type type1 = typeRepository.getOne(id);
         if(type1==null){

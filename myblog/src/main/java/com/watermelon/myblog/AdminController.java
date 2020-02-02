@@ -41,34 +41,14 @@ public class AdminController {
 
     @GetMapping("/admin/publish.html")
     public String publish(HttpSession session){
-//        User user = (User)session.getAttribute("user");
-//        if(user!=null){
-//            System.out.println("-----------publish-------------");
-//            return "admin/publish";
-//        }else{
-//            return "redirect:/admin";
-//        }
         System.out.println("-----------publish-------------");
-        return "admin/publish";
+        return "/admin/publish";
     }
 
     @GetMapping("/admin/admin.html")
     public String admin(HttpSession session){
-//        User user = (User)session.getAttribute("user");
-//        if(user!=null){
-//            System.out.println("-----------admin-------------");
-//            return "admin/admin";
-//        }else{
-//            return "redirect:/admin";
-//        }
         System.out.println("-----------admin-------------");
-        return "admin/admin";
-    }
-
-    @GetMapping("/admin/types.html")
-    public String types(){
-        System.out.println("-----------types-------------");
-        return "admin/types";
+        return "/admin/admin";
     }
 
     @GetMapping("/admin/logout")

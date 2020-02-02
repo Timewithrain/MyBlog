@@ -50,6 +50,11 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示:</div>
+            <p th:text="${message}">操作成功！</p>
+        </div>
         <table class="ui table">
             <thead>
             <tr>
@@ -60,9 +65,9 @@
             </thead>
             <tbody>
             <!--/* thymeleaf标签，通过后台返回的page遍历依次获取每个type和其对应的索引值 */-->
-            <tr th:each="type,iterStat : ${page.content}}">
+            <tr th:each="type,iterStat : ${page.content}">
                 <!--/* 将获取的type对象和其索引渲染为页面内容显示 */-->
-                <td th:text="iterStat.count">1</td>
+                <td th:text="${type.id}">1</td>
                 <td th:text="${type.name}">学习清单</td>
                 <td>
                     <a href="#" class="ui mini teal button" th:href="@{/admin/types/{id}/input(id=${type.id})}">编辑</a>
@@ -73,9 +78,9 @@
             <tfoot>
             <tr>
                 <th colspan="6">
-                    <div class="ui pagination menu">
-                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}-1)}">上一页</a>
-                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}+1)}">下一页</a>
+                    <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
+                        <a href="#" class="item" th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
                     </div>
                     <a href="#" class="ui right floated teal basic button" th:href="@{/admin/types/add}">新增</a>
                 </th>
