@@ -70,7 +70,7 @@
                 <td th:text="${type.id}">1</td>
                 <td th:text="${type.name}">学习清单</td>
                 <td>
-                    <a href="#" class="ui mini teal button" th:href="@{/admin/types/{id}/input(id=${type.id})}">编辑</a>
+                    <a href="#" class="ui mini teal button" th:href="@{/admin/types/{id}/edit(id=${type.id})}">编辑</a>
                     <a href="#" class="ui mini red button" th:href="@{/admin/types/{id}/delete(id=${type.id})}">删除</a>
                 </td>
             </tr>

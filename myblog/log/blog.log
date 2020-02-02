@@ -3364,3 +3364,178 @@ Field error in object 'type' on field 'name': rejected value []; codes [NotBlank
 2020-02-02 21:41:46.557  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
 2020-02-02 21:41:46.558  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
 2020-02-02 21:41:46.558  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 21:52:04.898  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types.html', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 0, size 5, sort: id: ASC], {}]}
+2020-02-02 21:52:04.920  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 21:52:04.920  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:06:25.548  INFO 15184 --- [Thread-14] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-02 22:06:25.549  INFO 15184 --- [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-02-02 22:06:25.557  INFO 15184 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-02 22:06:25.568  INFO 15184 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-02-02 22:06:26.550  INFO 15184 --- [restartedMain] com.watermelon.MyblogApplication         : Starting MyblogApplication on LAPTOP-60I60B2I with PID 15184 (D:\Programs\MyBlog\myblog\target\classes started by Watermelon in D:\Programs\MyBlog\myblog)
+2020-02-02 22:06:26.550  INFO 15184 --- [restartedMain] com.watermelon.MyblogApplication         : No active profile set, falling back to default profiles: default
+2020-02-02 22:06:26.751  INFO 15184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-02 22:06:26.775  INFO 15184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 2 JPA repository interfaces.
+2020-02-02 22:06:27.074  INFO 15184 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-02 22:06:27.326  WARN 15184 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2020-02-02 22:06:27.439  INFO 15184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-02 22:06:27.441  INFO 15184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-02 22:06:27.442  INFO 15184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-02-02 22:06:27.443  INFO 15184 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2020-02-02 22:06:27.443  INFO 15184 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-02-02 22:06:27.443  INFO 15184 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-02-02 22:06:27.444  INFO 15184 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2020-02-02 22:06:27.486  INFO 15184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-02 22:06:27.486  INFO 15184 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 931 ms
+2020-02-02 22:06:27.712  INFO 15184 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-02 22:06:27.734  INFO 15184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-02-02 22:06:27.796  INFO 15184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-02-02 22:06:27.797  INFO 15184 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-02-02 22:06:28.515  INFO 15184 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-02 22:06:28.516  INFO 15184 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-02 22:06:28.590  INFO 15184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-02-02 22:06:29.157  WARN 15184 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-02 22:06:29.471  INFO 15184 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-02 22:06:29.543  INFO 15184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-02-02 22:06:29.809  INFO 15184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-02 22:06:29.810  INFO 15184 --- [restartedMain] com.watermelon.MyblogApplication         : Started MyblogApplication in 3.299 seconds (JVM running for 2166.375)
+2020-02-02 22:06:29.812  INFO 15184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-02-02 22:06:34.506  INFO 15184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-02 22:06:34.508  INFO 15184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-02 22:06:34.519  INFO 15184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-02-02 22:06:34.527  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin', classMethod='com.watermelon.myblog.AdminController.loginPage', args=[]}
+2020-02-02 22:06:34.531  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:34.532  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/login
+2020-02-02 22:06:38.934  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/login', classMethod='com.watermelon.myblog.AdminController.login', args=[zzzx, 123, org.apache.catalina.session.StandardSessionFacade@799788ab, {}]}
+2020-02-02 22:06:38.945  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:38.945  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : result : admin/admin
+2020-02-02 22:06:40.911  INFO 15184 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types.html', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 0, size 5, sort: id: ASC], {}]}
+2020-02-02 22:06:40.935  INFO 15184 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:40.935  INFO 15184 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:06:42.617  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:06:42.618  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:42.618  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:06:44.782  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:06:44.787  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:44.787  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : result : redirect:/admin/types/add
+2020-02-02 22:06:44.799  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:06:44.799  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:06:44.799  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:07:36.413  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:07:36.413  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:07:36.414  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:07:38.843  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:07:38.847  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:07:38.848  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : result : redirect:/admin/types/add
+2020-02-02 22:07:38.853  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:07:38.854  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:07:38.854  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:08:03.940  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:08:04.289  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:04.290  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : result : redirect:/admin/types/add
+2020-02-02 22:08:04.294  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:08:04.294  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:04.295  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:08:05.721  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types.html', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 0, size 5, sort: id: ASC], {}]}
+2020-02-02 22:08:05.735  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:05.735  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:08:08.436  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 1, size 5, sort: id: ASC], {}]}
+2020-02-02 22:08:08.452  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:08.452  INFO 15184 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:08:09.390  INFO 15184 --- [http-nio-8080-exec-5] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 2, size 5, sort: id: ASC], {}]}
+2020-02-02 22:08:09.400  INFO 15184 --- [http-nio-8080-exec-5] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:09.400  INFO 15184 --- [http-nio-8080-exec-5] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:08:10.426  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 3, size 5, sort: id: ASC], {}]}
+2020-02-02 22:08:10.435  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:10.435  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:08:20.747  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:08:20.748  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:08:20.749  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:10:42.692  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:10:42.692  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:42.693  INFO 15184 --- [http-nio-8080-exec-1] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:10:48.038  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:10:48.044  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:48.045  INFO 15184 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : redirect:/admin/types/add
+2020-02-02 22:10:48.053  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:10:48.054  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:48.054  INFO 15184 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:10:52.596  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types.html', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 0, size 5, sort: id: ASC], {}]}
+2020-02-02 22:10:52.619  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:52.620  INFO 15184 --- [http-nio-8080-exec-9] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:10:55.142  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:10:55.143  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:55.143  INFO 15184 --- [http-nio-8080-exec-3] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:10:56.705  INFO 15184 --- [http-nio-8080-exec-7] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:10:56.712  INFO 15184 --- [http-nio-8080-exec-7] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:56.713  INFO 15184 --- [http-nio-8080-exec-7] com.watermelon.aspect.LogAspect          : result : redirect:/admin/types/add
+2020-02-02 22:10:56.721  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:10:56.721  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:10:56.721  INFO 15184 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:16:34.095  INFO 13780 --- [restartedMain] com.watermelon.MyblogApplication         : Starting MyblogApplication on LAPTOP-60I60B2I with PID 13780 (D:\Programs\MyBlog\myblog\target\classes started by Watermelon in D:\Programs\MyBlog\myblog)
+2020-02-02 22:16:34.104  INFO 13780 --- [restartedMain] com.watermelon.MyblogApplication         : No active profile set, falling back to default profiles: default
+2020-02-02 22:16:34.238  INFO 13780 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\DevelopeKit_Java\Maven\Repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/D:/DevelopeKit_Java/Maven/Repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-02-02 22:16:34.255  INFO 13780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-02-02 22:16:34.256  INFO 13780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-02-02 22:16:35.059  INFO 13780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-02 22:16:35.144  INFO 13780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71ms. Found 2 JPA repository interfaces.
+2020-02-02 22:16:35.660  INFO 13780 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-02 22:16:36.148  INFO 13780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-02 22:16:36.157  INFO 13780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-02 22:16:36.158  INFO 13780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-02-02 22:16:36.160  INFO 13780 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2020-02-02 22:16:36.160  INFO 13780 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-02-02 22:16:36.161  INFO 13780 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-02-02 22:16:36.165  INFO 13780 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2020-02-02 22:16:36.259  INFO 13780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-02 22:16:36.259  INFO 13780 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2003 ms
+2020-02-02 22:16:36.518  INFO 13780 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-02 22:16:36.578  INFO 13780 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-02-02 22:16:36.682  INFO 13780 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-02 22:16:36.772  INFO 13780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-02 22:16:37.348  INFO 13780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-02 22:16:37.367  INFO 13780 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-02-02 22:16:38.362  INFO 13780 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-02 22:16:38.372  INFO 13780 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-02 22:16:38.447  INFO 13780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-02-02 22:16:39.098  WARN 13780 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-02 22:16:39.323  INFO 13780 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-02 22:16:39.422  INFO 13780 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-02-02 22:16:39.767  INFO 13780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-02 22:16:39.770  INFO 13780 --- [restartedMain] com.watermelon.MyblogApplication         : Started MyblogApplication in 6.404 seconds (JVM running for 7.867)
+2020-02-02 22:16:45.479  INFO 13780 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-02 22:16:45.479  INFO 13780 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-02 22:16:45.491  INFO 13780 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-02-02 22:16:46.119  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin', classMethod='com.watermelon.myblog.AdminController.loginPage', args=[]}
+2020-02-02 22:16:46.124  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:16:46.125  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/login
+2020-02-02 22:16:49.789  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/login', classMethod='com.watermelon.myblog.AdminController.login', args=[zzzx, 123, org.apache.catalina.session.StandardSessionFacade@6989a2f8, {}]}
+2020-02-02 22:16:49.914  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:16:49.914  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : result : admin/admin
+2020-02-02 22:16:51.799  INFO 13780 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types.html', classMethod='com.watermelon.myblog.TypeController.types', args=[Page request [number: 0, size 5, sort: id: ASC], {}]}
+2020-02-02 22:16:51.849  INFO 13780 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:16:51.850  INFO 13780 --- [http-nio-8080-exec-10] com.watermelon.aspect.LogAspect          : result : /admin/types
+2020-02-02 22:16:54.161  INFO 13780 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:16:54.162  INFO 13780 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:16:54.162  INFO 13780 --- [http-nio-8080-exec-4] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:17:38.754  INFO 13780 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/add', classMethod='com.watermelon.myblog.TypeController.add', args=[{}]}
+2020-02-02 22:17:38.755  INFO 13780 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:17:38.755  INFO 13780 --- [http-nio-8080-exec-8] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:17:41.166  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:17:41.173  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:17:41.173  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:17:49.371  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name='JAVA'}, org.springframework.validation.BeanPropertyBindingResult: 0 errors, {}]}
+2020-02-02 22:17:49.377  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:17:49.377  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:19:55.841  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name='JAVA'}, org.springframework.validation.BeanPropertyBindingResult: 0 errors, {}]}
+2020-02-02 22:19:55.847  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:19:55.847  INFO 13780 --- [http-nio-8080-exec-2] com.watermelon.aspect.LogAspect          : result : /admin/type-add
+2020-02-02 22:20:02.471  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : request : RequestLog{ip='0:0:0:0:0:0:0:1', url='http://localhost:8080/admin/types/doAdd', classMethod='com.watermelon.myblog.TypeController.doAdd', args=[Type{id=null, name=''}, org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'type' on field 'name': rejected value []; codes [NotBlank.type.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [type.name,name]; arguments []; default message [name]]; default message [分类名不能为空], {}]}
+2020-02-02 22:20:02.479  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : ------------doAfter--------------
+2020-02-02 22:20:02.479  INFO 13780 --- [http-nio-8080-exec-6] com.watermelon.aspect.LogAspect          : result : /admin/type-add

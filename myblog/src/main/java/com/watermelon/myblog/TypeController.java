@@ -9,6 +9,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -45,7 +47,7 @@ public class TypeController {
         }
         //根据Type类中@NotBlanck注解对从前输入的对象进行校验，若校验失败则获取错误message重定向回type-add页面
         if(result.hasErrors()){
-            return "redirect:/admin/types/add";
+            return "/admin/type-add";
         }
         Type t = typeService.saveType(type);
         if(t==null){
@@ -53,6 +55,19 @@ public class TypeController {
         }else{
             attributes.addFlashAttribute("message","提交成功！");
         }
+        return "redirect:/admin/types.html";
+    }
+
+    @GetMapping("/types/{id}/edit")
+    public String edit(@PathVariable Long id, Model model){
+        model.addAttribute("type",typeService.getType(id));
+        return "/admin/type-add";
+    }
+
+    @GetMapping("/types/{id}")
+    public String doEdit(){
+
+
         return "redirect:/admin/types.html";
     }
 
