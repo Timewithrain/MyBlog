@@ -64,16 +64,28 @@ public class TypeController {
         return "/admin/type-add";
     }
 
-    @GetMapping("/types/{id}")
-    public String doEdit(){
-
-
+    @PostMapping("/types/{id}")
+    public String doEdit(@Valid Type type, BindingResult result,@PathVariable Long id, RedirectAttributes attributes){
+        Type t0 = typeService.getTypeByName(type.getName());
+        if(t0!=null){
+            result.rejectValue("name","nameError","分类已存在");
+        }
+        if(result.hasErrors()){
+            return "/admin/type-add";
+        }
+        Type t = typeService.updateType(id,type);
+        if(t==null){
+            attributes.addFlashAttribute("message","修改失败！");
+        }else{
+            attributes.addFlashAttribute("message","修改成功！");
+        }
         return "redirect:/admin/types.html";
     }
 
-    @PostMapping("/types/delete")
-    public String delete(Long id){
+    @GetMapping("/types/{id}/delete")
+    public String delete(@PathVariable Long id,RedirectAttributes attributes){
         typeService.deleteType(id);
+        attributes.addFlashAttribute("message","修改成功！");
         return "redirect:/admin/types.html";
     }
 

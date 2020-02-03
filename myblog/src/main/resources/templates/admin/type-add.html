@@ -41,8 +41,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container container-width">
         <div class="right menu ">
-            <a href="#" class="active teal item">发布</a>
-            <a href="admin.html" class="item" th:href="@{admin.html}">列表</a>
+            <a href="#" class="active teal item" th:href="@{/admin/types/add}">添加</a>
+            <a href="#" class="item" th:href="@{/admin/types}">列表</a>
         </div>
     </div>
 </div>
@@ -50,8 +50,9 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <form method="post" class="ui form" th:action="@{/admin/types/doAdd}" th:object="${type}">
-
+        <!--/*此处通过问好表达式根据跳转url判断此处为新增分类或修改分类，不同的分类对应不同的action请求*/-->
+        <form method="post" class="ui form" th:action="*{id}==null ? @{/admin/types/doAdd} : @{/admin/types/{id}(id=*{id})}" th:object="${type}">
+            <input type="hidden" name="id" th:value="*{id}">
             <div class="required field">
                 <div class="ui left labeled input">
                     <label class="ui teal basic label">名称</label>
