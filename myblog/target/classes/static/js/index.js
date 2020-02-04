@@ -138,15 +138,15 @@ $(function(){
 /******************************admin/type-add page funcitons********************************/
 $(function(){
     // 提交form的校验
-    // $('.ui .form').form({
-    //     fields: {
-    //         name: {
-    //             identifier: "name",
-    //             rules: [{
-    //                 type: "empty",
-    //                 prompt: "输入分类不能为空!"
-    //             }]
-    //         }
-    //     }
-    // });
+    $('.ui .form').form({
+        fields: {
+            name: {
+                identifier: "name",
+                rules: [{
+                    type: "empty",
+                    prompt: "输入分类不能为空!"
+                }]
+            }
+        }
+    });
 });

@@ -91,15 +91,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>学习清单</td>
-                <td>认知升级</td>
-                <td>是</td>
-                <td>2019-12-2 09:27</td>
+            <tr th:each="blog,iterStat : ${page.content}}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${blog.title}">学习清单</td>
+                <td th:text="${blog.type.name}">认知升级</td>
+                <td th:text="${blog.shareStatement ? '是' : '否'}">是</td>
+                <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
                 <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
+                    <a href="#" class="ui mini teal button" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}">编辑</a>
+                    <a href="#" class="ui mini red button" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}">删除</a>
                 </td>
             </tr>
             </tbody>
@@ -107,8 +107,8 @@
             <tr>
                 <th colspan="6">
                     <div class="ui pagination menu">
-                        <a href="#" class="item">上一页</a>
-                        <a href="#" class="item">下一页</a>
+                        <a href="#" class="item" th:href="@{/admin/blogs(page=${page.number}+1)}" th:unless="${page.first}">上一页</a>
+                        <a href="#" class="item" th:href="@{/admin/blogs(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
                     </div>
                     <a href="#" class="ui right floated teal basic button">新增</a>
                 </th>
