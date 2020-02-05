@@ -77,6 +77,12 @@ $(function () {
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
+
+    //获取页面page的查询条件等信息
+    function page(o){
+        $("[name='page']").val($(o).data("page"));
+
+    }
 });
 
 /****************************publish page functions******************************/

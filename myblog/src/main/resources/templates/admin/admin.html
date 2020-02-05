@@ -51,6 +51,7 @@
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
         <form action="#" method="POST" class="ui segment form">
+            <input type="hidden" name="page">
             <div class="inline fields margin-small">
                 <div class="field margin-small">
                     <input type="text" name="text" id="" placeholder="标题">
@@ -106,9 +107,9 @@
             <tfoot>
             <tr>
                 <th colspan="6">
-                    <div class="ui pagination menu">
-                        <a href="#" class="item" th:href="@{/admin/blogs(page=${page.number}+1)}" th:unless="${page.first}">上一页</a>
-                        <a href="#" class="item" th:href="@{/admin/blogs(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
+                    <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                        <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1}" th:unless="${page.first}">上一页</a>
+                        <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1)" th:unless="${page.last}">下一页</a>
                     </div>
                     <a href="#" class="ui right floated teal basic button">新增</a>
                 </th>
