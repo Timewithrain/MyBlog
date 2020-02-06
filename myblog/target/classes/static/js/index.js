@@ -72,11 +72,30 @@ $(function () {
 
 });
 
-/****************************admin page functions******************************/
+/****************************admin(blogs) page functions******************************/
 $(function () {
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
+
+    //获取页面page的查询条件等信息
+    function page(object){
+        $("[name='page']").val($(object).data("page"));
+        loadBlog();
+    }
+
+    $("#search-btn").click(function(){
+        loadBlog();
+    });
+
+    function loadBlog(){
+        $("#table-container").load("/admin/blogs/search",{
+            title : $("[name='title']").val(),
+            typeId : $("[name='typeId']").val(),
+            recommend : $("[name='recommend']").prop('checked'),
+            page : $("[name='page']").val()
+        });
+    }
 });
 
 /****************************publish page functions******************************/

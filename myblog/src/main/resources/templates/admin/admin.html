@@ -50,7 +50,7 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <form action="#" method="POST" class="ui segment form">
+        <form class="ui segment form">
             <input type="hidden" name="page">
             <div class="inline fields margin-small">
                 <div class="field margin-small">
@@ -58,13 +58,11 @@
                 </div>
                 <div class="field margin-small">
                     <div class="ui selection dropdown">
-                        <input type="hidden" name="type">
+                        <input type="hidden" name="typeId">
                         <i class="dropdown icon"></i>
                         <div class="default text">分类</div>
                         <div class="menu">
-                            <div class="item" data-value="1">技术架构</div>
-                            <div class="item" data-value="2">开发笔记</div>
-                            <div class="item" data-value="3">错误日志</div>
+                            <div class="item" th:each="type : ${types}" th:data-value="${type.id}" th:text="${type.name}">技术架构</div>
                         </div>
                     </div>
                 </div>
@@ -75,47 +73,49 @@
                     </div>
                 </div>
                 <div class="field margin-small">
-                    <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
+                    <button class="ui mini teal basic button" id="search-btn" onclick="loadBlog()"><i class="search icon"></i>搜索</button>
                 </div>
             </div>
         </form>
 
-        <table class="ui table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>标题</th>
-                <th>类型</th>
-                <th>推荐</th>
-                <th>更新时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="blog,iterStat : ${page.content}}">
-                <td th:text="${iterStat.count}">1</td>
-                <td th:text="${blog.title}">学习清单</td>
-                <td th:text="${blog.type.name}">认知升级</td>
-                <td th:text="${blog.shareStatement ? '是' : '否'}">是</td>
-                <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
-                <td>
-                    <a href="#" class="ui mini teal button" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}">编辑</a>
-                    <a href="#" class="ui mini red button" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}">删除</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="6">
-                    <div class="ui pagination menu" th:if="${page.totalPages}>1">
-                        <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1}" th:unless="${page.first}">上一页</a>
-                        <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1)" th:unless="${page.last}">下一页</a>
-                    </div>
-                    <a href="#" class="ui right floated teal basic button">新增</a>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+        <div id="table-container">
+            <table th:fragment="list" class="ui table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>标题</th>
+                    <th>类型</th>
+                    <th>推荐</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="blog,iterStat : ${page.content}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${blog.title}">学习清单</td>
+                    <td th:text="${blog.type.name}">认知升级</td>
+                    <td th:text="${blog.shareStatement ? '是' : '否'}">是</td>
+                    <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
+                    <td>
+                        <a href="#" class="ui mini teal button" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}">编辑</a>
+                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1}" th:unless="${page.first}">上一页</a>
+                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1)" th:unless="${page.last}">下一页</a>
+                        </div>
+                        <a href="#" class="ui right floated teal basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
 
     </div>
 </div>

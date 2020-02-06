@@ -1,7 +1,9 @@
 package com.watermelon.myblog;
 
 import com.watermelon.entity.Blog;
+import com.watermelon.entity.BlogQuery;
 import com.watermelon.service.BlogService;
+import com.watermelon.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,10 +19,20 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
-    @RequestMapping("/blogs")
-    public String blog(@PageableDefault(size=10,sort="createTime",direction=Sort.Direction.ASC) Pageable pageable, Blog blog, Model model){
+    @Autowired
+    private TypeService typeService;
+
+    @RequestMapping({"/admin.html","/admin"})
+    public String blog(@PageableDefault(size=10,sort="createTime",direction=Sort.Direction.ASC) Pageable pageable, BlogQuery blog, Model model){
+        model.addAttribute("types",typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable,blog));
         return "/admin/admin";
+    }
+
+    @RequestMapping("/blogs/search")
+    public String search(@PageableDefault(size=10,sort="createTime",direction=Sort.Direction.ASC) Pageable pageable, BlogQuery blog, Model model){
+        model.addAttribute("page", blogService.listBlog(pageable,blog));
+        return "/admin/admin :: list";
     }
 
 }

@@ -18,8 +18,13 @@ public class AdminController {
     public LoginService loginService;
 
     @GetMapping("/admin")
-    public String loginPage(){
-        return "/admin/login";
+    public String loginPage(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        if(user!=null){
+            return "redirect:/admin/admin";
+        }else{
+            return "/admin/login";
+        }
     }
 
     @PostMapping("/admin/login")
@@ -30,7 +35,7 @@ public class AdminController {
             user.setPassword(null);
             session.setAttribute("user",user);
             //跳转至admin后台管理页面
-            return "admin/admin";
+            return "redirect:/admin/admin.html";
         }else{
             //当检测出用户输入错误则返回错误信息
             attributes.addFlashAttribute("message","用户名密码错误，请重新输入！");
@@ -45,11 +50,11 @@ public class AdminController {
         return "/admin/publish";
     }
 
-    @GetMapping("/admin/admin.html")
-    public String admin(HttpSession session){
-        System.out.println("-----------admin-------------");
-        return "/admin/admin";
-    }
+//    @GetMapping("/admin/admin.html")
+//    public String admin(HttpSession session){
+//        System.out.println("-----------admin-------------");
+//        return "/admin/admin";
+//    }
 
     @GetMapping("/admin/logout")
     public String  logout(HttpSession session){
