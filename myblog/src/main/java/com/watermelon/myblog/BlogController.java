@@ -35,4 +35,10 @@ public class BlogController {
         return "/admin/admin :: list";
     }
 
+    @RequestMapping("/blogs/add")
+    public String add(Model model){
+        model.addAttribute("types",typeService.listType());
+        model.addAttribute("blog",new Blog());
+        return "/admin/blog-add";
+    }
 }

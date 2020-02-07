@@ -47,7 +47,7 @@ public class AdminController {
     @GetMapping("/admin/publish.html")
     public String publish(HttpSession session){
         System.out.println("-----------publish-------------");
-        return "/admin/publish";
+        return "blog-add";
     }
 
 //    @GetMapping("/admin/admin.html")

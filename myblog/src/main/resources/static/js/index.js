@@ -98,7 +98,7 @@ $(function () {
     }
 });
 
-/****************************publish page functions******************************/
+/****************************blog-add(publish) page functions******************************/
 $(function () {
     $(".ui .form").form({
         fields: {
@@ -107,6 +107,27 @@ $(function () {
                 rules: [{
                     type: 'empty',
                     prompt: '标题：请输入博客标题'
+                }]
+            },
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '输入博客内容...'
+                }]
+            },
+            typedId: {
+                identifier: 'typeId',
+                rules: [{
+                    type: 'empty',
+                    prompt: '分类：请选择博客分类'
+                }]
+            },
+            picture: {
+                identifier: 'picture',
+                rules: [{
+                    type: 'empty',
+                    prompt: '输入博客图片'
                 }]
             }
         }
@@ -121,6 +142,16 @@ $(function () {
             syncScrolling: "single",
             path: "../../static/lib/editormd/lib/"
         });
+    });
+
+    $('#save-btn').click(function(){
+        $("[name='published']").val(false);
+        $('.ui.form').submit();
+    });
+
+    $('#publish-btn').click(function(){
+        $("[name='published']").val(true);    
+        $('.ui.form').submit();
     });
 });
 
@@ -146,7 +177,7 @@ $(function(){
     });
 });
 
-/******************************admin/type page funcitons********************************/
+/******************************admin/type,admin/tag page funcitons********************************/
 $(function(){
     // 显示消息
     $(".message .close").on("click",function(){
@@ -164,6 +195,22 @@ $(function(){
                 rules: [{
                     type: "empty",
                     prompt: "输入分类不能为空!"
+                }]
+            }
+        }
+    });
+});
+
+/******************************admin/tag-add page funcitons********************************/
+$(function(){
+    // 提交form的校验
+    $('.ui .form').form({
+        fields: {
+            name: {
+                identifier: "name",
+                rules: [{
+                    type: "empty",
+                    prompt: "输入标签不能为空!"
                 }]
             }
         }

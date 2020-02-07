@@ -19,6 +19,7 @@ public class Blog {
     private Integer views;
     private Boolean appreciation;
     private Boolean published;
+    private Boolean recommend;
     private Boolean shareStatement;
     private Boolean commentTable;
     //定义Date映射至数据库中所使用的类型
@@ -170,6 +171,18 @@ public class Blog {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Boolean getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Boolean recommend) {
+        this.recommend = recommend;
+    }
+
+    public Boolean isRecommended(){
+        return recommend;
     }
 
     @Override
