@@ -85,11 +85,12 @@ $(function () {
     }
 
     $("#search-btn").click(function(){
+        $("[name='page']").val(0);
         loadBlog();
     });
 
     function loadBlog(){
-        $("#table-container").load("/admin/blogs/search",{
+        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
             title : $("[name='title']").val(),
             typeId : $("[name='typeId']").val(),
             recommend : $("[name='recommend']").prop('checked'),

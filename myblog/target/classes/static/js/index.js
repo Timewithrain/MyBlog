@@ -85,11 +85,12 @@ $(function () {
     }
 
     $("#search-btn").click(function(){
+        $("[name='page']").val(0);
         loadBlog();
     });
 
     function loadBlog(){
-        $("#table-container").load("/admin/blogs/search",{
+        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
             title : $("[name='title']").val(),
             typeId : $("[name='typeId']").val(),
             recommend : $("[name='recommend']").prop('checked'),
@@ -100,6 +101,7 @@ $(function () {
 
 /****************************blog-add(publish) page functions******************************/
 $(function () {
+    //验证输入内容不为空
     $(".ui .form").form({
         fields: {
             title: {

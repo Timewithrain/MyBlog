@@ -45,7 +45,7 @@ public class BlogController {
         return "/admin/admin :: list";
     }
 
-    @RequestMapping("/blogs/add")
+    @RequestMapping({"/blogs/add","/blog-add.html"})
     public String add(Model model){
         model.addAttribute("types",typeService.listType());
         model.addAttribute("tags",tagService.listTag());
