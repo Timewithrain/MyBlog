@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "tag")
 public class Tag {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "标签名不能为空")
     private String name;

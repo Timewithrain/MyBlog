@@ -100,6 +100,7 @@ $(function () {
 
 /****************************blog-add(publish) page functions******************************/
 $(function () {
+    //验证输入内容不为空
     $(".ui .form").form({
         fields: {
             title: {

@@ -1,6 +1,6 @@
 package com.watermelon.service;
 
-import com.watermelon.DAO.UserRepositoryInterface;
+import com.watermelon.DAO.UserRepository;
 import com.watermelon.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired(required = true)
-    public UserRepositoryInterface userRepository;
+    public UserRepository userRepository;
 
     public User checkUser(String username, String password){
         User user = userRepository.findByUsernameAndPassword(username,password);

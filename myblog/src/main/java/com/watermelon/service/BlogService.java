@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,10 +36,14 @@ public class BlogService {
             throw new NotFoundException("未找到对应blog");
         }
         BeanUtils.copyProperties(blog,blog1);
+        blog1.setUpdateTime(new Date());
         return blogRepository.save(blog1);
     }
 
     public Blog saveBlog(Blog blog){
+        blog.setViews(0);
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
         return blogRepository.save(blog);
     }
 

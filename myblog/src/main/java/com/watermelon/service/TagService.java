@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,6 +41,16 @@ public class TagService {
 
     public void deleteTag(Long id){
         tagRepository.deleteById(id);
+    }
+
+    //传入tag的索引id构成的字符串，以","分割,将字符串转换为对应索引list以后通过findAllById()方法完成查询
+    public List<Tag> listTag(String index){
+        List<Long> list = new ArrayList<Long>();
+        String[] str = index.split(",");
+        for (int i=0;i<str.length;i++){
+            list.add(Long.parseLong(str[i]));
+        }
+        return tagRepository.findAllById(list);
     }
 
     public Page<Tag> listTag(Pageable pageable){

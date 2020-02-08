@@ -13,6 +13,8 @@ public class Blog {
     @GeneratedValue
     private Long id;
     private String title;
+    @Basic(fetch = FetchType.LAZY)//懒加载
+    @Lob//长内容类型
     private String content;
     private String picture;
     private String flag;
@@ -34,6 +36,10 @@ public class Blog {
     //设置多对一的数据库实体关系，多个博客对应一个type
     @ManyToOne
     private Type type;
+
+    //@Transient注解，标注不写入数据库的普通属性
+    @Transient
+    private String tagsId;
 
     //设置级联增加，当blog的tag增加，会将相应的tag保存至数据库中
     @ManyToMany(cascade = {CascadeType.PERSIST})
@@ -163,6 +169,14 @@ public class Blog {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+    public String getTagsId() {
+        return tagsId;
+    }
+
+    public void setTagsId(String tagsId) {
+        this.tagsId = tagsId;
     }
 
     public List<Comment> getComments() {
