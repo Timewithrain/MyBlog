@@ -109,8 +109,8 @@
                 <tr>
                     <th colspan="7">
                         <div class="ui pagination menu" th:if="${page.totalPages}>1">
-                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1}" th:unless="${page.first}">上一页</a>
-                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1)" th:unless="${page.last}">下一页</a>
+                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}">上一页</a>
+                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}">下一页</a>
                         </div>
                         <a href="#" class="ui right floated teal basic button" th:href="@{/admin/blogs/add}">新增</a>
                     </th>

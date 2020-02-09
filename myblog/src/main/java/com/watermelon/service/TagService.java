@@ -45,6 +45,9 @@ public class TagService {
 
     //传入tag的索引id构成的字符串，以","分割,将字符串转换为对应索引list以后通过findAllById()方法完成查询
     public List<Tag> listTag(String index){
+        if (index.equals("")){
+            return null;
+        }
         List<Long> list = new ArrayList<Long>();
         String[] str = index.split(",");
         for (int i=0;i<str.length;i++){

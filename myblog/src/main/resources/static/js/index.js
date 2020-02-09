@@ -90,6 +90,7 @@ $(function () {
     });
 
     function loadBlog(){
+
         $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
             title : $("[name='title']").val(),
             typeId : $("[name='typeId']").val(),
