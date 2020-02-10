@@ -74,12 +74,17 @@ $(function () {
 
 /****************************admin(blogs) page functions******************************/
 $(function () {
+    $("#next2").onclick(function () {
+        alert("test");
+    });
+
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
 
     //获取页面page的查询条件等信息
     function page(object){
+        alert("???");
         $("[name='page']").val($(object).data("page"));
         loadBlog();
     }
@@ -102,6 +107,10 @@ $(function () {
 
 /****************************blog-add(publish) page functions******************************/
 $(function () {
+    $(".ui .dropdown").dropdown({
+        on: 'hover'
+    });
+
     //验证输入内容不为空
     $(".ui .form").form({
         fields: {

@@ -56,9 +56,9 @@
         <form action="#" method="post" class="ui form" th:action="@{/admin/blogs/doAdd}">
             <input type="hidden" name="published">
             <div class="required field">
-                <div class="ui left labeled input">
+                <div class="ui left labeled input" style="z-index: 15;">
                     <div class="ui selection compact teal basic dropdown label">
-                        <input type="hidden" name="title">
+                        <input type="hidden" value="原创">
                         <i class="dropdown icon"></i>
                         <div class="text">原创</div>
                         <div class="menu">
@@ -108,7 +108,7 @@
 
             <div class="field">
                 <div class="ui left labeled input">
-                    <label for="" class="ui teal basic label">首图</label>
+                    <label class="ui teal basic label">首图</label>
                     <input type="text" name="picture" placeholder="首图引用地址">
                 </div>
             </div>
@@ -196,17 +196,79 @@
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!-- 引入页面md插件js -->
 <script src="../../static/static/lib/editormd/editormd.min.js" th:src="@{/static/lib/editormd/editormd.min.js}"></script>
-<script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+<!--<script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>-->
 <script>
 
-    // window.onload=function (){
-    //     alert("???");
-    // }
-    // $("#publish-btn").onclick(function () {
-    //     alert("???");
-    //     var str = $("#input-title").val();
-    //     alert(str);
-    // });
+    $(function () {
+        $(".ui .dropdown").dropdown({
+            on: 'hover'
+        });
+
+        //验证输入内容不为空
+        $(".ui .form").form({
+            fields: {
+                title: {
+                    identifier: 'title',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '标题：请输入博客标题'
+                    }]
+                },
+                content: {
+                    identifier: 'content',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '输入博客内容...'
+                    }]
+                },
+                typedId: {
+                    identifier: 'typeId',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '分类：请选择博客分类'
+                    }]
+                },
+                picture: {
+                    identifier: 'picture',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '输入博客图片'
+                    }]
+                }
+            }
+        });
+
+        // 页面插件markdown集成部分js
+        var contentEditor;
+        $(function () {
+            contentEditor = editormd("md-content", {
+                width: "90%",
+                height: 640,
+                syncScrolling: "single",
+                path: "../../static/lib/editormd/lib/"
+            });
+        });
+
+        $('#test-btn').click(function () {
+            var str = $("#input-title").val();
+            console.log(str);
+            alert(str);
+        });
+
+        $('#save-btn').click(function(){
+            $("[name='published']").val(false);
+            $('.ui.form').submit();
+        });
+
+        $('#publish-btn').click(function(){
+            var str = $("#input-title").val();
+            console.log(str);
+            alert(str);
+            $("[name='published']").val(true);
+            $('.ui.form').submit();
+        });
+    });
+
 </script>
 </body>
 </html>

@@ -109,8 +109,9 @@
                 <tr>
                     <th colspan="7">
                         <div class="ui pagination menu" th:if="${page.totalPages}>1">
-                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}">上一页</a>
-                            <a href="#" class="item" onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}">下一页</a>
+                            <a class="item" th:attr="data-page=${page.number}-1" onclick="page(this)" th:unless="${page.first}">上一页</a>
+                            <a class="item" id="next" th:attr="data-page=${page.number}+1" onclick="page(this)" th:unless="${page.last}">下一页</a>
+                            <a class="item" id="next2">test</a>
                         </div>
                         <a href="#" class="ui right floated teal basic button" th:href="@{/admin/blogs/add}">新增</a>
                     </th>
@@ -165,5 +166,38 @@
 <!-- 引入semanticUI -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+<script>
+    // $(function () {
+    //     $("#next").onclick(function () {
+    //         alert("???");
+    //     });
+    //
+    //     $(".ui .dropdown").dropdown({
+    //         on: 'hover'
+    //     });
+    //
+    //     //获取页面page的查询条件等信息
+    //     function page(object){
+    //         alert("???");
+    //         $("[name='page']").val($(object).data("page"));
+    //         loadBlog();
+    //     }
+    //
+    //     $("#search-btn").click(function(){
+    //         $("[name='page']").val(0);
+    //         loadBlog();
+    //     });
+    //
+    //     function loadBlog(){
+    //
+    //         $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
+    //             title : $("[name='title']").val(),
+    //             typeId : $("[name='typeId']").val(),
+    //             recommend : $("[name='recommend']").prop('checked'),
+    //             page : $("[name='page']").val()
+    //         });
+    //     }
+    // });
+</script>
 </body>
 </html>
