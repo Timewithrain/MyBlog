@@ -74,9 +74,10 @@ $(function () {
 
 /****************************admin(blogs) page functions******************************/
 $(function () {
-    $("#next2").onclick(function () {
-        alert("test");
-    });
+
+    function f() {
+        alert("123");
+    }
 
     $(".ui .dropdown").dropdown({
         on: 'hover'
@@ -84,7 +85,6 @@ $(function () {
 
     //获取页面page的查询条件等信息
     function page(object){
-        alert("???");
         $("[name='page']").val($(object).data("page"));
         loadBlog();
     }

@@ -39,10 +39,10 @@ public class BlogController {
         return "/admin/admin";
     }
 
-    @RequestMapping("/blogs/search")
-    public String search(@PageableDefault(size=3,sort="createTime",direction=Sort.Direction.ASC) Pageable pageable, BlogQuery blog, Model model){
+    @RequestMapping("/admin/search")
+    public String search(@PageableDefault(size=3,sort="updateTime",direction=Sort.Direction.ASC) Pageable pageable, BlogQuery blog, Model model){
         model.addAttribute("page", blogService.listBlog(pageable,blog));
-        return "/admin/admin :: list";
+        return "admin/admin :: list";
     }
 
     @RequestMapping({"/blogs/add","/blog-add.html"})

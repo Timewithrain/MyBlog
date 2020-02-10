@@ -74,6 +74,11 @@ $(function () {
 
 /****************************admin(blogs) page functions******************************/
 $(function () {
+
+    function f() {
+        alert("123");
+    }
+
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
@@ -102,6 +107,10 @@ $(function () {
 
 /****************************blog-add(publish) page functions******************************/
 $(function () {
+    $(".ui .dropdown").dropdown({
+        on: 'hover'
+    });
+
     //验证输入内容不为空
     $(".ui .form").form({
         fields: {
