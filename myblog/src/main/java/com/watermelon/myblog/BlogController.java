@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,17 +50,47 @@ public class BlogController {
     public String add(Model model){
         model.addAttribute("types",typeService.listType());
         model.addAttribute("tags",tagService.listTag());
-        model.addAttribute("blog",new Blog());
+        Type type = new Type();
+        Blog blog = new Blog();
+        blog.setType(type);
+        model.addAttribute("blog",blog);
         return "/admin/blog-add";
     }
 
+    //添加Blog和修改Blog共享doAdd方法,根据是否包含id以区分添加和修改
     @PostMapping("/blogs/doAdd")
     public String doAdd(Blog blog, RedirectAttributes attributes, HttpSession session){
         blog.setUser((User)session.getAttribute("user"));
-        System.out.println(blog.getTitle());
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTag(blog.getTagsId()));
-        Blog b = blogService.saveBlog(blog);
+        if(blog.getId()==null){
+            Blog b = blogService.saveBlog(blog);
+        }else{
+            Blog b = blogService.updateBlog(blog);
+        }
         return "redirect:/admin/admin.html";
     }
+
+    @RequestMapping("/blogs-edit/{id}")
+    public String edit(@PathVariable Long id, Model model){
+        model.addAttribute("types",typeService.listType());
+        model.addAttribute("tags",tagService.listTag());
+        //设置blog的tagIds，以在前端获取所有的tag
+        Blog blog = blogService.getBlog(id);
+        blog.tagsToIds(blog.getTags());
+        model.addAttribute("blog",blog);
+        return "admin/blog-add";
+    }
+
+    @RequestMapping("/test/edit/{id}")
+    public String test(@PathVariable Long id, Model model){
+        model.addAttribute("types",typeService.listType());
+        model.addAttribute("tags",tagService.listTag());
+        //设置blog的tagIds，以在前端获取所有的tag
+        Blog blog = blogService.getBlog(id);
+        blog.tagsToIds(blog.getTags());
+        model.addAttribute("blog",blog);
+        return "admin/blog-add";
+    }
+
 }

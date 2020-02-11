@@ -30,18 +30,16 @@ public class BlogService {
         return blogRepository.getOne(id);
     }
 
-    public Blog updateBlog(Long id, Blog blog){
-        Blog blog1 = blogRepository.getOne(id);
+    public Blog updateBlog(Blog blog){
+        Blog blog1 = blogRepository.getOne(blog.getId());
         if (blog1==null){
             throw new NotFoundException("未找到对应blog");
         }
-        BeanUtils.copyProperties(blog,blog1);
-        blog1.setUpdateTime(new Date());
-        return blogRepository.save(blog1);
+        blog.setUpdateTime(new Date());
+        return blogRepository.save(blog);
     }
 
     public Blog saveBlog(Blog blog){
-        blog.setViews(0);
         blog.setCreateTime(new Date());
         blog.setUpdateTime(new Date());
         return blogRepository.save(blog);

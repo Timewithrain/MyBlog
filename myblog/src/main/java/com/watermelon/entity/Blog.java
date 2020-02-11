@@ -49,6 +49,12 @@ public class Blog {
     private List<Comment> comments = new ArrayList<Comment>();
 
     public Blog() {
+        this.views = 0;
+        this.appreciation = false;
+        this.published = false;
+        this.recommend = false;
+        this.shareStatement = false;
+        this.commentTable = false;
     }
 
     public Long getId() {
@@ -197,6 +203,21 @@ public class Blog {
 
     public Boolean isRecommended(){
         return recommend;
+    }
+
+    public String tagsToIds(List<Tag> tags){
+        if(tags!=null || !tags.isEmpty()){
+            StringBuffer sb = new StringBuffer();
+            for (int i=0;i<tags.size();i++){
+                if(i!=0){
+                    sb.append(",");
+                }
+                sb.append(tags.get(i).getId());
+            }
+            return sb.toString();
+        }else{
+            return tagsId;
+        }
     }
 
     @Override
