@@ -67,7 +67,7 @@ public class BlogService {
         },pageable);
     }
 
-    public Blog deleteBlog(Long id){
-        return blogRepository.deleteBlogById(id);
+    public void deleteBlog(Long id){
+        blogRepository.deleteById(id);
     }
 }

@@ -97,11 +97,11 @@
                     <td th:text="${blog.title}">学习清单</td>
                     <td th:text="${blog.type.name}">认知升级</td>
                     <td th:text="${blog.recommend ? '是' : '否'}">是</td>
-                    <td th:text="${blog.published ? '草稿' : '已发布'}">已发布</td>
+                    <td th:text="${blog.published ? '已发布' : '草稿'}">已发布</td>
                     <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
                     <td>
                         <a href="#" class="ui mini teal button" th:href="@{/admin/blogs-edit/{id}(id=${blog.id})}">编辑</a>
-                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}">删除</a>
+                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs-delete/{id}(id=${blog.id})}">删除</a>
                     </td>
                 </tr>
                 </tbody>
