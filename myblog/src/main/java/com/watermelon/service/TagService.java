@@ -6,7 +6,9 @@ import com.watermelon.exception.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -64,4 +66,9 @@ public class TagService {
         return tagRepository.findAll();
     }
 
+    public List<Tag> listTopTag(Integer size){
+        Sort sort = Sort.by(new Sort.Order(Sort.Direction.DESC,"blogs.size"));
+        Pageable pageable = PageRequest.of(0,size,sort);
+        return tagRepository.findTop(pageable);
+    }
 }

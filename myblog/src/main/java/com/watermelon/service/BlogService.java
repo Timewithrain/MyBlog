@@ -67,6 +67,10 @@ public class BlogService {
         },pageable);
     }
 
+    public Page<Blog> listBlog(Pageable pageable){
+        return blogRepository.findAll(pageable);
+    }
+
     public void deleteBlog(Long id){
         blogRepository.deleteById(id);
     }
