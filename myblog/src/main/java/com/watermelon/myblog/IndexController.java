@@ -29,10 +29,7 @@ public class IndexController {
         model.addAttribute("page",blogService.listBlog(pageable));
         model.addAttribute("types",typeService.listTopType(6));
         model.addAttribute("tags",tagService.listTopTag(10));
-//        String blog = null;
-//        if(blog==null){
-//            throw new NotFoundException("page is not found");
-//        }
+        model.addAttribute("recommendBlog",blogService.listTopBlog(10));
         System.out.println("-----------index-------------");
         return "index";
     }

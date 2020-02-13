@@ -8,7 +8,9 @@ import com.watermelon.exception.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +71,12 @@ public class BlogService {
 
     public Page<Blog> listBlog(Pageable pageable){
         return blogRepository.findAll(pageable);
+    }
+
+    public List<Blog> listTopBlog(Integer size){
+        Sort sort = Sort.by(Sort.Direction.DESC,"blog.appreciation");
+        Pageable pageable = PageRequest.of(0,size,sort);
+        return blogRepository.findTop(pageable);
     }
 
     public void deleteBlog(Long id){
