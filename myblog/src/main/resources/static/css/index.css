@@ -16,6 +16,12 @@ body {
     width: 100% !important;
 }
 
+.p-content{
+    width: 480px !important;
+    height: 60px !important;
+    overflow: hidden;
+}
+
 .content-img {
     padding-top: 35px !important;
     margin-left: 20px !important;
@@ -80,6 +86,10 @@ body {
     font-weight: 300;
     line-height: 1.7;
     text-align: justify;
+}
+
+.black-color{
+    color: black;
 }
 
 .container-width {

@@ -16,7 +16,7 @@ public class Tag {
 
     //建立多对多关系，设置由Blog中的tags进行主动维护关系，此处为被维护端
     @ManyToMany(mappedBy = "tags")
-    private List<Blog> Blog = new ArrayList<Blog>();
+    private List<Blog> blogs = new ArrayList<Blog>();
 
     public Tag() {}
 
@@ -36,12 +36,12 @@ public class Tag {
         this.name = name;
     }
 
-    public List<Blog> getBlog() {
-        return Blog;
+    public List<Blog> getBlogs() {
+        return blogs;
     }
 
-    public void setBlog(List<Blog> blog) {
-        Blog = blog;
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 
     @Override

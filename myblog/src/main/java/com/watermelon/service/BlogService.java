@@ -74,7 +74,7 @@ public class BlogService {
     }
 
     public List<Blog> listTopBlog(Integer size){
-        Sort sort = Sort.by(Sort.Direction.DESC,"blog.appreciation");
+        Sort sort = Sort.by(Sort.Direction.DESC,"appreciation");
         Pageable pageable = PageRequest.of(0,size,sort);
         return blogRepository.findTop(pageable);
     }
