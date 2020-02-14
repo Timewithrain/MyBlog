@@ -70,14 +70,14 @@
                                     <div class="twelve wide column">
                                         <div class="ui horizontal link list">
                                             <div class="item">
-                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="@{blog.user.avatar}">
-                                                <div class="content padding-none"><a href="#" class="header" th:text="@{blog.user.nickname}">watermelon</a></div>
+                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="${blog.user.avatar}">
+                                                <div class="content padding-none"><a href="#" class="header" th:text="${blog.user.nickname}">watermelon</a></div>
+                                            </div>
+                                            <div class="item padding-none top-3">
+                                                <i class="calendar icon bottom-3"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-11-20</span>
                                             </div>
                                             <div class="item padding-none">
-                                                <i class="calenar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-11-20</span>
-                                            </div>
-                                            <div class="item padding-none">
-                                                <i class="eye icon"></i><span th:text="${blog.views}">1234</span>
+                                                <i class="eye icon top-1"></i><span class="top-3 margin-middle" th:text="${blog.views}">1234</span>
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +264,7 @@
                                 <i class="idea icon"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -295,7 +295,7 @@
                                 <i class="tags icon"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>

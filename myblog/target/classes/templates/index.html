@@ -48,85 +48,53 @@
                             <h3 class="ui teal header">博客</h3>
                         </div>
                         <div class="right aligned column">
-                            共 <h3 class="ui blue header show-inline">11</h3> 篇
+                            共 <h3 class="ui blue header show-inline" th:text="${page.totalElements}">11</h3> 篇
                         </div>
                     </div>
                 </div>
+
                 <!-- content -->
                 <div class="ui attached segment">
 
-                    <div class="ui segment">
+                    <div class="ui segment" th:each="blog : ${page.content}">
                         <div class="ui stackable grid">
                             <!-- 内容部分 -->
                             <div class="eleven wide column ">
-                                <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
-                                    quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
-                                    at beatae illum labore fugiat?</p>
+                                <h3 class="ui header"><a href="#" class="black-color" target="_blank" th:text="${blog.title}">无工质驱动引擎的实现方式及其可行性</a></h3>
+                                <div class="p-content">
+                                    <p th:text="${blog.content}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
+                                        quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
+                                        at beatae illum labore fugiat?</p>
+                                </div>
                                 <div class="ui grid">
                                     <div class="twelve wide column">
                                         <div class="ui horizontal link list">
                                             <div class="item">
-                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="@{/img/avatar2.jpg}">
-                                                <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
+                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="${blog.user.avatar}">
+                                                <div class="content padding-none"><a href="#" class="header" th:text="${blog.user.nickname}">watermelon</a></div>
+                                            </div>
+                                            <div class="item padding-none top-3">
+                                                <i class="calendar icon bottom-3"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-11-20</span>
                                             </div>
                                             <div class="item padding-none">
-                                                <i class="calenar icon"></i>2019-11-20
-                                            </div>
-                                            <div class="item padding-none">
-                                                <i class="eye icon"></i>1234
+                                                <i class="eye icon top-1"></i><span class="top-3 margin-middle" th:text="${blog.views}">1234</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="right aligned four wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label show-inline" th:href="@{blog.html}">查看详情</a>
+                                        <a href="#" target="_blank" class="ui teal basic label show-inline" th:text="${blog.type.name}">粒子物理</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- 图片部分 -->
                             <div class="four wide column content-img">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
+                                <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
+                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image" th:src="@{|${blog.picture}/800/450|}">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="ui segment">
-                        <div class="ui stackable grid">
-                            <!-- 内容部分 -->
-                            <div class="eleven wide column ">
-                                <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
-                                    quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
-                                    at beatae illum labore fugiat?</p>
-                                <div class="ui grid">
-                                    <div class="twelve wide column">
-                                        <div class="ui horizontal link list">
-                                            <div class="item">
-                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="@{/img/avatar2.jpg}">
-                                                <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
-                                            </div>
-                                            <div class="item padding-none">
-                                                <i class="calenar icon"></i>2019-11-20
-                                            </div>
-                                            <div class="item padding-none">
-                                                <i class="eye icon"></i>1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned four wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 图片部分 -->
-                            <div class="four wide column content-img">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!--/*-->
                     <div class="ui segment">
                         <div class="ui stackable grid">
                             <!-- 内容部分 -->
@@ -235,16 +203,53 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="ui segment">
+                        <div class="ui stackable grid">
+                            <!-- 内容部分 -->
+                            <div class="eleven wide column ">
+                                <h3 class="ui header">无工质驱动引擎的实现方式及其可行性</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
+                                    quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
+                                    at beatae illum labore fugiat?</p>
+                                <div class="ui grid">
+                                    <div class="twelve wide column">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <img src="../static/img/avatar2.jpg" alt="" class="ui avatar image" th:src="@{/img/avatar2.jpg}">
+                                                <div class="content padding-none"><a href="#" class="header">watermelon</a></div>
+                                            </div>
+                                            <div class="item padding-none">
+                                                <i class="calenar icon"></i>2019-11-20
+                                            </div>
+                                            <div class="item padding-none">
+                                                <i class="eye icon"></i>1234
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned four wide column">
+                                        <a href="#" target="_blank" class="ui teal basic label show-inline">查看详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 图片部分 -->
+                            <div class="four wide column content-img">
+                                <a href="#" target="_blank">
+                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--*/-->
                 </div>
+
                 <!-- content footer -->
-                <div class="ui attached segment">
+                <div class="ui attached segment" th:if="${page.totalPages}>1">
                     <div class="ui two column grid">
                         <div class="column show-inline">
-                            <a href="#" class="ui teal basic button">上一页</a>
+                            <a href="#" class="ui teal basic button" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
                         </div>
                         <div class="right aligned column show-inline">
-                            <a href="#" class="ui teal basic button">下一页</a>
+                            <a href="#" class="ui teal basic button" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
                         </div>
                     </div>
                 </div>
@@ -259,16 +264,17 @@
                                 <i class="idea icon"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
-                        <div class="ui fluid vertical menu">
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal label">13</div>
+                        <div class="ui fluid vertical menu" >
+                            <a href="#" class="item" th:each="type : ${types}">
+                                <span th:text="${type.name}">学习日志</span>
+                                <div class="ui teal label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
+                            <!--/*-->
                             <a href="#" class="item">
                                 思维实验
                                 <div class="ui teal label">7</div>
@@ -277,14 +283,7 @@
                                 技术前沿
                                 <div class="ui teal label">9</div>
                             </a>
-                            <a href="#" class="item">
-                                寰宇记录
-                                <div class="ui teal label">11</div>
-                            </a>
-                            <a href="#" class="item">
-                                史海拾遗
-                                <div class="ui teal label">5</div>
-                            </a>
+                            <!--*/-->
                         </div>
                     </div>
                 </div>
@@ -296,15 +295,16 @@
                                 <i class="tags icon"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
-                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
-                            JAVA SE
-                            <div class="detail">6</div>
+                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small" th:each="tag : ${tags}">
+                            <span th:text="${tag.name}">JAVA SE</span>
+                            <div class="detail" th:text="${#arrays.length(tag.blogs)}">6</div>
                         </a>
+                        <!--/*-->
                         <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
                             JAVA EE
                             <div class="detail">13</div>
@@ -317,36 +317,27 @@
                             数据处理
                             <div class="detail">7</div>
                         </a>
-                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
-                            算法
-                            <div class="detail">6</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
-                            SpringBoot
-                            <div class="detail">7</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small">
-                            Github
-                            <div class="detail">5</div>
-                        </a>
+                        <!--*/-->
                     </div>
                 </div>
                 <!-- 推荐卡片 -->
                 <div class="ui segments">
                     <div class="ui secondary segment">
                         <i class="bookmark icon margin-bottom-big"></i>最新推荐
-                        <div class="ui segment padding-small margin-none">
-                            <a href="#" target="_blank" class="text-black">双生子佯谬的闵氏几何解</a>
+                        <div class="ui segment padding-small margin-none" th:each="blog : ${recommendBlog}">
+                            <a href="#" target="_blank" class="text-black" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">双生子佯谬的闵氏几何解</a>
                         </div>
+                        <!--/*-->
                         <div class="ui segment padding-small margin-none">
                             <a href="#" target="_blank" class="text-black">弱相互作用下宇称不守恒</a>
                         </div>
                         <div class="ui segment padding-small margin-none">
                             <a href="#" target="_blank" class="text-black">简并态物质化学性质</a>
                         </div>
+                        <!--*/-->
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
