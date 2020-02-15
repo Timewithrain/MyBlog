@@ -73,6 +73,10 @@ public class BlogService {
         return blogRepository.findAll(pageable);
     }
 
+    public Page<Blog> listBlog(String query,Pageable pageable){
+        return blogRepository.findByQuery(query,pageable);
+    }
+
     public List<Blog> listTopBlog(Integer size){
         Sort sort = Sort.by(Sort.Direction.DESC,"appreciation");
         Pageable pageable = PageRequest.of(0,size,sort);

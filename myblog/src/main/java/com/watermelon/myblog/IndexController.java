@@ -11,6 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
@@ -25,13 +27,20 @@ public class IndexController {
     private TagService tagService;
 
     @GetMapping({"/","/index.html"})
-    public String index(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
+    public String index(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){
         model.addAttribute("page",blogService.listBlog(pageable));
         model.addAttribute("types",typeService.listTopType(6));
         model.addAttribute("tags",tagService.listTopTag(10));
         model.addAttribute("recommendBlog",blogService.listTopBlog(10));
         System.out.println("-----------index-------------");
         return "index";
+    }
+
+    @PostMapping("/search")
+    public String search(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, @RequestParam String query, Model model){
+        //通过搜索框内传入的内容调用数据库like查询检索相关的blog
+        model.addAttribute("page",blogService.listBlog("%"+query+"%",pageable));
+        return "search";
     }
 
     @GetMapping("/blog.html")
