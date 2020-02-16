@@ -8,6 +8,13 @@ body {
     margin-right: 15px !important;
 }
 
+#searchbar{
+    height: 25px;
+    border: #439a92;
+    border-style: groove;
+    border-radius: 7px;
+}
+
 #center {
     margin-top: 20px !important;
 }

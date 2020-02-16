@@ -60,7 +60,7 @@
                         <div class="ui stackable grid">
                             <!-- 内容部分 -->
                             <div class="eleven wide column ">
-                                <h3 class="ui header"><a href="#" class="black-color" target="_blank" th:text="${blog.title}">无工质驱动引擎的实现方式及其可行性</a></h3>
+                                <h3 class="ui header"><a href="#" class="black-color" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">无工质驱动引擎的实现方式及其可行性</a></h3>
                                 <div class="p-content">
                                     <p th:text="${blog.content}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
                                         quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
