@@ -6,6 +6,7 @@ import com.watermelon.entity.BlogQuery;
 import com.watermelon.entity.Type;
 import com.watermelon.exception.NotFoundException;
 import com.watermelon.util.MarkdownUtils;
+import com.watermelon.util.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -36,6 +37,8 @@ public class BlogService {
         if (blog == null){
             throw new NotFoundException("博客不存在");
         }
+        //获取到blog以后将view值加1
+        addViews(id);
         String content = blog.getContent();
         //调用markdown转换方法获取html内容后赋值给blog1再返回至前端
         String convertedContent = MarkdownUtils.markdownToHtmlExtensions(content);
@@ -45,13 +48,21 @@ public class BlogService {
         return blog1;
     }
 
+    public void addViews(Long id){
+        Blog blog = blogRepository.getOne(id);
+        blog.setViews(blog.getViews()+1);
+        blogRepository.save(blog);
+    }
+
     public Blog updateBlog(Blog blog){
         Blog blog1 = blogRepository.getOne(blog.getId());
         if (blog1==null){
             throw new NotFoundException("未找到对应blog");
         }
-        blog.setUpdateTime(new Date());
-        return blogRepository.save(blog);
+        //前端页面返回的blog中为null的属性不写入数据库
+        BeanUtils.copyProperties(blog,blog1, MyBeanUtils.getNullPropertiesName(blog));
+        blog1.setUpdateTime(new Date());
+        return blogRepository.save(blog1);
     }
 
     public Blog saveBlog(Blog blog){

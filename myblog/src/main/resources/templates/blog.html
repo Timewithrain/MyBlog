@@ -112,6 +112,7 @@
                 </div>
                 <div class="five wide column">
                     <!-- 缺少二维码 -->
+                    <img src="../static/img/planar.jpg" alt="" class="ui rounded image planar-width">
                 </div>
             </div>
         </div>
@@ -287,7 +288,57 @@
 <script src="../static/lib/waypoints/jquery.waypoints.js" th:src="@{/lib/waypoints/jquery.waypoints.js}"></script>
 <!-- 引入平滑滚动插件 -->
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
-<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+<!--/* <script src="../static/js/index.js" th:src="@{/js/index.js}"></script> */-->
+<script th:inline="javascript">
+    $("#payButton").popup({
+        popup: $(".planar.popup"),
+        on: "click",
+        position: 'bottom center'
+    });
 
+    tocbot.init({
+        tocSelector: '.js-toc',
+        contentSelector: '.js-toc-content',
+        headingSelector: 'h1, h2, h3',
+    });
+
+    $("#categoryButton").popup({
+        popup: $(".toc-container.popup"),
+        on: "click",
+        position: 'left center'
+    });
+
+    $("#qrcodeButton").popup({
+        popup: $("#qrcode"),
+        on: "click",
+        position: "left center"
+    });
+
+    var ip = "127.0.0.1:8080";
+    var url = "/*[[@{/blog/{id}(id=${blog.id})}]]*/";
+    var qrcode = new QRCode("qrcode", {
+        text: ip+url,
+        width: 120,
+        height: 120,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    $("#up").click(function () {
+        $(window).scrollTo(0, 500);
+    });
+
+    var waypoint = new Waypoint({
+        element: document.getElementById('center'),
+        handler: function (direction) {
+            if (direction == "down") {
+                $("#v-toolbar").show(200);
+            } else {
+                $("#v-toolbar").hide(500);
+            }
+        }
+    })
+</script>
 </body>
 </html>

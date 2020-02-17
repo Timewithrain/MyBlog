@@ -55,6 +55,7 @@ public class Blog {
         this.recommend = false;
         this.shareStatement = false;
         this.commentTable = false;
+        this.flag = "原创";
     }
 
     public Long getId() {
