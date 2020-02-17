@@ -29,11 +29,11 @@ public class IndexController {
 
     @GetMapping({"/","/index.html"})
     public String index(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){
-        model.addAttribute("page",blogService.listBlog(pageable));
+        System.out.println("-----------index-------------");
+        model.addAttribute("page",blogService.listBlogAndConvert(pageable));
         model.addAttribute("types",typeService.listTopType(6));
         model.addAttribute("tags",tagService.listTopTag(10));
         model.addAttribute("recommendBlog",blogService.listTopBlog(10));
-        System.out.println("-----------index-------------");
         return "index";
     }
 
@@ -47,7 +47,7 @@ public class IndexController {
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model){
         System.out.println("-----------blog-------------");
-        model.addAttribute("blog",blogService.getBlog(id));
+        model.addAttribute("blog",blogService.getBlogAndConvert(id));
         return "blog";
     }
 

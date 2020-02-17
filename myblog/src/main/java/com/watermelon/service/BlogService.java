@@ -5,12 +5,10 @@ import com.watermelon.entity.Blog;
 import com.watermelon.entity.BlogQuery;
 import com.watermelon.entity.Type;
 import com.watermelon.exception.NotFoundException;
+import com.watermelon.util.MarkdownUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +18,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -30,6 +29,20 @@ public class BlogService {
 
     public Blog getBlog(Long id){
         return blogRepository.getOne(id);
+    }
+
+    public Blog getBlogAndConvert(Long id){
+        Blog blog = blogRepository.getOne(id);
+        if (blog == null){
+            throw new NotFoundException("博客不存在");
+        }
+        String content = blog.getContent();
+        //调用markdown转换方法获取html内容后赋值给blog1再返回至前端
+        String convertedContent = MarkdownUtils.markdownToHtmlExtensions(content);
+        Blog blog1 = new Blog();
+        BeanUtils.copyProperties(blog,blog1);
+        blog1.setContent(convertedContent);
+        return blog1;
     }
 
     public Blog updateBlog(Blog blog){
@@ -81,6 +94,22 @@ public class BlogService {
         Sort sort = Sort.by(Sort.Direction.DESC,"appreciation");
         Pageable pageable = PageRequest.of(0,size,sort);
         return blogRepository.findTop(pageable);
+    }
+
+    public Page<Blog> listBlogAndConvert(Pageable pageable){
+        Page<Blog> page =  blogRepository.findAll(pageable);
+        List<Blog> list = new ArrayList<Blog>();
+        //获取page中所有的blog的content并转换为html
+        Iterator<Blog> iter = page.iterator();
+        while(iter.hasNext()){
+            Blog b = iter.next();
+            String converted = MarkdownUtils.markdownToHtmlExtensions(b.getContent());
+            b.setContent(converted);
+            list.add(b);
+        }
+        //根据原有的pageable通过list构造一个新的page
+        Page<Blog> convertedPage = new PageImpl<>(list,pageable,page.getTotalElements());
+        return convertedPage;
     }
 
     public void deleteBlog(Long id){
