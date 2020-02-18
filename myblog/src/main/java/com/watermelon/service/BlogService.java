@@ -3,6 +3,7 @@ package com.watermelon.service;
 import com.watermelon.DAO.BlogRepository;
 import com.watermelon.entity.Blog;
 import com.watermelon.entity.BlogQuery;
+import com.watermelon.entity.Tag;
 import com.watermelon.entity.Type;
 import com.watermelon.exception.NotFoundException;
 import com.watermelon.util.MarkdownUtils;
@@ -13,10 +14,7 @@ import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -101,6 +99,17 @@ public class BlogService {
         return blogRepository.findByQuery(query,pageable);
     }
 
+    public Page<Blog> listBlogByTag(Pageable pageable, BlogQuery blogQuery){
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                //此处为一个关联查询
+                Join join = root.join("tags");
+                return criteriaBuilder.equal(join.get("id"),blogQuery.getTagId());
+            }
+        },pageable);
+    }
+
     public List<Blog> listTopBlog(Integer size){
         Sort sort = Sort.by(Sort.Direction.DESC,"appreciation");
         Pageable pageable = PageRequest.of(0,size,sort);
@@ -115,6 +124,11 @@ public class BlogService {
     public Page<Blog> listBlogAndConvert(Pageable pageable,BlogQuery blog){
         Page<Blog> page =  listBlog(pageable,blog);
         //调用convertPage()方法将markdown格式的content转化为html格式
+        return convertPage(page,pageable);
+    }
+
+    public Page<Blog> listBlogByTagAndConvert(Pageable pageable,BlogQuery blogQuery){
+        Page<Blog> page =  listBlogByTag(pageable,blogQuery);
         return convertPage(page,pageable);
     }
 

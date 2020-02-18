@@ -3,6 +3,7 @@ package com.watermelon.entity;
 public class BlogQuery {
     private String title;
     private Long typeId;
+    private Long tagId;
     private Boolean recommend;
 
     public String getTitle() {
@@ -19,6 +20,14 @@ public class BlogQuery {
 
     public void setTypeId(Long typeId) {
         this.typeId = typeId;
+    }
+
+    public Long getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(Long tagId) {
+        this.tagId = tagId;
     }
 
     public Boolean isRecommended(){

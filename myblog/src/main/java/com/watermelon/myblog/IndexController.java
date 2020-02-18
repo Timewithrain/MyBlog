@@ -1,6 +1,7 @@
 package com.watermelon.myblog;
 
 import com.watermelon.entity.BlogQuery;
+import com.watermelon.entity.Tag;
 import com.watermelon.entity.Type;
 import com.watermelon.service.BlogService;
 import com.watermelon.service.TagService;
@@ -52,7 +53,7 @@ public class IndexController {
     }
 
     @RequestMapping("/types/{id}")
-    public String show(@PageableDefault(size=6, sort={"updateTime"}, direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
+    public String show(@PageableDefault(size=3, sort={"updateTime"}, direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
         System.out.println("-----------types-------------");
         List<Type> types =  typeService.listTopType(100);
         if (id==-1){
@@ -66,9 +67,18 @@ public class IndexController {
         return "types";
     }
 
-    @GetMapping("/tags.html")
-    public String tags(){
+    @GetMapping("/tags/{id}")
+    public String tags(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
         System.out.println("-----------tags-------------");
+        List<Tag> tags =  tagService.listTopTag(100);
+        if (id==-1){
+            id = tags.get(0).getId();
+        }
+        BlogQuery blogQuery = new BlogQuery();
+        blogQuery.setTagId(id);
+        model.addAttribute("tags",tags);
+        model.addAttribute("page",blogService.listBlogByTagAndConvert(pageable,blogQuery));
+        model.addAttribute("activeTagId",id);
         return "tags";
     }
 
