@@ -1,6 +1,7 @@
 package com.watermelon.myblog;
 
-import com.watermelon.exception.NotFoundException;
+import com.watermelon.entity.BlogQuery;
+import com.watermelon.entity.Type;
 import com.watermelon.service.BlogService;
 import com.watermelon.service.TagService;
 import com.watermelon.service.TypeService;
@@ -10,10 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -51,9 +51,18 @@ public class IndexController {
         return "blog";
     }
 
-    @GetMapping("/types.html")
-    public String types(){
+    @RequestMapping("/types/{id}")
+    public String show(@PageableDefault(size=6, sort={"updateTime"}, direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
         System.out.println("-----------types-------------");
+        List<Type> types =  typeService.listTopType(100);
+        if (id==-1){
+            id = types.get(0).getId();
+        }
+        BlogQuery blogQuery = new BlogQuery();
+        blogQuery.setTypeId(id);
+        model.addAttribute("types",types);
+        model.addAttribute("page",blogService.listBlogAndConvert(pageable,blogQuery));
+        model.addAttribute("activeTypeId",id);
         return "types";
     }
 

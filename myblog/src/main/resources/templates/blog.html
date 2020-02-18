@@ -112,7 +112,6 @@
                 </div>
                 <div class="five wide column">
                     <!-- 缺少二维码 -->
-                    <img src="../static/img/planar.jpg" alt="" class="ui rounded image planar-width">
                 </div>
             </div>
         </div>
@@ -289,7 +288,7 @@
 <!-- 引入平滑滚动插件 -->
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <!--/* <script src="../static/js/index.js" th:src="@{/js/index.js}"></script> */-->
-<script th:inline="javascript">
+<script>
     $("#payButton").popup({
         popup: $(".planar.popup"),
         on: "click",
@@ -315,7 +314,7 @@
     });
 
     var ip = "127.0.0.1:8080";
-    var url = "/*[[@{/blog/{id}(id=${blog.id})}]]*/";
+    var url = "[[@{/blog/{id}(id=${blog.id})}]]";
     var qrcode = new QRCode("qrcode", {
         text: ip+url,
         width: 120,

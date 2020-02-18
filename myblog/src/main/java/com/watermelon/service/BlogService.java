@@ -109,6 +109,28 @@ public class BlogService {
 
     public Page<Blog> listBlogAndConvert(Pageable pageable){
         Page<Blog> page =  blogRepository.findAll(pageable);
+        return convertPage(page,pageable);
+    }
+
+    public Page<Blog> listBlogAndConvert(Pageable pageable,BlogQuery blog){
+        Page<Blog> page =  listBlog(pageable,blog);
+        //调用convertPage()方法将markdown格式的content转化为html格式
+        return convertPage(page,pageable);
+    }
+
+    public void deleteBlog(Long id){
+        blogRepository.deleteById(id);
+    }
+
+    /**
+     * 将Page集合中的所有blog的content从markdown格式转换为html格式
+     * parameter:Page<Blog>需要转换的Page集合;Pageable构造的Page约束
+     * return Page<Blog>
+     * @author watermelon
+     * @version 1.0, 2020-2-18
+     * @see MarkdownUtils
+     */
+    private Page<Blog> convertPage(Page<Blog> page,Pageable pageable){
         List<Blog> list = new ArrayList<Blog>();
         //获取page中所有的blog的content并转换为html
         Iterator<Blog> iter = page.iterator();
@@ -121,9 +143,5 @@ public class BlogService {
         //根据原有的pageable通过list构造一个新的page
         Page<Blog> convertedPage = new PageImpl<>(list,pageable,page.getTotalElements());
         return convertedPage;
-    }
-
-    public void deleteBlog(Long id){
-        blogRepository.deleteById(id);
     }
 }

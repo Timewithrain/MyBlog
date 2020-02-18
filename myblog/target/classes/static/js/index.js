@@ -32,8 +32,10 @@ $(function () {
         position: "left center"
     });
 
+    var ip = "127.0.0.1:8080";
+    var url = "/*[[@{/blog/{id}(id=${blog.id})}]]*/";
     var qrcode = new QRCode("qrcode", {
-        text: "file:///D:/Programs/MyBlog/blog-front-end/blog.html",
+        text: ip+url,
         width: 120,
         height: 120,
         colorDark: "#000000",
