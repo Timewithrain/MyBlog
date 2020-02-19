@@ -213,10 +213,10 @@
         <div class="ui attached segment" th:if="${page.totalPages}>1">
             <div class="ui two column grid">
                 <div class="column show-inline">
-                    <a href="#" class="ui teal basic button" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
+                    <a href="#" class="ui teal basic button" th:href="@{/types/last/{id}(id=${activeTypeId})}" th:unless="${page.first}">上一页</a>
                 </div>
                 <div class="right aligned column show-inline">
-                    <a href="#" class="ui teal basic button" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
+                    <a href="#" class="ui teal basic button" th:href="@{/types/next/{id}(id=${activeTypeId})}" th:unless="${page.last}">下一页</a>
                 </div>
             </div>
         </div>

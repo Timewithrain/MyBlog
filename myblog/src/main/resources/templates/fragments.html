@@ -12,9 +12,9 @@
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog</h2>
             <a href="#" class="menu item mobile-hide" th:href="@{../}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
-            <a href="types.html" class="menu item mobile-hide" th:href="@{../types/-1}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
-            <a href="tags.html" class="menu item mobile-hide" th:href="@{../tags/-1}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
-            <a href="about.html" class="menu item mobile-hide" th:href="@{../about.html}" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
+            <a href="types.html" class="menu item mobile-hide" th:href="@{/types/-1}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+            <a href="tags.html" class="menu item mobile-hide" th:href="@{/tags/-1}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+            <a href="about.html" class="menu item mobile-hide" th:href="@{/about.html}" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
             <div class="menu right item mobile-hide">
                 <form id="search-form" target="_blank" method="post" th:action="@{/search}">
                     <div id="searchbar" class="ui input inverted transparent">

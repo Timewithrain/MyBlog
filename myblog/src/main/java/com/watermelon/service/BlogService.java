@@ -83,7 +83,7 @@ public class BlogService {
                     predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"),blog.getTypeId()));
                 }//添加Blog的Type类型条件约束
                 if (blog.getRecommend()!=null && blog.isRecommended()) {
-                    predicates.add(criteriaBuilder.equal(root.<Boolean>get("shareStatement"), blog.isRecommended()));
+                    predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), blog.isRecommended()));
                 }//添加Blog是否被推荐条件约束
                 criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;

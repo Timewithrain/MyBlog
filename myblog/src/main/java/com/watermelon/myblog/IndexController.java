@@ -29,7 +29,7 @@ public class IndexController {
     private TagService tagService;
 
     @GetMapping({"/","/index.html"})
-    public String index(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){
+    public String index(@PageableDefault(size=6,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){
         System.out.println("-----------index-------------");
         model.addAttribute("page",blogService.listBlogAndConvert(pageable));
         model.addAttribute("types",typeService.listTopType(6));
@@ -39,7 +39,7 @@ public class IndexController {
     }
 
     @PostMapping("/search")
-    public String search(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, @RequestParam String query, Model model){
+    public String search(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, @RequestParam String query, Model model){
         //通过搜索框内传入的内容调用数据库like查询检索相关的blog
         model.addAttribute("page",blogService.listBlog("%"+query+"%",pageable));
         return "search";
@@ -53,7 +53,7 @@ public class IndexController {
     }
 
     @RequestMapping("/types/{id}")
-    public String show(@PageableDefault(size=3, sort={"updateTime"}, direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
+    public String types(@PageableDefault(size=5, sort={"updateTime"}, direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
         System.out.println("-----------types-------------");
         List<Type> types =  typeService.listTopType(100);
         if (id==-1){
@@ -67,8 +67,20 @@ public class IndexController {
         return "types";
     }
 
-    @GetMapping("/tags/{id}")
-    public String tags(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
+    @GetMapping("/types/next/{id}")
+    public String typegPageNext(@PathVariable Long id,Pageable pageable){
+        int page = pageable.getPageNumber() + 1;
+        return "redirect:/types/"+id+"/?page="+page;
+    }
+
+    @GetMapping("/types/last/{id}")
+    public String typePageLast(@PathVariable Long id,Pageable pageable){
+        int page = pageable.getPageNumber() - 1;
+        return "redirect:/types/"+id+"/?page="+page;
+    }
+
+    @GetMapping({"/tags/{id}","/tasg{id}"})
+    public String tags(@PageableDefault(size=5,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable,@PathVariable Long id, Model model){
         System.out.println("-----------tags-------------");
         List<Tag> tags =  tagService.listTopTag(100);
         if (id==-1){
@@ -80,6 +92,18 @@ public class IndexController {
         model.addAttribute("page",blogService.listBlogByTagAndConvert(pageable,blogQuery));
         model.addAttribute("activeTagId",id);
         return "tags";
+    }
+
+    @GetMapping("/tags/next/{id}")
+    public String tagPageNext(@PathVariable Long id,Pageable pageable){
+        int page = pageable.getPageNumber() + 1;
+        return "redirect:/tags/"+id+"/?page="+page;
+    }
+
+    @GetMapping("/tags/last/{id}")
+    public String tagPageLast(@PathVariable Long id,Pageable pageable){
+        int page = pageable.getPageNumber() - 1;
+        return "redirect:/tags/"+id+"/?page="+page;
     }
 
     @GetMapping("/about.html")
