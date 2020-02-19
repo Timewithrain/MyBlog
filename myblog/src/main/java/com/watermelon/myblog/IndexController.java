@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
@@ -110,6 +111,13 @@ public class IndexController {
     public String about(){
         System.out.println("-----------about-------------");
         return "about";
+    }
+
+    @GetMapping("/footer/newBlog")
+    public String fragment(Model model){
+        model.addAttribute("newBlogs",blogService.listTopBlog(3));
+        System.out.println("123");
+        return "fragments :: newBlogList";
     }
 
 }

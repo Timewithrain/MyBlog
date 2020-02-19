@@ -12,9 +12,9 @@
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog</h2>
             <a href="#" class="menu item mobile-hide" th:href="@{../}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
-            <a href="types.html" class="menu item mobile-hide" th:href="@{../types/-1}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
-            <a href="tags.html" class="menu item mobile-hide" th:href="@{../tags/-1}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
-            <a href="about.html" class="menu item mobile-hide" th:href="@{../about.html}" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
+            <a href="types.html" class="menu item mobile-hide" th:href="@{/types/-1}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+            <a href="tags.html" class="menu item mobile-hide" th:href="@{/tags/-1}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+            <a href="about.html" class="menu item mobile-hide" th:href="@{/about.html}" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
             <div class="menu right item mobile-hide">
                 <form id="search-form" target="_blank" method="post" th:action="@{/search}">
                     <div id="searchbar" class="ui input inverted transparent">
@@ -39,12 +39,14 @@
                     <!-- 缺少一张图片 -->
                 </div>
             </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item" title="亚音速涡扇发动机最优涵道比">亚音速涡扇发动机最优涵道比</a>
+            <div id="bloglist-container" class="three wide column">
+                <h4 class="ui inverted header">博客推荐</h4>
+                <div class="ui inverted link list" th:fragment="newBlogList">
+                    <a href="#" target="_blank" class="item" title="亚音速涡扇发动机最优涵道比" th:alt-title="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}" th:each="blog : ${newBlogs}" th:text="${blog.title}">亚音速涡扇发动机最优涵道比</a>
+                    <!--/*-->
                     <a href="#" class="item" title="博客3">博客3</a>
                     <a href="#" class="item" title="博客2">博客2</a>
+                    <!--*/-->
                 </div>
             </div>
             <div class="three wide column">
@@ -64,7 +66,14 @@
             <p id="copyright">Copyright@ 1999-2019 created by watermelon</p>
         </div>
     </div>
+    <th:block th:fragment="script">
+        <script>
+            $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
+        </script>
+    </th:block>
 </footer>
+
+
 
 </body>
 </html>
