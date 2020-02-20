@@ -95,8 +95,9 @@ public class BlogService {
         return blogRepository.findAll(pageable);
     }
 
-    public Page<Blog> listBlog(String query,Pageable pageable){
-        return blogRepository.findByQuery(query,pageable);
+    public Page<Blog> listBlogByStringAndCovert(String query,Pageable pageable){
+        Page<Blog> page = blogRepository.findByQuery(query,pageable);
+        return convertPage(page,pageable);
     }
 
     public Page<Blog> listBlogByTag(Pageable pageable, BlogQuery blogQuery){

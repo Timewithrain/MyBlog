@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                     <div class="right aligned four wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label show-inline" th:text="${blog.type.name}">粒子物理</a>
+                                        <a href="#" target="_blank" class="ui teal basic label show-inline" th:href="@{types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">粒子物理</a>
                                     </div>
                                 </div>
                             </div>
@@ -266,13 +266,13 @@
                                 <i class="idea icon"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types/-1}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
                         <div class="ui fluid vertical menu" >
-                            <a href="#" class="item" th:each="type : ${types}">
+                            <a href="#" target="_blank" class="item" th:href="@{/types/{id}(id=${type.id})}" th:each="type : ${types}">
                                 <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
@@ -289,7 +289,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 菜单卡片 -->
+                <!-- 标签卡片 -->
                 <div class="ui segments">
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
@@ -297,12 +297,12 @@
                                 <i class="tags icon"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank" th:href="@{/types.html}">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types/-1}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
-                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small" th:each="tag : ${tags}">
+                        <a href="#" target="_blank" class="ui teal basic label margin-bottom-small" th:href="@{/tags/{id}(id=${tag.id})}" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">JAVA SE</span>
                             <div class="detail" th:text="${#arrays.length(tag.blogs)}">6</div>
                         </a>

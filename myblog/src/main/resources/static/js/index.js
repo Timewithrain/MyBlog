@@ -3,6 +3,9 @@ $(function () {
     $('.menu.toggle').click(function () {
         $('.menu.item').toggleClass('mobile-hide');
     });
+
+    //设置footer内的最新博客请求
+    $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
 });
 
 /****************************blog page functions******************************/

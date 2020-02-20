@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -39,10 +41,18 @@ public class IndexController {
         return "index";
     }
 
-    @PostMapping("/search")
-    public String search(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, @RequestParam String query, Model model){
+    @PostMapping("/searchPage")
+    public String search(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, @RequestParam String query, HttpSession session, Model model){
+        session.setAttribute("query",query);
         //通过搜索框内传入的内容调用数据库like查询检索相关的blog
-        model.addAttribute("page",blogService.listBlog("%"+query+"%",pageable));
+        model.addAttribute("page",blogService.listBlogByStringAndCovert("%"+query+"%",pageable));
+        return "search";
+    }
+
+    @GetMapping("/search")
+    public String searchPage(@PageableDefault(size=3,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, HttpSession session, Model model){
+        String query = (String) session.getAttribute("query");
+        model.addAttribute("page",blogService.listBlogByStringAndCovert("%"+query+"%",pageable));
         return "search";
     }
 
@@ -116,7 +126,6 @@ public class IndexController {
     @GetMapping("/footer/newBlog")
     public String fragment(Model model){
         model.addAttribute("newBlogs",blogService.listTopBlog(3));
-        System.out.println("123");
         return "fragments :: newBlogList";
     }
 
