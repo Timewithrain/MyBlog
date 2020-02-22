@@ -100,7 +100,7 @@ public class IndexController {
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setTagId(id);
         model.addAttribute("tags",tags);
-        model.addAttribute("page",blogService.listBlogByTagAndConvert(pageable,blogQuery));
+        model.addAttribute("page",blogService.listBlogAndConvert(pageable,blogQuery));
         model.addAttribute("activeTagId",id);
         return "tags";
     }

@@ -69,6 +69,11 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
+    public Page<Blog> listBlog(Pageable pageable){
+        return blogRepository.findAll(pageable);
+    }
+
+    //admin页面调用
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog){
         return blogRepository.findAll(new Specification<Blog>() {
             //使用Specification类进行条件查询，通过添加predicate自动构造查询语句添加查询限定条件
@@ -91,46 +96,74 @@ public class BlogService {
         },pageable);
     }
 
-    public Page<Blog> listBlog(Pageable pageable){
-        return blogRepository.findAll(pageable);
-    }
-
+    //search调用,通过Specification实现过滤
     public Page<Blog> listBlogByStringAndCovert(String query,Pageable pageable){
-        Page<Blog> page = blogRepository.findByQuery(query,pageable);
+//        //通过findByQuery方法实现过滤
+//        Page<Blog> page = blogRepository.findByQuery(query, pageable);
+        Page<Blog> page = blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> list = new ArrayList<Predicate>();
+                if (query!=null){
+                    //根据query进行like模糊查询
+                    list.add(criteriaBuilder.like(root.get("content").as(String.class),query));
+                    list.add(criteriaBuilder.like(root.get("title").as(String.class),query));
+                    list.add(criteriaBuilder.equal(root.get("published"),true));
+                }
+                criteriaQuery.where(list.toArray(new Predicate[list.size()]));
+                return null;
+            }
+        },pageable);
         return convertPage(page,pageable);
     }
 
-    public Page<Blog> listBlogByTag(Pageable pageable, BlogQuery blogQuery){
-        return blogRepository.findAll(new Specification<Blog>() {
-            @Override
-            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                //此处为一个关联查询
-                Join join = root.join("tags");
-                return criteriaBuilder.equal(join.get("id"),blogQuery.getTagId());
-            }
-        },pageable);
-    }
-
+    //index页面、footer调用
     public List<Blog> listTopBlog(Integer size){
-        Sort sort = Sort.by(Sort.Direction.DESC,"appreciation");
+        Sort sort = Sort.by(Sort.Direction.DESC,"views");
         Pageable pageable = PageRequest.of(0,size,sort);
         return blogRepository.findTop(pageable);
     }
 
+    //index页面调用
     public Page<Blog> listBlogAndConvert(Pageable pageable){
-        Page<Blog> page =  blogRepository.findAll(pageable);
+        Page<Blog> page =  blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+//                List<Predicate> predicates = new ArrayList<Predicate>();
+//                predicates.add(criteriaBuilder.equal(root.<Boolean>get("published"), true));
+//                criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+                return criteriaBuilder.equal(root.<Boolean>get("published"), true);
+            }
+        }, pageable);
         return convertPage(page,pageable);
     }
 
-    public Page<Blog> listBlogAndConvert(Pageable pageable,BlogQuery blog){
-        Page<Blog> page =  listBlog(pageable,blog);
+    //types页面、tags页面调用
+    public Page<Blog> listBlogAndConvert(Pageable pageable,BlogQuery blogQuery){
+        Page<Blog> page =  listBlogByTypeAndTag(pageable,blogQuery);
         //调用convertPage()方法将markdown格式的content转化为html格式
         return convertPage(page,pageable);
     }
 
-    public Page<Blog> listBlogByTagAndConvert(Pageable pageable,BlogQuery blogQuery){
-        Page<Blog> page =  listBlogByTag(pageable,blogQuery);
-        return convertPage(page,pageable);
+    //listBlogAndConvert方法调用
+    public Page<Blog> listBlogByTypeAndTag(Pageable pageable, BlogQuery blogQuery){
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<Predicate>();
+                if (blogQuery.getTypeId() != null){
+                    predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"),blogQuery.getTypeId()));
+                }
+                if (blogQuery.getTagId() != null){
+                    //此处为一个关联查询
+                    Join join = root.join("tags");
+                    predicates.add(criteriaBuilder.equal(join.get("id"),blogQuery.getTagId()));
+                }
+                predicates.add(criteriaBuilder.equal(root.<Boolean>get("published"), true));
+                criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
     }
 
     public void deleteBlog(Long id){
@@ -146,6 +179,7 @@ public class BlogService {
      * @see MarkdownUtils
      */
     private Page<Blog> convertPage(Page<Blog> page,Pageable pageable){
+        int shortCut = 0;
         List<Blog> list = new ArrayList<Blog>();
         //获取page中所有的blog的content并转换为html
         Iterator<Blog> iter = page.iterator();

@@ -50,12 +50,6 @@ public class AdminController {
         return "blog-add";
     }
 
-//    @GetMapping("/admin/admin.html")
-//    public String admin(HttpSession session){
-//        System.out.println("-----------admin-------------");
-//        return "/admin/admin";
-//    }
-
     @GetMapping("/admin/logout")
     public String  logout(HttpSession session){
         session.setAttribute("user",null);
