@@ -6,8 +6,18 @@ body {
     /*background: #000000c0;*/
 }
 
-#logo {
-    margin-top: 0px !important;
+#menu-container{
+    margin-left: 10px !important;
+}
+
+#logo{
+    width: 55px;
+    height: 55px;
+    margin-right: 3px;
+}
+
+#name {
+    margin-top: 15px !important;
     margin-bottom: 0px !important;
     margin-right: 15px !important;
 }
@@ -59,6 +69,7 @@ body {
 
 #footer {
     bottom: 0%;
+    padding-top: 25px;
     /*background: #000000c0;*/
 }
 
@@ -73,6 +84,19 @@ body {
 
 #login-container{
     width: 470px;
+}
+
+#gallery{
+    width: 770px !important;
+}
+
+.about-center-width{
+    max-width: 1100px !important;
+    margin: auto;
+}
+
+#about-me{
+    width: 300px !important;
 }
 
 /***************uitilities*****************/
@@ -129,7 +153,7 @@ body {
 }
 
 .planar-width {
-    width: 150px;
+    width: 100px;
 }
 
 .pos-top-right {

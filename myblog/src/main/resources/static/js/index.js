@@ -69,11 +69,12 @@ $(function () {
 
     $(".github").popup();
 
-    $(".wechat").popup({
-        popup: $(".wechat-planar.popup"),
-        on: "hover",
-        position: "bottom center"
-    });
+    // $(".wechat").popup({
+    //     popup: $(".wechat-planar"),
+    //     position: "bottom center"
+    // });
+
+    $(".wechat").popup();
 
 });
 

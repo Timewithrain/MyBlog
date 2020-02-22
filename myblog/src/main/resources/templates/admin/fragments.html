@@ -7,9 +7,10 @@
 <body>
 
 <nav th:fragment="menu(n)" class="ui inverted attached segment" >
-    <div class="ui container">
+    <div id="menu-container" class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
-            <h2 id="logo" class="ui teal header">MyBlog后台</h2>
+            <img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}">
+            <h2 id="name" class="ui teal header">Blog后台</h2>
             <a href="admin.html" class="menu item mobile-hide" th:href="@{../admin/admin.html}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
             <a href="types.html" class="menu item mobile-hide" th:href="@{/admin/types.html}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
             <a href="tags.html" class="menu item mobile-hide" th:href="@{../admin/tags.html}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
@@ -22,7 +23,7 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a href="#" class="item">个人资料</a>
-                        <a href="#" class="item" th:href="@{/admin/logout}">注销</a>
+                        <a href="#" class="item" th:href="@{/admin/logout}">退出</a>
                     </div>
                 </div>
             </div>
