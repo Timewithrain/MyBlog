@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入senmanticUI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/index.css"  th:href="@{/css/index.css}">
+    <title>关于</title>
+</head>
+<body>
+<!-- 导航 -->
+<!-- 为导航栏设置semanticUI提供的组件 -->
+<nav th:replace="fragments :: menu(4)" class="ui inverted attached segment">
+    <div class="ui container">
+        <div id="menu" class="ui inverted stackable secondary menu">
+            <h2 id="logo" class="ui teal header">MyBlog</h2>
+            <a href="index.html" class="menu item mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="types.html" class="menu item mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="tags.html" class="menu item mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="active menu item mobile-hide"><i class="info icon"></i>关于</a>
+            <div class="menu right item mobile-hide">
+                <div id="searchbar" class="ui input inverted transparent">
+                    <input type="search" name="" id="search" placeholder="search...">
+                    <i classs="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button pos-top-right mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!-- 中间内容 -->
+<div id="center" class="container-width clear-fix">
+    <div class="ui container">
+
+        <div class="ui grid">
+            <div class="eleven wide column">
+                <img src="https://unsplash.it/800/700?image=180 " alt="" class="ui rounded image">
+            </div>
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p>watermleon,一个不那么标准的理工狗，物理化学计算机，思维历史古文学都喜欢，但不精通，立志成为一个专精一术的杂家。</p>
+                    <p>热爱生活，热爱美食，正为生活努力上下求索...</p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui violet basic label margin-small">学习日志</div>
+                    <div class="ui violet basic label margin-small">思维实验</div>
+                    <div class="ui violet basic label margin-small">寰宇记录</div>
+                    <div class="ui violet basic label margin-small">技术前沿</div>
+                    <div class="ui violet basic label margin-small">史海拾遗</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic label margin-small">Java SE</div>
+                    <div class="ui teal basic label margin-small">Java EE</div>
+                    <div class="ui teal basic label margin-small">Python</div>
+                    <div class="ui teal basic label margin-small">3D建模</div>
+                    <div class="ui teal basic label margin-small">数据库</div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="https://github.com/Timewithrain" class="ui github circular icon button"
+                       data-content="URL:github.com/Timewithrain" data-position="bottom center"><i
+                            class="github icon"></i></a>
+                    <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="QQ:1050364782"
+                       data-position="bottom center"><i class="qq icon"></i></a>
+                </div>
+
+                <div class="ui wechat-planar flowing popup transition hidden">
+                    <img src="../static/img/planar.jpg" alt="" class="ui rounded image planar-width"  th:src="@{/img/planar.jpg}">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br>
+<br>
+<!-- 底部footer -->
+<footer th:replace="fragments :: footer" id="footer" class="ui inverted vertical segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <!-- 缺少一张图片 -->
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">博客1</a>
+                    <a href="#" class="item">博客3</a>
+                    <a href="#" class="item">博客2</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">友情链接</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">链接1</a>
+                    <a href="#" class="item">链接3</a>
+                    <a href="#" class="item">链接2</a>
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui inverted header">个人说明</div>
+                <p>不要温顺地走进这凉夜，咆哮吧，痛斥这光的退缩</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider">
+            <p id="copyright">Copyright@ 1999-2019 created by watermelon</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 引入jquery -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- 引入semanticUI -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+</body>
+</html>
