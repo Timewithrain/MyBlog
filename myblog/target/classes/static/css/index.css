@@ -212,6 +212,14 @@ body {
     margin: 2px !important;
 }
 
+.margin-left-big{
+    margin-left: 30px;
+}
+
+.margin-left-large{
+    margin-left: 80px;
+}
+
 .margin-bottom-small {
     margin-bottom: 5px !important;
 }

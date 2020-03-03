@@ -6,7 +6,7 @@ spring:
     password: 105036
   jpa:
     hibernate:
-      #设置自动更新实体类到数据库中，在开发时可以设置为update但在上线使用时更改为none
+      #锟斤拷锟斤拷锟皆讹拷锟斤拷锟斤拷实锟斤拷锟洁到锟斤拷锟捷匡拷锟叫ｏ拷锟节匡拷锟斤拷时锟斤拷锟斤拷锟斤拷锟斤拷为update锟斤拷锟斤拷锟斤拷锟斤拷使锟斤拷时锟斤拷锟斤拷为none
       ddl-auto: update
     show-sql: true
 

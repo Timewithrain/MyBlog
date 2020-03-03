@@ -152,6 +152,10 @@ body {
     margin: auto !important;
 }
 
+.max-width{
+    width: 100%;
+}
+
 .planar-width {
     width: 100px;
 }
