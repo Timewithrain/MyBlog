@@ -1,21 +1,21 @@
 package com.watermelon.myblog;
 
 import com.watermelon.entity.BlogQuery;
+import com.watermelon.entity.Comment;
 import com.watermelon.entity.Tag;
 import com.watermelon.entity.Type;
 import com.watermelon.service.BlogService;
+import com.watermelon.service.CommentService;
 import com.watermelon.service.TagService;
 import com.watermelon.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -30,6 +30,9 @@ public class IndexController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping({"/","/index.html"})
     public String index(@PageableDefault(size=6,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){
@@ -60,7 +63,23 @@ public class IndexController {
     public String blog(@PathVariable Long id,Model model){
         System.out.println("-----------blog-------------");
         model.addAttribute("blog",blogService.getBlogAndConvert(id));
+        model.addAttribute("comments",commentService.listCommentByBlogId(id));
         return "blog";
+    }
+
+    @GetMapping("/comments/{blogId}")
+    public String comment(@PathVariable Long blogId,Model model){
+        model.addAttribute("comments",commentService.listCommentByBlogId(blogId));
+        return "blog :: commentList";
+    }
+
+    @PostMapping("/comments")
+    public String post(Comment comment){
+        Long blogId = comment.getBlog().getId();
+        comment.setBlog(blogService.getBlog(blogId));
+        comment.setAvatar("/img/default.png");
+        commentService.saveComment(comment);
+        return "redirect:/comments/" + blogId;
     }
 
     @RequestMapping("/types/{id}")

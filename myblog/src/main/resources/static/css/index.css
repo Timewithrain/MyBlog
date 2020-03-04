@@ -152,8 +152,12 @@ body {
     margin: auto !important;
 }
 
+.img-radius{
+    border-radius: 50% !important;
+}
+
 .max-width{
-    width: 100%;
+    max-width: 100% !important;
 }
 
 .planar-width {

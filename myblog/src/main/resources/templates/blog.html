@@ -15,7 +15,7 @@
     <!-- 引入tocbot目录css -->
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot-4.3.1/dist/tocbot.css" th:href="@{/lib/tocbot/tocbot-4.3.1/dist/tocbot.css}">
     <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
-    <link rel="icon" href="/img/logo.png" sizes="32x32" th:href="@{/img/logo.png}">
+    <link rel="icon" href="../static/img/logo.png" sizes="32x32" th:href="@{/img/logo.png}">
     <title>博客</title>
 </head>
 <body>
@@ -117,29 +117,31 @@
             </div>
         </div>
         <!-- 留言区域 -->
-        <div id="comment-container" class="ui bottom attached segment">
+        <div class="ui bottom attached segment">
             <!-- 留言展示 -->
-            <div class="ui teal segment">
+            <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
                     <div class="ui small comments max-width">
                         <h3 class="ui dividing header">留言区</h3>
-                        <div class="comment">
+
+                        <div class="comment" th:each="comment : ${comments}">
                             <a class="avatar">
-                                <img src="../static/img/avatar2.jpg" th:src="@{/img/avatar2.jpg}">
+                                <img class="img-radius" src="../static/ img/avatar2.jpg" th:src="@{${comment.avatar}}">
                             </a>
                             <div class="content">
-                                <a class="author">Matt</a>
+                                <a class="author" th:text="${comment.nickname}">Matt</a>
                                 <div class="metadata">
-                                    <span class="date">Today at 5:42PM</span>
+                                    <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
                                 </div>
-                                <div class="text">
+                                <div class="text" th:text="${comment.content}">
                                     How artistic!
                                 </div>
                                 <div class="actions">
-                                    <a class="reply">回复</a>
+                                    <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}">回复</a>
                                 </div>
                             </div>
                         </div>
+                        <!--/* -->
                         <div class="comment">
                             <a class="avatar">
                                 <img src="../static/img/avatar3.jpg" th:src="@{/img/avatar3.jpg}">
@@ -193,15 +195,16 @@
                                 </div>
                             </div>
                         </div>
+                        <!--*/-->
                     </div>
                 </div>
             </div>
             <!-- 添加留言 -->
-            <div class="ui form">
-                <input type="text" name="blog.id" th:value="${blog.id}">
-                <input type="text" name="parentComment.id" th:value="-1">
+            <div id="comment-form" class="ui form">
+                <input type="hidden" name="blog.id" th:value="${blog.id}">
+                <input type="hidden" name="parentComment.id" th:value="-1">
                 <div class="field ">
-                    <textarea name="content" placeholder="请输入评论..."></textarea>
+                    <textarea name="content" placeholder="请输入留言..."></textarea>
                 </div>
                 <div class="fields">
                     <div class="field mobile-expand">
@@ -217,7 +220,7 @@
                         </div>
                     </div>
                     <div class="field mobile-expand">
-                        <button id="comment-post" class="ui teal button mobile-expand"><i class="edit icon"></i>评论</button>
+                        <button id="comment-post" class="ui teal button mobile-expand"><i class="edit icon"></i>留言</button>
                     </div>
                 </div>
             </div>
@@ -293,44 +296,76 @@
 <!-- 引入waypoints平滑滚动插件 -->
 <script src="../static/lib/waypoints/jquery.waypoints.js" th:src="@{/lib/waypoints/jquery.waypoints.js}"></script>
 <!-- 引入平滑滚动插件 -->
-<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <!--/* <script src="../static/js/index.js" th:src="@{/js/index.js}"></script> */-->
 <script>
     /***提交评论前进行校验***/
     $("#comment-post").click(function (){
-        var bool = $(".ui .form").form('validate form');
+        var bool = $(".ui.form").form('validate form');
         if(bool){
             console.log("post success!");
+            postData();
         } else {
-            console.log("提交失败");
+            console.log("post failed");
         }
     });
 
+    $('.ui.form').form({
+        fields: {
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入内容'
+                }]
+            },
+            nickname: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入用户名'
+                }]
+            },
+            email: {
+                identifier: 'email',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入邮箱'
+                }]
+            }
+        }
+    });
+
+    /***提交评论内容***/
     function postData(){
         $("#comment-container").load(/*[[@{/comments}]]*/"/comments",{
             "parentComment.id" : $("[name='parentComment.id']").val(),
             "blog.id"  : $("[name='blog.id']").val(),
             "nickname" : $("[name='nickname']").val(),
-            "email"    : $("[name='email']").prop('checked'),
-            "content"  : $("[name='comment']").val()
+            "email"    : $("[name='email']").val(),
+            "content"  : $("[name='content']").val()
         },function(response,status,xhr){
-
+            //发布完成后滚动至评论处显示
+            $(window).scrollTo($('#comment-container'),500);
+            clearComment();
         });
     }
 
-    $('.ui.form').form({
-        fileds: {
-            content: {
-                identifier:[]
-            },
-            nickname: {
+    /*提交以后进行清除content*/
+    function clearComment(){
+        $("[name='nickname']").val('');
+        $("[name='email']").val('');
+        $("[name='parentComment.id']").val(-1);
+        $("[name='content']").attr("placeholder","请输入评论...").focus();
+    }
 
-            },
-            email: {
-
-            }
-        }
-    });
+    function reply(object){
+        var commentId = $(object).data('commentid');
+        var commentNickname = $(object).data('commentnickname');
+        $("[name='content']").attr("placeholder","@"+commentNickname).focus();
+        $("[name='parentComment.id']").val(commentId);
+        $(window).scrollTo($("#comment-form"),500);
+    }
 
     $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
 
