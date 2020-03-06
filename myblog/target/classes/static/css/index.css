@@ -157,7 +157,7 @@ body {
 }
 
 .max-width{
-    max-width: 100%;
+    max-width: 100% !important;
 }
 
 .planar-width {
@@ -258,6 +258,10 @@ body {
 .top-3{
     top: 3px;
     position: relative;
+}
+
+.text-teal {
+    color: #1aba9c !important;
 }
 
 .text-black {

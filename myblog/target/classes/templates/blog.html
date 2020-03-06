@@ -121,6 +121,7 @@
             <!-- 留言展示 -->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
+                    <!--根级留言-->
                     <div class="ui small comments max-width">
                         <h3 class="ui dividing header">留言区</h3>
 
@@ -140,6 +141,31 @@
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}">回复</a>
                                 </div>
                             </div>
+
+                            <!--二级留言-->
+                            <div class="ui small comments max-width" th:if="${#arrays.length(comment.replies)}>0">
+                                <div class="comment" th:each="reply : ${comment.replies}">
+                                    <a class="avatar">
+                                        <img class="img-radius" src="../static/ img/avatar2.jpg" th:src="@{${reply.avatar}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">
+                                            <span th:text="${reply.nickname}">Matt</span>
+                                            <span class="text-teal" th:text="|@${reply.parentComment.nickname}|">Harry</span>
+                                        </a>
+                                        <div class="metadata">
+                                            <span class="date" th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                        </div>
+                                        <div class="text" th:text="${reply.content}">
+                                            How artistic!
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!--/* -->
                         <div class="comment">
@@ -353,7 +379,8 @@
 
     /*提交以后进行清除content*/
     function clearComment(){
-        $("[name='content']").val('');
+        $("[name='nickname']").val('');
+        $("[name='email']").val('');
         $("[name='parentComment.id']").val(-1);
         $("[name='content']").attr("placeholder","请输入评论...").focus();
     }

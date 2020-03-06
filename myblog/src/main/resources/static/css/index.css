@@ -260,6 +260,10 @@ body {
     position: relative;
 }
 
+.text-teal {
+    color: #1aba9c !important;
+}
+
 .text-black {
     color: #333333 !important;
 }

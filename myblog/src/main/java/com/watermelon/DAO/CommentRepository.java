@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 
-    List<Comment> findByBlogId(Long blogId, Sort sort);
+    //根据BlogId查找所有parentComment为空的评论
+    List<Comment> findByBlogIdAndAndParentCommentNull(Long blogId, Sort sort);
 
 }
