@@ -15,6 +15,7 @@ public class Comment {
     private String email;
     private String Content;
     private String avatar;
+    private Boolean adminComment;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
@@ -70,6 +71,14 @@ public class Comment {
         this.avatar = avatar;
     }
 
+    public Boolean getAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(Boolean adminComment) {
+        this.adminComment = adminComment;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -106,11 +115,15 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "id=" + id +
-                ", name='" + nickname + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", email='" + email + '\'' +
                 ", Content='" + Content + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", adminComment=" + adminComment +
                 ", createTime=" + createTime +
+                ", blog=" + blog +
+                ", replies=" + replies +
+                ", parentComment=" + parentComment +
                 '}';
     }
 }

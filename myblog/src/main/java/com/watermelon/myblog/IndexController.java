@@ -1,9 +1,6 @@
 package com.watermelon.myblog;
 
-import com.watermelon.entity.BlogQuery;
-import com.watermelon.entity.Comment;
-import com.watermelon.entity.Tag;
-import com.watermelon.entity.Type;
+import com.watermelon.entity.*;
 import com.watermelon.service.BlogService;
 import com.watermelon.service.CommentService;
 import com.watermelon.service.TagService;
@@ -74,12 +71,29 @@ public class IndexController {
     }
 
     @PostMapping("/comments")
-    public String post(Comment comment){
+    public String postComment(Comment comment,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        if (user != null){
+            comment.setAdminComment(true);
+            comment.setAvatar(user.getAvatar());
+            comment.setNickname(user.getNickname());
+            comment.setEmail(user.getEmail());
+        }else{
+            comment.setAvatar("/img/default.png");
+        }
         Long blogId = comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
-        comment.setAvatar("/img/default.png");
         commentService.saveComment(comment);
         return "redirect:/comments/" + blogId;
+    }
+
+    @PostMapping("/commentDelete")
+    public String deleteComment(Comment comment, Model model){
+        System.out.println("comment:" + comment.getId());
+        System.out.println("blog:" + comment.getBlog().getId());
+        commentService.deleteComment(comment.getId());
+        model.addAttribute("comments",commentService.listCommentByBlogId(comment.getBlog().getId()));
+        return "blog :: commentList";
     }
 
     @RequestMapping("/types/{id}")

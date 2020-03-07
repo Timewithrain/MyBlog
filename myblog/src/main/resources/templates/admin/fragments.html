@@ -9,7 +9,7 @@
 <nav th:fragment="menu(n)" class="ui inverted attached segment" >
     <div id="menu-container" class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
-            <img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}">
+            <a target="_blank" href="/" th:href="@{/}"><img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}"></a>
             <h2 id="name" class="ui teal header">Blog后台</h2>
             <a href="admin.html" class="menu item mobile-hide" th:href="@{../admin/admin.html}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
             <a href="types.html" class="menu item mobile-hide" th:href="@{/admin/types.html}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>

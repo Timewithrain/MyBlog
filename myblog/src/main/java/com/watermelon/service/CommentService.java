@@ -28,17 +28,6 @@ public class CommentService {
         return listStructuredComment(list);
     }
 
-    public Comment saveComment(Comment comment){
-        Long parentCommentId = comment.getParentComment().getId();
-        if (parentCommentId != -1) {
-            comment.setParentComment(commentRepository.getOne(parentCommentId));
-        }else{
-            comment.setParentComment(null);
-        }
-        comment.setCreateTime(new Date());
-        return  commentRepository.save(comment);
-    }
-
     private List<Comment> listStructuredComment(List<Comment> topComments){
         //遍历顶级留言
         for(Comment topComment : topComments){
@@ -65,6 +54,21 @@ public class CommentService {
                 ChildReplies(replies3rd);
             }
         }
+    }
+
+    public Comment saveComment(Comment comment){
+        Long parentCommentId = comment.getParentComment().getId();
+        if (parentCommentId != -1) {
+            comment.setParentComment(commentRepository.getOne(parentCommentId));
+        }else{
+            comment.setParentComment(null);
+        }
+        comment.setCreateTime(new Date());
+        return  commentRepository.save(comment);
+    }
+
+    public void deleteComment(Long id){
+        commentRepository.deleteById(id);
     }
 
 }
