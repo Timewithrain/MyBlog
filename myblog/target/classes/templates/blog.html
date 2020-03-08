@@ -117,7 +117,7 @@
             </div>
         </div>
         <!-- 留言区域 -->
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" th:if="${blog.commentTable}">
             <!-- 留言展示 -->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
@@ -131,6 +131,7 @@
                             </a>
                             <div class="content">
                                 <a class="author" th:text="${comment.nickname}">Matt</a>
+                                <div class="ui mini basic teal left pointing label" th:if="${comment.adminComment}">西瓜之主</div>
                                 <div class="metadata">
                                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
                                 </div>
@@ -139,6 +140,7 @@
                                 </div>
                                 <div class="actions">
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}">回复</a>
+                                    <a class="delete" data-commentid="1" onclick="del(this)" th:if="${session.user}!=null" th:attr="data-commentid=${comment.id}">删除</a>
                                 </div>
                             </div>
 
@@ -151,6 +153,7 @@
                                     <div class="content">
                                         <a class="author">
                                             <span th:text="${reply.nickname}">Matt</span>
+                                            <div class="ui mini basic teal left pointing label"  th:if="${reply.adminComment}">西瓜之主</div>
                                             <span class="text-teal" th:text="|@${reply.parentComment.nickname}|">Harry</span>
                                         </a>
                                         <div class="metadata">
@@ -161,6 +164,7 @@
                                         </div>
                                         <div class="actions">
                                             <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}">回复</a>
+                                            <a class="delete" data-commentid="1" onclick="del(this)" th:if="${session.user}!=null" th:attr="data-commentid=${reply.id}">删除</a>
                                         </div>
                                     </div>
                                 </div>
@@ -236,13 +240,13 @@
                     <div class="field mobile-expand">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="nickname" placeholder="id">
+                            <input type="text" name="nickname" placeholder="用户名" th:value="${session.user}!=null ? ${session.user.nickname}">
                         </div>
                     </div>
                     <div class="field mobile-expand">
                         <div class="ui left icon input">
                             <i class="mail icon"></i>
-                            <input type="text" name="email" placeholder="邮箱">
+                            <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
                         </div>
                     </div>
                     <div class="field mobile-expand">
@@ -391,6 +395,18 @@
         $("[name='content']").attr("placeholder","@"+commentNickname).focus();
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($("#comment-form"),500);
+    }
+
+    /*管理员删除评论*/
+    function del(object){
+        console.log("comment:"+ $(object).data('commentid'));
+        console.log("blog:"+ $("[name='blog.id']").val());
+        $('#comment-container').load(/*[[@{/commentDelete}]]*/"/commentDelete",{
+            'id' : $(object).data('commentid'),
+            "blog.id"  : $("[name='blog.id']").val()
+        },function(response,status,xhr){
+            $(window).scrollTo($("#comment-form"),500);
+        });
     }
 
     $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");

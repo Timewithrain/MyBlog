@@ -117,7 +117,7 @@
             </div>
         </div>
         <!-- 留言区域 -->
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" th:if="${blog.commentTable}">
             <!-- 留言展示 -->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
