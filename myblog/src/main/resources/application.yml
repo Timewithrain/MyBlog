@@ -14,10 +14,21 @@ spring:
       #设置自动更新实体类到数据库中，在开发时可以设置为update但在上线使用时更改为none
       ddl-auto: update
     show-sql: true
+  http:
+
+  #设置文件上传的大小
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 10MB
+
+
 
 #logging:
 #  level:
-#    root: info
-#    com.watermleon: info
+#    root: warn
+#    com.watermleon: warn
 #  file: log\blog.log
+
+#filePath = D:/Programs/MyBlog/upfiles/
 
