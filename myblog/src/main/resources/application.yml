@@ -22,7 +22,9 @@ spring:
       max-file-size: 2MB
       max-request-size: 10MB
 
-
+#配置上传文件存储位置
+system-params:
+  file.path: D:/Programs/MyBlog/upfiles/
 
 #logging:
 #  level:
@@ -30,5 +32,4 @@ spring:
 #    com.watermleon: warn
 #  file: log\blog.log
 
-#filePath = D:/Programs/MyBlog/upfiles/
 
