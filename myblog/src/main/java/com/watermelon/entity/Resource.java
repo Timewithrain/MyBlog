@@ -24,6 +24,11 @@ public class Resource {
     @ManyToOne
     private User user;
 
+    public Resource(){
+        this.downloadTimes = 0;
+        this.size = 0l;
+    }
+
     public Long getId() {
         return id;
     }

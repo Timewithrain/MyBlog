@@ -37,6 +37,17 @@ body {
     width: 100% !important;
 }
 
+.resource-name{
+    max-width: 200px;
+    overflow: hidden;
+}
+
+.resource-type{
+    max-width: 165px;
+    max-height: 30px;
+    overflow: hidden;
+}
+
 .footer-blog-link{
     width: 190px;
     height: 20px;
@@ -130,6 +141,10 @@ body {
 .act-col{
     background-color: rgba(255,255,255,0.15) !important;
     color: #00b5adff !important;
+}
+
+.text-center{
+    text-align: center !important;
 }
 
 .typo p {

@@ -28,6 +28,13 @@ public class ResourceService {
         return resourceRepository.getOne(id);
     }
 
+    public Resource getAndDownloadResource(Long id){
+        Resource resource = resourceRepository.getOne(id);
+        resource.setDownloadTimes(resource.getDownloadTimes()+1);
+        resourceRepository.save(resource);
+        return resource;
+    }
+
     public Resource addResource(MultipartFile file, User user) throws IOException {
         Resource resource = new Resource();
         String fileName = file.getOriginalFilename();
@@ -42,20 +49,12 @@ public class ResourceService {
         resource.setPath(filePath);
         resource.setUser(user);
         resource.setUploadTime(new Date());
-        System.out.println(fileName);
-        System.out.println(oriName);
-        System.out.println(extName);
-        System.out.println("type:"+resource.getType());
-        System.out.println("size:"+resource.getSize());
-        System.out.println("size:"+resource.getStrSize());
-        System.out.println("size:"+resource.getPath());
         //存储文件
-//        BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filePath+fileName));
-//        outputStream.write(file.getBytes());
-//        outputStream.flush();
-//        outputStream.close();
-//        resourceRepository.save(resource);
-        return null;
+        BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filePath+fileName));
+        outputStream.write(file.getBytes());
+        outputStream.flush();
+        outputStream.close();
+        return resourceRepository.save(resource);
     }
 
     public Page<Resource> listResource(Pageable pageable){

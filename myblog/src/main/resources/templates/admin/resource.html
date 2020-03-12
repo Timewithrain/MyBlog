@@ -12,14 +12,14 @@
 </head>
 <body>
 <!-- 导航 -->
-<nav th:replace="admin/fragments :: menu(1)" class="ui inverted attached segment">
+<nav th:replace="admin/fragments :: menu(4)" class="ui inverted attached segment">
     <div class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
             <h2 id="logo" class="ui teal header">MyBlog后台</h2>
             <a href="#" class="active menu item mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
             <a href="../types.html" class="menu item mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
             <a href="../tags.html" class="menu item mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
-            <a href="../resource.html" class="menu item mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>资源</a>
+            <a href="../resource.html" class="menu item mobile-hide" th:classappend="${n==4} ? 'active'"><i class="tags icon"></i>资源</a>
             <div class="right menu mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -40,6 +40,7 @@
     </a>
 </nav>
 <!-- 二级导航栏 -->
+<!--/*-->
 <div class="ui attached pointing menu">
     <div class="ui container container-width">
         <div class="right menu ">
@@ -48,44 +49,44 @@
         </div>
     </div>
 </div>
+<!--*/-->
 
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
         <div class="ui segment form" >
-            <form action="/admin/upload" method="post" enctype="multipart/form-data">
+            <form action="/admin/resource/upload" method="post" enctype="multipart/form-data">
                 <div class="ui fluid action input">
                     <input type="file" name="file">
-                    <button type="submit" class="ui teal button" name="upload" >上传</button>
+                    <button type="submit" class="ui teal button" name="upload"><i class="upload icon"></i>上传</button>
                 </div>
             </form>
         </div>
 
-        <!--/*-->
         <div id="table-container">
             <table th:fragment="list" class="ui table">
                 <thead>
                 <tr>
                     <th></th>
-                    <th>标题</th>
+                    <th>文件名</th>
                     <th>类型</th>
-                    <th>推荐</th>
-                    <th>状态</th>
-                    <th>更新时间</th>
+                    <th>大小</th>
+                    <th>下载次数</th>
+                    <th>上传时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="blog,iterStat : ${page.content}">
-                    <td th:text="${blog.id}">1</td>
-                    <td th:text="${blog.title}">学习清单</td>
-                    <td th:text="${blog.type.name}">认知升级</td>
-                    <td th:text="${blog.recommend ? '是' : '否'}">是</td>
-                    <td th:text="${blog.published ? '已发布' : '草稿'}">已发布</td>
-                    <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
+                <tr th:each="resource : ${page.content}">
+                    <td th:text="${resource.id}">1</td>
+                    <td th:text="${resource.originalName}" th:alt-title="${resource.originalName}" class="resource-name">web依赖</td>
+                    <td th:text="${resource.type}" th:alt-title="${resource.type}" class="resource-type">jar</td>
+                    <td th:text="${resource.strSize}">2.93MB</td>
+                    <td th:text="${resource.downloadTimes}" class="text-center">13</td>
+                    <td th:text="${resource.uploadTime}">2020-2-12 09:27</td>
                     <td>
-                        <a href="#" class="ui mini teal button" th:href="@{/admin/blogs-edit/{id}(id=${blog.id})}">编辑</a>
-                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs-delete/{id}(id=${blog.id})}">删除</a>
+                        <a href="#" class="ui mini teal button" th:href="@{/admin/resource/download/{id}(id=${resource.id})}"><i class="download icon"></i>下载</a>
+                        <a href="#" class="ui mini red button" th:href="@{/admin/resource/delete/{id}(id=${resource.id})}"><i class="trash alternate icon"></i>删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -96,13 +97,11 @@
                             <a class="item" th:attr="data-page=${page.number}-1" onclick="page(this)" th:unless="${page.first}">上一页</a>
                             <a class="item" th:attr="data-page=${page.number}+1" onclick="page(this)" th:unless="${page.last}">下一页</a>
                         </div>
-                        <a href="#" class="ui right floated teal basic button" th:href="@{/admin/blogs/add}">新增</a>
                     </th>
                 </tr>
                 </tfoot>
             </table>
         </div>
-        <!--*/-->
 
     </div>
 </div>
@@ -157,57 +156,17 @@
         on: 'hover'
     });
 
-    //获取页面page的查询条件等信息
+    //重新加载resource页面
     function page(object){
         $("[name='page']").val($(object).data("page"));
-        loadBlog();
+        loadResource();
     }
 
-    $("#search-btn").click(function(){
-        $("[name='page']").val(0);
-        loadBlog();
-    });
-
-    function loadBlog(){
-        $("#table-container").load(/*[[@{/admin/admin/search}]]*/"/admin/admin/search",{
-            title : $("[name='title']").val(),
-            typeId : $("[name='typeId']").val(),
-            recommend : $("[name='recommend']").prop('checked'),
+    function loadResource(){
+        $("#table-container").load(/*[[@{/admin/resource/search}]]*/"/admin/resource/search",{
             page : $("[name='page']").val()
         });
     }
-
-    // $(function () {
-    //     $("#next").onclick(function () {
-    //         alert("???");
-    //     });
-    //
-    //     $(".ui .dropdown").dropdown({
-    //         on: 'hover'
-    //     });
-    //
-    //     //获取页面page的查询条件等信息
-    //     function page(object){
-    //         alert("???");
-    //         $("[name='page']").val($(object).data("page"));
-    //         loadBlog();
-    //     }
-    //
-    //     $("#search-btn").click(function(){
-    //         $("[name='page']").val(0);
-    //         loadBlog();
-    //     });
-    //
-    //     function loadBlog(){
-    //
-    //         $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
-    //             title : $("[name='title']").val(),
-    //             typeId : $("[name='typeId']").val(),
-    //             recommend : $("[name='recommend']").prop('checked'),
-    //             page : $("[name='page']").val()
-    //         });
-    //     }
-    // });
 </script>
 </body>
 </html>
