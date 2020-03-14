@@ -1,15 +1,21 @@
 package com.watermelon.service;
 
 import com.watermelon.DAO.ResourceRepository;
+import com.watermelon.entity.Blog;
 import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,6 +26,9 @@ public class ResourceService {
 
     @Value("${system-params.file.path}")
     private String filePath;
+
+    @Value("${system-params.picture.path}")
+    private String picturePath;
 
     @Autowired
     private ResourceRepository resourceRepository;
@@ -35,7 +44,49 @@ public class ResourceService {
         return resource;
     }
 
+    //存储资源
     public Resource addResource(MultipartFile file, User user) throws IOException {
+        Resource resource = setResourceFields(file,user);
+        resource.setPath(filePath);
+        saveFile(file,resource);
+        return resourceRepository.save(resource);
+    }
+
+    //存储图片
+    public Resource addPicture(MultipartFile file, User user) throws IOException{
+        Resource resource = setResourceFields(file,user);
+        resource.setPath(picturePath);
+        saveFile(file,resource);
+        return resourceRepository.save(resource);
+    }
+
+    public Page<Resource> listResource(Pageable pageable){
+        return resourceRepository.findAll(pageable);
+    }
+
+    public Page<Resource> listPicture(Pageable pageable){
+        Page<Resource> page =  resourceRepository.findAll(new Specification<Resource>() {
+            @Override
+            public Predicate toPredicate(Root<Resource> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.<Boolean>get("isOfGallery"), true);
+            }
+        }, pageable);
+        return page;
+    }
+
+    public void deleteResource(Long id){
+        resourceRepository.deleteById(id);
+    }
+
+    /**
+     * 通过上传的file构造resource，用于存储资源的相关信息(除path以外，不同资源的path需要在上级方法中区分)
+     * @param file:MultipartFile用于获取文件的相关信息
+     * @param user:User用于记录上传用户
+     * @return Resource
+     * @author watermelon
+     * @version 1.0, 2020-3-14
+     */
+    private Resource setResourceFields(MultipartFile file, User user){
         Resource resource = new Resource();
         String fileName = file.getOriginalFilename();
         String oriName = fileName.substring(0,fileName.lastIndexOf("."));
@@ -46,26 +97,35 @@ public class ResourceService {
         resource.setType(file.getContentType());
         resource.setSize(file.getSize());
         resource.setStrSize(sizeToString(file.getSize()));
-        resource.setPath(filePath);
         resource.setUser(user);
         resource.setUploadTime(new Date());
-        //存储文件
-        BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filePath+fileName));
+        return resource;
+    }
+
+    /**
+     * 将文件写入文件系统实现持久化
+     * @param file:MultipartFile
+     * @param resource:Resource
+     * @throws IOException
+     * @return void
+     * @author watermelon
+     * @version 1.0, 2020-3-14
+     */
+    private void saveFile(MultipartFile file, Resource resource) throws IOException{
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath+resource.getName());
+        BufferedOutputStream outputStream = new BufferedOutputStream(fileOutputStream);
         outputStream.write(file.getBytes());
         outputStream.flush();
         outputStream.close();
-        return resourceRepository.save(resource);
     }
 
-    public Page<Resource> listResource(Pageable pageable){
-        return resourceRepository.findAll(pageable);
-    }
-
-    public void deleteResource(Long id){
-        resourceRepository.deleteById(id);
-    }
-
-    //将size转换为对应大小字符
+    /**
+     * 传入一个Long类型数据，转化为易读的对应磁盘容量大小的字符串
+     * @param size:Long
+     * @return String
+     * @author watermelon
+     * @version 1.0
+     */
     private String sizeToString(Long size){
         int i = 0;
         int decimal = 0;

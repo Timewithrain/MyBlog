@@ -13,6 +13,8 @@ public class Resource {
     private String name;
     private String originalName;
     private String extensionName;
+    private Boolean isPrivate;
+    private Boolean isOfGallery;
     private Integer downloadTimes;
     private Long size;
     private String strSize;
@@ -25,6 +27,8 @@ public class Resource {
     private User user;
 
     public Resource(){
+        this.isOfGallery = false;
+        this.isPrivate = true;
         this.downloadTimes = 0;
         this.size = 0l;
     }
@@ -59,6 +63,22 @@ public class Resource {
 
     public void setExtensionName(String extensionName) {
         this.extensionName = extensionName;
+    }
+
+    public Boolean getPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public Boolean getOfGallery() {
+        return isOfGallery;
+    }
+
+    public void setOfGallery(Boolean ofGallery) {
+        isOfGallery = ofGallery;
     }
 
     public Integer getDownloadTimes() {
@@ -124,6 +144,8 @@ public class Resource {
                 ", name='" + name + '\'' +
                 ", originalName='" + originalName + '\'' +
                 ", extensionName='" + extensionName + '\'' +
+                ", isPrivate=" + isPrivate +
+                ", isOfGallery=" + isOfGallery +
                 ", downloadTimes=" + downloadTimes +
                 ", size=" + size +
                 ", strSize='" + strSize + '\'' +

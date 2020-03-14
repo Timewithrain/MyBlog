@@ -53,7 +53,7 @@ public class ResourceController {
         Resource resource = resourceService.getAndDownloadResource(id);
         FileSystemResource file = new FileSystemResource(resource.getPath()+resource.getName());
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Dispositon","attachment; filename=123.jpg");
+        headers.add("Content-Dispositon","attachment; filename="+resource.getName());
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentLength(file.contentLength())
