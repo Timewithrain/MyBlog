@@ -19,13 +19,13 @@ spring:
   #设置文件上传的大小
   servlet:
     multipart:
-      max-file-size: 2MB
+      max-file-size: 5MB
       max-request-size: 10MB
 
 #配置上传文件存储位置
 system-params:
   file.path: D:/Programs/MyBlog/upfiles/
-  picture.path: D:\Programs\MyBlog\myblog\src\main\resources\static\img\gallery
+  picture.path: D:/Programs/MyBlog/myblog/src/main/resources/static/img/gallery/
 
 #logging:
 #  level:

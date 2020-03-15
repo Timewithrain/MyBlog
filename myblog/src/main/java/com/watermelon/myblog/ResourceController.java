@@ -69,11 +69,6 @@ public class ResourceController {
 
     @GetMapping("/resource/delete/{id}")
     public String delete(@PathVariable Long id){
-        Resource resource = resourceService.getResource(id);
-        File file = new File(resource.getPath()+resource.getName());
-        if (file.exists()){
-            file.delete();
-        }
         resourceService.deleteResource(id);
         return "redirect:/admin/resource.html";
     }

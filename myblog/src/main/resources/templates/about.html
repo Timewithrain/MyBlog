@@ -53,17 +53,13 @@
                 <div class="ui attached segment">
                     <div id="Carousel" class="carousel slide">
                         <!-- 轮播（Carousel）指标 -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#Carousel" data-slide-to="1"></li>
-                            <li data-target="#Carousel" data-slide-to="2"></li>
-                            <li data-target="#Carousel" data-slide-to="3"></li>
-                            <li data-target="#Carousel" data-slide-to="4"></li>
-                            <li data-target="#Carousel" data-slide-to="5"></li>
-                            <li data-target="#Carousel" data-slide-to="6"></li>
-                        </ol>
-                        <!-- 轮播（Carousel）项目 -->
                         <div class="carousel-inner">
+                            <!--/*-->
+                            <div class="item active" th:each="resource : ${page.content}">
+                                <img src="/img/gallery/test.jpg" alt="First slide" th:src="@{|${resource.path}${resource.name}|}">
+                                <div class="carousel-caption"></div>
+                            </div>
+                            <!--*/-->
                             <div class="item active">
                                 <img src="/img/gallery/test.jpg" alt="First slide" th:src="@{/img/gallery/test.jpg}">
                                 <div class="carousel-caption"></div>
@@ -92,7 +88,18 @@
                                 <img src="/img/gallery/test7.jpg" alt="seventh slide" th:src="@{/img/gallery/test7.jpg}">
                                 <div class="carousel-caption"></div>
                             </div>
+
                         </div>
+                        <!-- 轮播（Carousel）项目 -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#Carousel" data-slide-to="1"></li>
+                            <li data-target="#Carousel" data-slide-to="2"></li>
+                            <li data-target="#Carousel" data-slide-to="3"></li>
+                            <li data-target="#Carousel" data-slide-to="4"></li>
+                            <li data-target="#Carousel" data-slide-to="5"></li>
+                            <li data-target="#Carousel" data-slide-to="6"></li>
+                        </ol>
                         <!-- 轮播（Carousel）导航 -->
                         <a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

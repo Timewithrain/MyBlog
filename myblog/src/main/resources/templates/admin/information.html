@@ -54,26 +54,18 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <!--图片上传-->
-        <div class="ui segment form" >
-            <form action="/admin/infor/upload" method="post" enctype="multipart/form-data">
-                <div class="ui fluid action input">
-                    <input type="file" name="file">
-                    <button type="submit" class="ui teal button" name="upload"><i class="upload icon"></i>上传</button>
-                </div>
-            </form>
-        </div>
 
-        <div id="table-container">
-            <div class="eleven wide column">
-                <!--图片预览-->
-                <div class="four wide column content-img">
-                    <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
-                        <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image" th:src="@{|${blog.picture}/800/450|}">
-                    </a>
-                </div>
-
+        <div class="eleven wide column">
+            <div class="ui top attached segment">
+                <img src="../static/img/avatar2.jpg" alt="" class="ui tiny avatar image" th:src="${user.avatar}">
+                <div class="ui header show-inline top-3" th:text="${user.nickname}">我</div>
             </div>
+            <div class="ui attached segment">
+                <p th:text="|用户名：${user.username}|"></p>
+                <p th:text="|密码：${user.password}|">我愿有一所房子，面朝大海，春暖花开</p>
+                <p th:text="|邮箱：${user.email}|">我愿有一所房子，面朝大海，春暖花开</p>
+            </div>
+
         </div>
 
     </div>
@@ -136,7 +128,7 @@
     }
 
     function loadResource(){
-        $("#table-container").load(/*[[@{/admin/resource/search}]]*/"/admin/resource/search",{
+        $("#table-container").load(/*[[@{/admin/picture/search}]]*/"/admin/picture/search",{
             page : $("[name='page']").val()
         });
     }

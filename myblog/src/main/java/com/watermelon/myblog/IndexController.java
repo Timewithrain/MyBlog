@@ -1,10 +1,7 @@
 package com.watermelon.myblog;
 
 import com.watermelon.entity.*;
-import com.watermelon.service.BlogService;
-import com.watermelon.service.CommentService;
-import com.watermelon.service.TagService;
-import com.watermelon.service.TypeService;
+import com.watermelon.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +27,9 @@ public class IndexController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private ResourceService resourceService;
 
     @GetMapping({"/","/index.html"})
     public String index(@PageableDefault(size=6,sort={"updateTime"},direction=Sort.Direction.DESC) Pageable pageable, Model model){

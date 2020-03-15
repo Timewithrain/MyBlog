@@ -1,7 +1,6 @@
 package com.watermelon.service;
 
 import com.watermelon.DAO.ResourceRepository;
-import com.watermelon.entity.Blog;
 import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -47,6 +47,7 @@ public class ResourceService {
     //存储资源
     public Resource addResource(MultipartFile file, User user) throws IOException {
         Resource resource = setResourceFields(file,user);
+        resource.setOfGallery(false);
         resource.setPath(filePath);
         saveFile(file,resource);
         return resourceRepository.save(resource);
@@ -55,6 +56,7 @@ public class ResourceService {
     //存储图片
     public Resource addPicture(MultipartFile file, User user) throws IOException{
         Resource resource = setResourceFields(file,user);
+        resource.setOfGallery(true);
         resource.setPath(picturePath);
         saveFile(file,resource);
         return resourceRepository.save(resource);
@@ -75,6 +77,11 @@ public class ResourceService {
     }
 
     public void deleteResource(Long id){
+        Resource resource = getResource(id);
+        File file = new File(resource.getPath()+resource.getName());
+        if (file.exists()){
+            file.delete();
+        }
         resourceRepository.deleteById(id);
     }
 
@@ -112,7 +119,7 @@ public class ResourceService {
      * @version 1.0, 2020-3-14
      */
     private void saveFile(MultipartFile file, Resource resource) throws IOException{
-        FileOutputStream fileOutputStream = new FileOutputStream(filePath+resource.getName());
+        FileOutputStream fileOutputStream = new FileOutputStream(resource.getPath()+resource.getName());
         BufferedOutputStream outputStream = new BufferedOutputStream(fileOutputStream);
         outputStream.write(file.getBytes());
         outputStream.flush();
