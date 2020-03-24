@@ -150,6 +150,13 @@ public class IndexController {
         return "redirect:/tags/"+id+"/?page="+page;
     }
 
+    @GetMapping({"/resource.html","/resource"})
+    public String resource(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable,Model model){
+        System.out.println("-----------resource-------------");
+        model.addAttribute("page",resourceService.listResource(pageable));
+        return "resource";
+    }
+
     @GetMapping("/about.html")
     public String about(){
         System.out.println("-----------about-------------");

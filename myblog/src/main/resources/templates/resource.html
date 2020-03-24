@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <!-- 引入senmanticUI -->
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <link href="../static/css/animate.css" rel="stylesheet" th:href="@{/css/animate.css}">
+    <link href="../static/css/index.css" rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="/img/logo.png" rel="icon" sizes="32x32" th:href="@{/img/logo.png}">
+    <title>标签</title>
+</head>
+<body>
+<!-- 导航 -->
+<!-- 为导航栏设置semanticUI提供的组件 -->
+<nav class="ui inverted attached segment" th:replace="fragments :: menu(4)">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu" id="menu">
+            <h2 class="ui teal header" id="logo">MyBlog</h2>
+            <a class="menu item mobile-hide" href="index.html"><i class="home icon"></i>首页</a>
+            <a class="menu item mobile-hide" href="types.html"><i class="idea icon"></i>分类</a>
+            <a class="menu item mobile-hide" href="tags.html"><i class="tags icon"></i>标签</a>
+            <a class="active menu item mobile-hide" href="#"><i class="paper plane icon"></i>资源</a>
+            <a class="menu item mobile-hide" href="about.html"><i class="info icon"></i>关于</a>
+            <div class="menu right item mobile-hide">
+                <div class="ui input inverted transparent" id="searchbar">
+                    <input id="search" name="" placeholder="search..." type="search">
+                    <i classs="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="ui menu toggle black icon button pos-top-right mobile-show" href="#">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!-- 中间内容 -->
+<div class="container-width clear-fix animated fadeInUp" id="center">
+    <div class="ui container">
+        <!-- 中部content header -->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">资源</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h3 class="ui blue header show-inline" th:text="${page.totalElements}"> 10 </h3> 个
+                </div>
+            </div>
+        </div>
+
+        <!-- 资源内容 -->
+        <div class="ui teal attached segment">
+            <!-- 内容部分 -->
+            <div id="table-container">
+                <table class="ui table" th:fragment="list">
+                    <thead>
+                    <tr>
+                        <th class="text-center">文件名</th>
+                        <th class="text-center">类型</th>
+                        <th class="text-center">大小</th>
+                        <th class="text-center">下载次数</th>
+                        <th class="text-center">上传时间</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="resource : ${page.content}">
+                        <td class="resource-name text-center" th:alt-title="${resource.originalName}" th:text="${resource.originalName}">web依赖</td>
+                        <td class="resource-type text-center" th:alt-title="${resource.type}" th:text="${resource.type}">jar</td>
+                        <td class="text-center" th:text="${resource.strSize}">2.93MB</td>
+                        <td class="text-center" th:text="${resource.downloadTimes}">13</td>
+                        <td class="text-center" th:text="${#dates.format(resource.uploadTime,'yyyy-MM-dd HH:mm')}">2020-2-12 09:27</td>
+                        <td>
+                            <a class="ui mini teal button margin-left-big" href="#" th:href="@{/admin/resource/download/{id}(id=${resource.id})}"><i class="download icon"></i>下载</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="7">
+                            <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                                <a class="item" onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}">上一页</a>
+                                <a class="item" onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}">下一页</a>
+                            </div>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!--/*-->
+            <div class="ui segment" th:each="blog : ${page.content}">
+                <div class="ui stackable grid">
+                    <!-- 内容部分 -->
+                    <div class="eleven wide column ">
+                        <h3 class="ui header"><a class="black-color" href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">托卡马克方式的实现原理</a></h3>
+                        <div class="p-content" th:utext="${blog.content}">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dolor nulla vero. Nulla
+                            quam excepturi voluptates quisquam veniam id rerum, vel corrupti magnam expedita aut
+                            at beatae illum labore fugiat?
+                        </div>
+                        <div class="ui grid">
+                            <div class="twelve wide column padding-bottom-none">
+                                <div class="ui horizontal link list">
+                                    <div class="item">
+                                        <img alt="" class="ui avatar image" src="../static/img/avatar2.jpg" th:src="${blog.user.avatar}">
+                                        <div class="content padding-none"><a class="header" href="#" th:text="${blog.user.nickname}">watermelon</a></div>
+                                    </div>
+                                    <div class="item padding-none top-3">
+                                        <i class="calendar icon bottom-3"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-11-20</span>
+                                    </div>
+                                    <div class="item padding-none">
+                                        <i class="eye icon top-1"></i><span class="top-3 margin-middle" th:text="${blog.views}">1234</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right aligned sixteen wide column padding-top-none">
+                                <a class="ui basic label" href="#" target="_blank" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${blog.tags}" th:href="@{/tags/{id}(id=${tag.id})}" th:text="${tag.name}" >西瓜制造</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 图片部分 -->
+                    <div class="four wide column content-img">
+                        <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
+                            <img alt="" class="ui rounded image" src="https://unsplash.it/800/450?image=1020" th:src="@{|${blog.picture}/800/450|}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--*/-->
+        </div>
+
+        <!-- content footer -->
+        <!--/*-->
+        <div class="ui attached segment" th:if="${page.totalPages}>1">
+            <div class="ui two column grid">
+                <div class="column show-inline">
+                    <a class="ui teal basic button" href="#" th:href="@{/resource/last/{id}(id=${activeTagId})}" th:unless="${page.first}">上一页</a>
+                </div>
+                <div class="right aligned column show-inline">
+                    <a class="ui teal basic button" href="#" th:href="@{/resource/next/{id}(id=${activeTagId})}" th:unless="${page.last}">下一页</a>
+                </div>
+            </div>
+        </div>
+        <!--*/-->
+    </div>
+</div>
+
+<br>
+<br>
+<!-- 底部footer -->
+<footer class="ui inverted vertical segment" id="footer" th:replace="fragments :: footer">
+    <div class="ui center aligned container">
+        <div class="ui stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <!-- 缺少一张图片 -->
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a class="item" href="#">博客1</a>
+                    <a class="item" href="#">博客3</a>
+                    <a class="item" href="#">博客2</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">友情链接</h4>
+                <div class="ui inverted link list">
+                    <a class="item" href="#">链接1</a>
+                    <a class="item" href="#">链接3</a>
+                    <a class="item" href="#">链接2</a>
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui inverted header">个人说明</div>
+                <p>不要温顺地走进这凉夜，咆哮吧，痛斥这光的退缩</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider">
+            <p id="copyright">Copyright@ 1999-2019 created by watermelon</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 引入jquery -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- 引入semanticUI -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+</body>
+</html>

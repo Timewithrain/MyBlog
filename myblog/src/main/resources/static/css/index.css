@@ -246,7 +246,7 @@ body {
 }
 
 .margin-left-big{
-    margin-left: 30px;
+    margin-left: 30px !important;
 }
 
 .margin-left-large{

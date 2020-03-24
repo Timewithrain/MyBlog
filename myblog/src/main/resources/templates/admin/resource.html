@@ -186,7 +186,7 @@
 
     $(function () {
         var f = false;
-        $("#isPrivate").click(function(){
+        $("#table-container").on("click","#isPrivate",function(){
             if(f = !f){
                 var button = $(this).next();
                 button.addClass("show");
@@ -194,8 +194,7 @@
                 var button = $(this).next();
                 button.removeClass("show");
             }
-        });
-
+        })
     });
 
     $(".ui .dropdown").dropdown({

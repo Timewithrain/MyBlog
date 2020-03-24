@@ -43,9 +43,19 @@ body {
 }
 
 .resource-type{
-    max-width: 165px;
+    max-width: 145px;
     max-height: 30px;
     overflow: hidden;
+}
+
+.update-btn{
+    padding: 4px 6px;
+    display: none;
+}
+
+.show{
+    display: inline !important;
+    padding-left: 1px;
 }
 
 .footer-blog-link{
@@ -236,7 +246,7 @@ body {
 }
 
 .margin-left-big{
-    margin-left: 30px;
+    margin-left: 30px !important;
 }
 
 .margin-left-large{
@@ -272,6 +282,11 @@ body {
 
 .top-3{
     top: 3px;
+    position: relative;
+}
+
+.top-5{
+    top: 5px;
     position: relative;
 }
 
