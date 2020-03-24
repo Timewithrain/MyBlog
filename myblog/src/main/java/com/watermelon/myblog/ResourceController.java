@@ -48,6 +48,12 @@ public class ResourceController {
         return "redirect:/admin/resource.html";
     }
 
+    @GetMapping("/resource/update/{id}")
+    public String update(@PathVariable Long id){
+        resourceService.updatePrivate(id);
+        return "redirect:/admin/resource.html";
+    }
+
     @RequestMapping("/resource/download/{id}")
     public ResponseEntity download(@PathVariable Long id) throws Exception{
         Resource resource = resourceService.getAndDownloadResource(id);
@@ -61,9 +67,11 @@ public class ResourceController {
                 .body(new InputStreamResource(file.getInputStream()));
     }
 
-    @GetMapping("/resource/search")
+    @RequestMapping("/resource/search")
     public String search(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
+        System.out.println("page turning"+pageable.getPageNumber());
         model.addAttribute("page",resourceService.listResource(pageable));
+        System.out.println("page turned"+pageable.getPageNumber());
         return "admin/resource :: list";
     }
 

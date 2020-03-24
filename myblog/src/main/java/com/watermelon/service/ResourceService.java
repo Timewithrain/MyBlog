@@ -53,13 +53,23 @@ public class ResourceService {
         return resourceRepository.save(resource);
     }
 
-    //存储图片
+    //存储图片,由于画廊模块未拓展因此未调用此方法
     public Resource addPicture(MultipartFile file, User user) throws IOException{
         Resource resource = setResourceFields(file,user);
         resource.setOfGallery(true);
         resource.setPath(picturePath);
         saveFile(file,resource);
         return resourceRepository.save(resource);
+    }
+
+    public void updatePrivate(Long id){
+        Resource resource = getResource(id);
+        if (resource.getPrivate()){
+            resource.setPrivate(false);
+        }else{
+            resource.setPrivate(true);
+        }
+        resourceRepository.save(resource);
     }
 
     public Page<Resource> listResource(Pageable pageable){
@@ -101,7 +111,7 @@ public class ResourceService {
         resource.setName(fileName);
         resource.setOriginalName(oriName);
         resource.setExtensionName(extName);
-        resource.setType(file.getContentType());
+        resource.setType(typeTransform(file.getContentType(),extName));
         resource.setSize(file.getSize());
         resource.setStrSize(sizeToString(file.getSize()));
         resource.setUser(user);
@@ -152,4 +162,14 @@ public class ResourceService {
         return sizeStr;
     }
 
+    private String typeTransform(String fileType,String extName){
+        String type = null;
+        if (fileType.length()>20){
+            type = fileType.substring(fileType.lastIndexOf(".")+1);
+            if (type.length()>20){
+                type = extName.substring(1);
+            }
+        }
+        return type;
+    }
 }

@@ -54,11 +54,11 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <div class="ui segment form" >
+        <div id="upload-table" class="ui segment form" >
             <form action="/admin/resource/upload" method="post" enctype="multipart/form-data">
-                <div class="ui fluid action input">
-                    <input type="file" name="file">
-                    <button type="submit" class="ui teal button" name="upload"><i class="upload icon"></i>上传</button>
+                <div class="ui fluid action input field">
+                    <input type="file" name="file" id="file" onclick="removeError()">
+                    <button type="submit" id="upload-btn" class="ui teal button" name="upload"><i class="upload icon"></i>上传</button>
                 </div>
             </form>
         </div>
@@ -68,22 +68,27 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th>文件名</th>
-                    <th>类型</th>
-                    <th>大小</th>
-                    <th>下载次数</th>
-                    <th>上传时间</th>
-                    <th>操作</th>
+                    <th class="text-center">文件名</th>
+                    <th class="text-center">类型</th>
+                    <th class="text-center">大小</th>
+                    <th class="text-center">下载次数</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">私有</th>
+                    <th class="text-center">操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="resource : ${page.content}">
                     <td th:text="${resource.id}">1</td>
-                    <td th:text="${resource.originalName}" th:alt-title="${resource.originalName}" class="resource-name">web依赖</td>
-                    <td th:text="${resource.type}" th:alt-title="${resource.type}" class="resource-type">jar</td>
-                    <td th:text="${resource.strSize}">2.93MB</td>
+                    <td th:text="${resource.originalName}" th:alt-title="${resource.originalName}" class="resource-name text-center">web依赖</td>
+                    <td th:text="${resource.type}" th:alt-title="${resource.type}" class="resource-type text-center">jar</td>
+                    <td th:text="${resource.strSize}" class="text-center">2.93MB</td>
                     <td th:text="${resource.downloadTimes}" class="text-center">13</td>
-                    <td th:text="${resource.uploadTime}">2020-2-12 09:27</td>
+                    <td th:text="${#dates.format(resource.uploadTime,'yyyy-MM-dd HH:mm')}" class="text-center">2020-2-12 09:27</td>
+                    <td th:object="${resource}" class="text-center">
+                        <input type="checkbox" id="isPrivate" name="isPrivate" class="ui checkbox top-5" th:checked="*{private}">
+                        <a href="#" class="update-btn" th:href="@{/admin/resource/update/{id}(id=${resource.id})}"><i class="pink edit outline icon"></i></a>
+                    </td>
                     <td>
                         <a href="#" class="ui mini teal button" th:href="@{/admin/resource/download/{id}(id=${resource.id})}"><i class="download icon"></i>下载</a>
                         <a href="#" class="ui mini red button" th:href="@{/admin/resource/delete/{id}(id=${resource.id})}"><i class="trash alternate icon"></i>删除</a>
@@ -152,6 +157,47 @@
 <script>
     $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
 
+    $("#upload-btn").click(function (){
+        var bool = $(".ui.form").form('validate form');
+        if(bool){
+            console.log("upload success!");
+        } else {
+            console.log("upload failed");
+            $('.field').addClass("error");
+        }
+    });
+
+    //验证上传文件不为空
+    $('.ui.form').form({
+        fields: {
+            file: {
+                identifier: 'file',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择上传文件！'
+                }]
+            }
+        }
+    });
+
+    function removeError(){
+        $(".error").removeClass("error");
+    }
+
+    $(function () {
+        var f = false;
+        $("#isPrivate").click(function(){
+            if(f = !f){
+                var button = $(this).next();
+                button.addClass("show");
+            }else{
+                var button = $(this).next();
+                button.removeClass("show");
+            }
+        });
+
+    });
+
     $(".ui .dropdown").dropdown({
         on: 'hover'
     });
@@ -159,12 +205,12 @@
     //重新加载resource页面
     function page(object){
         $("[name='page']").val($(object).data("page"));
-        loadResource();
+        loadResource(object);
     }
 
-    function loadResource(){
+    function loadResource(object){
         $("#table-container").load(/*[[@{/admin/resource/search}]]*/"/admin/resource/search",{
-            page : $("[name='page']").val()
+            page : $(object).data("page")
         });
     }
 </script>
