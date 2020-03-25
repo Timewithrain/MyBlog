@@ -1,18 +1,15 @@
 package com.watermelon.myblog;
 
-import com.watermelon.DAO.UserRepository;
-import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import com.watermelon.service.ResourceService;
+import com.watermelon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
 
 @Controller
 @RequestMapping("/admin")
@@ -22,13 +19,13 @@ public class InformationController {
     private ResourceService resourceService;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping({"/information","/information.html"})
     public String picture(Model model, HttpSession session){
-        User u = (User)session.getAttribute("user");
-        User user = userRepository.getOne(u.getId());
-        model.addAttribute("user",(User)session.getAttribute("user"));
+        Long id = ((User)session.getAttribute("user")).getId();
+        User user = userService.getUser(id);
+        model.addAttribute("user",user);
         return "/admin/information";
     }
 

@@ -91,16 +91,18 @@
                     </td>
                     <td>
                         <a href="#" class="ui mini teal button" th:href="@{/admin/resource/download/{id}(id=${resource.id})}"><i class="download icon"></i>下载</a>
-                        <a href="#" class="ui mini red button" th:href="@{/admin/resource/delete/{id}(id=${resource.id})}"><i class="trash alternate icon"></i>删除</a>
+                        <a class="ui mini red button" href="#" id="del-btn" th:attr="data-href=|/admin/resource/delete/${resource.id}|"><i class="trash alternate icon"></i>删除</a>
                     </td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="7">
-                        <div class="ui pagination menu" th:if="${page.totalPages}>1">
-                            <a class="item" th:attr="data-page=${page.number}-1" onclick="page(this)" th:unless="${page.first}">上一页</a>
-                            <a class="item" th:attr="data-page=${page.number}+1" onclick="page(this)" th:unless="${page.last}">下一页</a>
+                    <th colspan="8"  th:if="${page.totalPages}>1">
+                        <div class="ui pagination menu" th:unless="${page.first}">
+                            <a class="item" onclick="page(this)" th:attr="data-page=${page.number}-1">上一页</a>
+                        </div>
+                        <div class="ui pagination menu float-right" th:unless="${page.last}">
+                            <a class="item" onclick="page(this)" th:attr="data-page=${page.number}+1">下一页</a>
                         </div>
                     </th>
                 </tr>
@@ -108,6 +110,27 @@
             </table>
         </div>
 
+    </div>
+</div>
+
+<!--确认框-->
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="trash icon"></i>
+        Are you sure to delete?
+    </div>
+    <div class="content">
+        <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button" id="cancel">
+            <i class="remove icon"></i>
+            No
+        </div>
+        <div class="ui green ok inverted button" id="certain">
+            <i class="checkmark icon"></i>
+            Yes
+        </div>
     </div>
 </div>
 
@@ -195,6 +218,22 @@
                 button.removeClass("show");
             }
         })
+    });
+
+    //弹出确认框确认
+    $(function () {
+        $("#table-container").on("click",".ui.button",function () {
+            $('.ui.basic.modal').modal('show');
+        });
+        $(".ui.modal").on("click","#cancel",function () {
+            console.log("no");
+        });
+        $(".ui.modal").on("click","#certain",function () {
+            console.log("yes");
+            var str = $("#del-btn").data("href");
+            console.log(str);
+            $.get(str);
+        });
     });
 
     $(".ui .dropdown").dropdown({

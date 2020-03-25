@@ -1,7 +1,7 @@
 package com.watermelon.myblog;
 
 import com.watermelon.entity.User;
-import com.watermelon.service.LoginService;
+import com.watermelon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
 
     @Autowired
-    public LoginService loginService;
+    public UserService userService;
 
     @GetMapping("/admin")
     public String loginPage(HttpSession session){
@@ -29,7 +29,7 @@ public class AdminController {
 
     @PostMapping("/admin/login")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession session, RedirectAttributes attributes){
-        User user = loginService.checkUser(username,password);
+        User user = userService.checkUser(username,password);
         if(user!=null){
             //删除密码以后再传入session，避免密码泄露
             user.setPassword(null);

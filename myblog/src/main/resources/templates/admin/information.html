@@ -42,21 +42,32 @@
 
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
-    <div class="ui container">
-
-        <div class="eleven wide column">
-            <div class="ui top attached segment">
-                <img src="../static/img/avatar2.jpg" alt="" class="ui tiny avatar image" th:src="${user.avatar}">
-                <div class="ui header show-inline top-3" th:text="${user.nickname}">我</div>
+    <div class="ui grid">
+        <div class="seven wide column margin-auto">
+            <div id="avatar-container">
+                <a href="../about.html" target="_blank" th:href="@{/about.html}">
+                    <img class="ui small circular image" id="avatar" src="../static/img/avatar2.jpg" th:src="${user.avatar}">
+                </a>
+                <div class="ui teal header top-3" id="nickname" th:text="${user.nickname}">我</div>
             </div>
-            <div class="ui attached segment">
-                <p th:text="|用户名：${user.username}|"></p>
-                <p th:text="|密码：${user.password}|">我愿有一所房子，面朝大海，春暖花开</p>
-                <p th:text="|邮箱：${user.email}|">我愿有一所房子，面朝大海，春暖花开</p>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="five wide column margin-auto">
+            <div class="ui raised segment my-background">
+                <a class="ui teal ribbon label">Username:</a><div class="ui mini teal header show" th:text="${user.username}">zzzx</div>
+                <p></p>
+            </div>
+            <div class="ui raised segment my-background">
+                <a class="ui blue ribbon label">Password:</a><div class="ui mini blue header show top-3" th:text="${user.password}">*******</div>
+                <p></p>
+            </div>
+            <div class="ui raised segment my-background">
+                <a class="ui violet ribbon label">E-mail: </a><div class="ui mini violet header show" th:text="${user.email}">firstone@163c.com</div>
+                <p></p>
             </div>
 
         </div>
-
     </div>
 </div>
 

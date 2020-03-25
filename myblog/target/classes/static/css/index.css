@@ -16,10 +16,28 @@ body {
     margin-right: 3px;
 }
 
+#avatar-container{
+    margin: 30px auto;
+    display: table;
+}
+
+#avatar{
+    border: 5px solid #dadfe4;
+}
+
+#nickname{
+    font-size: 30px;
+    margin-top: 5px;
+}
+
 #name {
     margin-top: 15px !important;
     margin-bottom: 0px !important;
     margin-right: 15px !important;
+}
+
+.my-background{
+    background-color: #57c5ac33 !important;
 }
 
 #searchbar{
@@ -157,6 +175,10 @@ body {
     text-align: center !important;
 }
 
+.float-right{
+    float: right !important;
+}
+
 .typo p {
     font-size: 16px;
     font-weight: 300;
@@ -259,6 +281,10 @@ body {
 
 .margin-bottom-big {
     margin-bottom: 15px !important;
+}
+
+.margin-bottom-large {
+    margin-bottom: 30px !important;
 }
 
 .margin-none {
