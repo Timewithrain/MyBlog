@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 
 @Controller
@@ -56,15 +55,7 @@ public class ResourceController {
 
     @RequestMapping("/resource/download/{id}")
     public ResponseEntity download(@PathVariable Long id) throws Exception{
-        Resource resource = resourceService.getAndDownloadResource(id);
-        FileSystemResource file = new FileSystemResource(resource.getPath()+resource.getName());
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Dispositon","attachment; filename="+resource.getName());
-        return ResponseEntity.ok()
-                .headers(headers)
-                .contentLength(file.contentLength())
-                .contentType(MediaType.parseMediaType("application/octet-stream"))
-                .body(new InputStreamResource(file.getInputStream()));
+        return resourceService.downloadFile(id);
     }
 
     @RequestMapping("/resource/search")

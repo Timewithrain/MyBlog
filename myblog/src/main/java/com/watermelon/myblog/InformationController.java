@@ -1,5 +1,6 @@
 package com.watermelon.myblog;
 
+import com.watermelon.DAO.UserRepository;
 import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import com.watermelon.service.ResourceService;
@@ -20,8 +21,13 @@ public class InformationController {
     @Autowired
     private ResourceService resourceService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping({"/information","/information.html"})
     public String picture(Model model, HttpSession session){
+        User u = (User)session.getAttribute("user");
+        User user = userRepository.getOne(u.getId());
         model.addAttribute("user",(User)session.getAttribute("user"));
         return "/admin/information";
     }
@@ -33,14 +39,14 @@ public class InformationController {
 //        return "redirect:/admin/information";
 //    }
 
-    @GetMapping("/picture/delete/{id}")
-    public String delete(@PathVariable Long id){
-        Resource resource = resourceService.getResource(id);
-        File file = new File(resource.getPath()+resource.getName());
-        if (file.exists()){
-            file.delete();
-        }
-        resourceService.deleteResource(id);
-        return "redirect:/admin/information";
-    }
+//    @GetMapping("/picture/delete/{id}")
+//    public String delete(@PathVariable Long id){
+//        Resource resource = resourceService.getResource(id);
+//        File file = new File(resource.getPath()+resource.getName());
+//        if (file.exists()){
+//            file.delete();
+//        }
+//        resourceService.deleteResource(id);
+//        return "redirect:/admin/information";
+//    }
 }

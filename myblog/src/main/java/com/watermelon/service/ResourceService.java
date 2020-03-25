@@ -5,9 +5,14 @@ import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -93,6 +98,26 @@ public class ResourceService {
             file.delete();
         }
         resourceRepository.deleteById(id);
+    }
+
+    /**
+     * 根据资源id从数据库中获取资源信息，并将其从文件中读取出来作为响应
+     * @param id:Long
+     * @throws IOException
+     * @return ResponseEntity
+     * @author watermelon
+     * @version 1.0, 2020-3-25
+     */
+    public ResponseEntity downloadFile(Long id) throws IOException {
+        Resource resource = getAndDownloadResource(id);
+        FileSystemResource file = new FileSystemResource(resource.getPath()+resource.getName());
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Dispositon","attachment; filename="+resource.getName());
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.contentLength())
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(new InputStreamResource(file.getInputStream()));
     }
 
     /**
