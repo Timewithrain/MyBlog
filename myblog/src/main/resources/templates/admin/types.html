@@ -39,9 +39,9 @@
     </a>
 </nav>
 <!-- 二级导航栏 -->
-<div class="ui attached pointing menu">
+<div class="ui attached pointing menu my-background-main">
     <div class="ui container container-width">
-        <div class="right menu ">
+        <div class="right menu my-background-main">
             <a href="#" class="item" th:href="@{/admin/types/add}">添加</a>
             <a href="#" class="active teal item" th:href="@{/admin/types}">列表</a>
         </div>
@@ -56,12 +56,12 @@
             <div class="header">提示:</div>
             <p th:text="${message}">操作成功！</p>
         </div>
-        <table class="ui table">
+        <table class="ui table my-background-main">
             <thead>
             <tr>
-                <th></th>
-                <th>名称</th>
-                <th>操作</th>
+                <th class="my-background-main"></th>
+                <th class="my-background-main">名称</th>
+                <th class="my-background-main">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -79,8 +79,8 @@
             </tbody>
             <tfoot>
             <tr>
-                <th colspan="6">
-                    <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                <th class="my-background-main" colspan="6">
+                    <div class="ui pagination menu my-background-main" th:if="${page.totalPages}>1">
                         <a href="#" class="item" th:href="@{/admin/types(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
                         <a href="#" class="item" th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
                     </div>

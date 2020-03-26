@@ -252,11 +252,15 @@ body {
 }
 
 .my-background-main{
-    background-color: #a9addc38 !important;
+    background-color: #f0f1ff38 !important;
 }
 
 .full-transparent{
     background-color: #ffffff00 !important;
+}
+
+.little-transparent{
+    background-color: #ffffffee !important;
 }
 
 .show-inline {

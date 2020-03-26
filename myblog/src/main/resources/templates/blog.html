@@ -45,7 +45,7 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix animated zoomIn">
     <div class="ui container">
-        <div class="ui top attached segment">
+        <div class="ui top attached segment my-background-main">
             <div class="two wide column">
                 <div class="ui horizontal link list">
                     <div class="item">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="ui attached segment">
+        <div class="ui attached segment my-background-main">
             <img src="https://picsum.photos/id/1079/800/400" alt="" class="ui fluid rounded image" th:src="@{|${blog.picture}/800/450|}">
         </div>
         <!-- 博客内容 -->
@@ -71,7 +71,7 @@
         <pre><code class="language-c">printf("this really good");</code></pre>
         <pre><code class="language-java">System.out.println("Hello prism!");</code></pre>
         <!--*/-->
-        <div class="ui attached segment padding-big">
+        <div class="ui attached segment my-background-main padding-big">
             <div class="ui right aligned basic segment">
                 <div class="ui teal basic label" th:text="${blog.flag}">原创</div>
             </div>
@@ -85,11 +85,11 @@
             </div>
 
             <!-- 打赏按钮 -->
-            <div class="ui center aligned segment">
+            <div class="ui center aligned segment my-background-main">
                 <button id="payButton" class="ui orange basic circular button">打赏</button>
             </div>
             <!-- 打赏二维码 -->
-            <div class="ui planar flowing popup transition hidden">
+            <div class="ui planar flowing popup transition hidden my-background-main">
                 <div class="ui orange basic label">
                     <div class="ui images">
                         <div class="margin-auto">
@@ -117,9 +117,9 @@
             </div>
         </div>
         <!-- 留言区域 -->
-        <div class="ui bottom attached segment" th:if="${blog.commentTable}">
+        <div class="ui bottom attached segment my-background-main" th:if="${blog.commentTable}">
             <!-- 留言展示 -->
-            <div id="comment-container" class="ui teal segment">
+            <div class="ui teal segment my-background-main" id="comment-container">
                 <div th:fragment="commentList">
                     <!--根级留言-->
                     <div class="ui small comments max-width">
@@ -234,19 +234,19 @@
                 <input type="hidden" name="blog.id" th:value="${blog.id}">
                 <input type="hidden" name="parentComment.id" th:value="-1">
                 <div class="field ">
-                    <textarea name="content" placeholder="请输入留言..."></textarea>
+                    <textarea class="my-background-main" name="content" placeholder="请输入留言..."></textarea>
                 </div>
                 <div class="fields">
                     <div class="field mobile-expand">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="nickname" placeholder="用户名" th:value="${session.user}!=null ? ${session.user.nickname}">
+                            <input class="my-background-main" name="nickname" placeholder="用户名" th:value="${session.user}!=null ? ${session.user.nickname}" type="text">
                         </div>
                     </div>
                     <div class="field mobile-expand">
                         <div class="ui left icon input">
                             <i class="mail icon"></i>
-                            <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
+                            <input class="my-background-main" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}" type="text">
                         </div>
                     </div>
                     <div class="field mobile-expand">
@@ -277,6 +277,8 @@
     <!-- <img src="../static/img/planar.jpg" alt="" class="ui rounded image planar-width"> -->
 </div>
 
+<br/>
+<br/>
 <!-- 底部footer -->
 <footer th:replace="fragments :: footer" id="footer" class="ui inverted vertical segment">
     <div class="ui center aligned container">

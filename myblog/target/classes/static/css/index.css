@@ -36,10 +36,6 @@ body {
     margin-right: 15px !important;
 }
 
-.my-background{
-    background-color: #57c5ac33 !important;
-}
-
 #searchbar{
     height: 25px;
     border: #439a92;
@@ -225,6 +221,46 @@ body {
 .pos-fixed {
     position: fixed !important;
     z-index: 10 !important;
+}
+
+.text-red{
+    color: crimson !important;
+}
+
+.text-pink{
+    color: deeppink !important;
+}
+
+.my-background-teal{
+    background-color: #57c5ac33 !important;
+}
+
+.my-background-blue{
+    background-color: #5580e029 !important;
+}
+
+.my-background-violet{
+    background-color: #7747d638 !important;
+}
+
+.my-background-red{
+    background-color: #f5040438 !important;
+}
+
+.my-background-pink{
+    background-color: #d8215d3d !important;
+}
+
+.my-background-main{
+    background-color: #f0f1ff38 !important;
+}
+
+.full-transparent{
+    background-color: #ffffff00 !important;
+}
+
+.little-transparent{
+    background-color: #ffffffee !important;
 }
 
 .show-inline {

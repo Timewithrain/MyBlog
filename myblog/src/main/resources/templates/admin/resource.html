@@ -54,27 +54,27 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <div id="upload-table" class="ui segment form" >
+        <div class="ui segment form my-background-main" id="upload-table" >
             <form action="/admin/resource/upload" method="post" enctype="multipart/form-data">
                 <div class="ui fluid action input field">
-                    <input type="file" name="file" id="file" onclick="removeError()">
+                    <input class="my-background-main" id="file" name="file" onclick="removeError()" type="file">
                     <button type="submit" id="upload-btn" class="ui teal button" name="upload"><i class="upload icon"></i>上传</button>
                 </div>
             </form>
         </div>
 
         <div id="table-container">
-            <table th:fragment="list" class="ui table">
+            <table class="ui table my-background-main" th:fragment="list">
                 <thead>
                 <tr>
                     <th></th>
-                    <th class="text-center">文件名</th>
-                    <th class="text-center">类型</th>
-                    <th class="text-center">大小</th>
-                    <th class="text-center">下载次数</th>
-                    <th class="text-center">上传时间</th>
-                    <th class="text-center">私有</th>
-                    <th class="text-center">操作</th>
+                    <th class="text-center my-background-main">文件名</th>
+                    <th class="text-center my-background-main">类型</th>
+                    <th class="text-center my-background-main">大小</th>
+                    <th class="text-center my-background-main">下载次数</th>
+                    <th class="text-center my-background-main">上传时间</th>
+                    <th class="text-center my-background-main">私有</th>
+                    <th class="text-center my-background-main">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,11 +97,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="8"  th:if="${page.totalPages}>1">
-                        <div class="ui pagination menu" th:unless="${page.first}">
+                    <th class="my-background-main" colspan="8" th:if="${page.totalPages}>1">
+                        <div class="ui pagination menu my-background-main" th:unless="${page.first}">
                             <a class="item" onclick="page(this)" th:attr="data-page=${page.number}-1">上一页</a>
                         </div>
-                        <div class="ui pagination menu float-right" th:unless="${page.last}">
+                        <div class="ui pagination menu my-background-main float-right" th:unless="${page.last}">
                             <a class="item" onclick="page(this)" th:attr="data-page=${page.number}+1">下一页</a>
                         </div>
                     </th>

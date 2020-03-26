@@ -39,7 +39,7 @@
 <div id="center" class="container-width clear-fix animated fadeInUp">
     <div class="ui container">
         <!-- 中部content header -->
-        <div class="ui top attached segment">
+        <div class="ui top attached segment my-background-main">
             <div class="ui middle aligned two column grid">
                 <div class="column">
                     <h3 class="ui teal header">标签</h3>
@@ -50,54 +50,54 @@
             </div>
         </div>
         <!-- 标签栏 -->
-        <div class="ui attached segment">
-            <div class="ui top attached segment">
-                <a href="#" class="ui basic large label margin-bottom-small" th:classappend="${tag.id==activeTagId} ? 'teal'" th:href="@{/tags/{id}(id=${tag.id})}" th:each="tag : ${tags}">
+        <div class="ui attached segment my-background-main">
+            <div class="ui top attached segment my-background-main">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.id})}">
                     <span th:text="${tag.name}">JAVA SE</span>
                     <div class="detail" th:text="${#arrays.length(tag.blogs)}">6</div>
                 </a>
                 <!--/*-->
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     JAVA EE
                     <div class="detail">13</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     python
                     <div class="detail">9</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     数据处理
                     <div class="detail">6</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     算法
                     <div class="detail">13</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     GitHub
                     <div class="detail">9</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     SpringBoot
                     <div class="detail">6</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     Django
                     <div class="detail">13</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     卷曲神经网络
                     <div class="detail">9</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     分布式计算
                     <div class="detail">6</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     3D建模
                     <div class="detail">13</div>
                 </a>
-                <a href="#" target="_blank" class="ui basic large label margin-bottom-small">
+                <a class="ui basic large label margin-bottom-small full-transparent" href="#" target="_blank">
                     计算机材料学
                     <div class="detail">9</div>
                 </a>
@@ -105,9 +105,9 @@
             </div>
         </div>
         <!-- 博客内容 -->
-        <div class="ui teal attached segment">
+        <div class="ui teal attached segment my-background-main">
             <!-- 内容部分 -->
-            <div class="ui segment" th:each="blog : ${page.content}">
+            <div class="ui segment my-background-main" th:each="blog : ${page.content}">
                 <div class="ui stackable grid">
                     <!-- 内容部分 -->
                     <div class="eleven wide column ">
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <!--/*-->
-            <div class="ui segment">
+            <div class="ui segment my-background-main">
                 <div class="ui stackable grid">
                     <div class="eleven wide column ">
                         <h3 class="ui header">北大西洋暖流的推动原理</h3>
@@ -189,7 +189,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui segment">
+            <div class="ui segment my-background-main">
                 <div class="ui stackable grid">
                     <div class="eleven wide column ">
                         <h3 class="ui header">拉格朗日点平衡解析</h3>
@@ -236,7 +236,7 @@
         </div>
 
         <!-- content footer -->
-        <div class="ui attached segment" th:if="${page.totalPages}>1">
+        <div class="ui attached segment my-background-main" th:if="${page.totalPages}>1">
             <div class="ui two column grid">
                 <div class="column show-inline">
                     <a href="#" class="ui teal basic button" th:href="@{/tags/last/{id}(id=${activeTagId})}" th:unless="${page.first}">上一页</a>

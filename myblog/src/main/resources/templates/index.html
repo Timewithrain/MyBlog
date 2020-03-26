@@ -43,7 +43,7 @@
             <!-- 中间的左边博客部分布局 -->
             <div class="eleven wide column animated zoomInLeft">
                 <!-- content header -->
-                <div class="ui segment">
+                <div class="ui segment my-background-main">
                     <div class="ui two column grid">
                         <div class="column">
                             <h3 class="ui teal header">博客</h3>
@@ -55,9 +55,9 @@
                 </div>
 
                 <!-- content -->
-                <div class="ui attached segment">
+                <div class="ui attached segment my-background-main">
 
-                    <div class="ui segment" th:each="blog : ${page.content}">
+                    <div class="ui segment my-background-main" th:each="blog : ${page.content}">
                         <div class="ui stackable grid">
                             <!-- 内容部分 -->
                             <div class="eleven wide column ">
@@ -246,7 +246,7 @@
                 </div>
 
                 <!-- content footer -->
-                <div class="ui attached segment" th:if="${page.totalPages}>1">
+                <div class="ui attached segment my-background-main" th:if="${page.totalPages}>1">
                     <div class="ui two column grid">
                         <div class="column show-inline">
                             <a href="#" class="ui teal basic button" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
@@ -261,7 +261,7 @@
             <div class="five wide column animated zoomInRight">
                 <!-- 分类卡片 -->
                 <div class="ui segments">
-                    <div class="ui secondary segment">
+                    <div class="ui secondary segment  my-background-main">
                         <div class="ui two column grid">
                             <div class="column">
                                 <i class="idea icon"></i>分类
@@ -271,8 +271,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui teal segment">
-                        <div class="ui fluid vertical menu" >
+                    <div class="ui teal segment my-background-main">
+                        <div class="ui fluid vertical menu my-background-main" >
                             <a href="#" target="_blank" class="item" th:href="@{/types/{id}(id=${type.id})}" th:each="type : ${types}">
                                 <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal label" th:text="${#arrays.length(type.blogs)}">13</div>
@@ -292,7 +292,7 @@
                 </div>
                 <!-- 标签卡片 -->
                 <div class="ui segments">
-                    <div class="ui secondary segment">
+                    <div class="ui secondary segment my-background-main">
                         <div class="ui two column grid">
                             <div class="column">
                                 <i class="tags icon"></i>标签
@@ -302,7 +302,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui teal segment">
+                    <div class="ui teal segment my-background-main">
                         <a href="#" target="_blank" class="ui teal basic label margin-bottom-small" th:href="@{/tags/{id}(id=${tag.id})}" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">JAVA SE</span>
                             <div class="detail" th:text="${#arrays.length(tag.blogs)}">6</div>
@@ -325,9 +325,9 @@
                 </div>
                 <!-- 推荐卡片 -->
                 <div class="ui segments">
-                    <div class="ui secondary segment">
+                    <div class="ui secondary segment  my-background-main">
                         <i class="bookmark icon margin-bottom-big"></i>最新推荐
-                        <div class="ui segment padding-small margin-none" th:each="blog : ${recommendBlog}">
+                        <div class="ui segment padding-small margin-none my-background-main" th:each="blog : ${recommendBlog}">
                             <a href="#" target="_blank" class="text-black" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">双生子佯谬的闵氏几何解</a>
                         </div>
                         <!--/*-->

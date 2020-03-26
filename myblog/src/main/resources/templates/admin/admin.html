@@ -39,9 +39,9 @@
     </a>
 </nav>
 <!-- 二级导航栏 -->
-<div class="ui attached pointing menu">
+<div class="ui attached pointing menu my-background-main">
     <div class="ui container container-width">
-        <div class="right menu ">
+        <div class="right menu my-background-main">
             <a href="blog-add.html" class="item" th:href="@{/admin/blog-add.html}">发布</a>
             <a href="#" class="active teal item" th:href="@{/admin/admin.html}">列表</a>
         </div>
@@ -51,14 +51,14 @@
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
     <div class="ui container">
-        <div class="ui segment form" >
+        <div class="ui segment form my-background-main" >
             <input type="hidden" name="page">
             <div class="inline fields margin-small">
                 <div class="field margin-small">
-                    <input type="text" name="title" id="" placeholder="标题">
+                    <input class="my-background-main" name="title" placeholder="标题" type="text">
                 </div>
                 <div class="field margin-small">
-                    <div class="ui selection dropdown">
+                    <div class="ui selection dropdown my-background-main">
                         <input type="hidden" name="typeId">
                         <i class="dropdown icon"></i>
                         <div class="default text">分类</div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="field margin-small">
                     <div class="ui checkbox">
-                        <input type="checkbox" name="recommend" id="recommend">
+                        <input class="my-background-main" id="recommend" name="recommend" type="checkbox">
                         <label for="recommend">推荐</label>
                     </div>
                 </div>
@@ -80,16 +80,16 @@
         </div>
 
         <div id="table-container">
-            <table th:fragment="list" class="ui table">
+            <table class="ui table my-background-main" th:fragment="list">
                 <thead>
                 <tr>
-                    <th></th>
-                    <th>标题</th>
-                    <th>类型</th>
-                    <th>推荐</th>
-                    <th>状态</th>
-                    <th>更新时间</th>
-                    <th>操作</th>
+                    <th class="text-center full-transparent"></th>
+                    <th class="text-center full-transparent">标题</th>
+                    <th class="text-center full-transparent">类型</th>
+                    <th class="text-center full-transparent">推荐</th>
+                    <th class="text-center full-transparent">状态</th>
+                    <th class="text-center full-transparent">更新时间</th>
+                    <th class="text-center full-transparent">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -109,8 +109,8 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="7">
-                        <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                    <th class="my-background-main" colspan="7">
+                        <div class="ui pagination menu my-background-main" th:if="${page.totalPages}>1">
                             <a class="item" th:attr="data-page=${page.number}-1" onclick="page(this)" th:unless="${page.first}">上一页</a>
                             <a class="item" th:attr="data-page=${page.number}+1" onclick="page(this)" th:unless="${page.last}">下一页</a>
                         </div>

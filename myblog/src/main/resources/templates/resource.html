@@ -58,12 +58,12 @@
                 <table class="ui table my-background-main" th:fragment="list">
                     <thead>
                     <tr>
-                        <th class="text-center full-transparent">文件名</th>
-                        <th class="text-center full-transparent">类型</th>
-                        <th class="text-center full-transparent">大小</th>
-                        <th class="text-center full-transparent">下载次数</th>
-                        <th class="text-center full-transparent">上传时间</th>
-                        <th class="text-center full-transparent">操作</th>
+                        <th class="text-center my-background-main">文件名</th>
+                        <th class="text-center my-background-main">类型</th>
+                        <th class="text-center my-background-main">大小</th>
+                        <th class="text-center my-background-main">下载次数</th>
+                        <th class="text-center my-background-main">上传时间</th>
+                        <th class="text-center my-background-main">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,8 +81,8 @@
                     <tfoot>
                     <tr>
                         <!--/*-->
-                        <th colspan="7">
-                            <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                        <th class="my-background-main" colspan="7">
+                            <div class="ui pagination menu my-background-main" th:if="${page.totalPages}>1">
                                 <a class="item" onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}">上一页</a>
                                 <a class="item" onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}">下一页</a>
                             </div>

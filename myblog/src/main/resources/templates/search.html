@@ -39,7 +39,7 @@
 
     <div class="ui container">
         <!-- 中部content header -->
-        <div class="ui top attached segment">
+        <div class="ui top attached segment my-background-main">
             <div class="ui middle aligned two column grid">
                 <div class="column">
                     <h3 class="ui teal header">搜索结果</h3>
@@ -51,9 +51,9 @@
         </div>
 
         <!-- 博客内容 -->
-        <div class="ui teal attached segment">
+        <div class="ui teal attached segment my-background-main">
             <!-- 内容部分 -->
-            <div class="ui segment" th:each="blog : ${page.content}">
+            <div class="ui segment my-background-main" th:each="blog : ${page.content}">
                 <div class="ui stackable grid">
                     <!-- 内容部分 -->
                     <div class="eleven wide column ">
@@ -178,7 +178,7 @@
         </div>
 
         <!-- content footer -->
-        <div class="ui attached segment" th:if="${page.totalPages}>1">
+        <div class="ui attached segment my-background-main" th:if="${page.totalPages}>1">
             <div class="ui two column grid">
                 <div class="column show-inline">
                     <a href="#" class="ui teal basic button" th:href="@{/search/(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
