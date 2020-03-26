@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- 引入senmanticUI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link href="../static/css/animate.css" rel="stylesheet" th:href="@{/css/animate.css}">
     <link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}">
     <link rel="icon" href="/img/logo.png" sizes="32x32" th:href="@{/img/logo.png}">
     <title>个人资料</title>
@@ -42,7 +43,7 @@
 
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
-    <div class="ui grid">
+    <div class="ui grid animated bounceInDown">
         <div class="seven wide column margin-auto">
             <div id="avatar-container">
                 <a href="../about.html" target="_blank" th:href="@{/about.html}">
@@ -52,18 +53,32 @@
             </div>
         </div>
     </div>
-    <div class="ui grid">
+    <div class="ui grid animated bounceInUp">
         <div class="five wide column margin-auto">
-            <div class="ui raised segment my-background">
-                <a class="ui teal ribbon label">Username:</a><div class="ui mini teal header show" th:text="${user.username}">zzzx</div>
+            <div class="ui raised segment my-background-teal">
+                <a class="ui teal ribbon label">Username&gt;</a><div class="ui mini teal header show" th:text="${user.username}">zzzx</div>
                 <p></p>
             </div>
-            <div class="ui raised segment my-background">
-                <a class="ui blue ribbon label">Password:</a><div class="ui mini blue header show top-3" th:text="${user.password}">*******</div>
+            <div class="ui raised segment my-background-blue">
+                <a class="ui blue ribbon label">Password&gt;</a><div class="ui mini blue header show top-3" th:text="${user.password}">*******</div>
                 <p></p>
             </div>
-            <div class="ui raised segment my-background">
-                <a class="ui violet ribbon label">E-mail: </a><div class="ui mini violet header show" th:text="${user.email}">firstone@163c.com</div>
+            <div class="ui raised segment my-background-violet">
+                <a class="ui violet ribbon label">E-mail&gt; </a><div class="ui mini violet header show" th:text="${user.email}">firstone@163c.com</div>
+                <p></p>
+            </div>
+        </div>
+        <div class="eight wide column margin-auto">
+            <div class="ui raised segment my-background-red">
+                <a class="ui red right ribbon label">&lt;Description</a>
+                    <div class="text-red">
+                    一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。
+                    </div>
+                <p></p>
+            </div>
+            <div class="ui raised segment my-background-pink">
+                <a class="ui pink right ribbon label">&lt;Words</a>
+                    <div class="text-pink">我愿有一所房子，面朝大海，春暖花开</div>
                 <p></p>
             </div>
 

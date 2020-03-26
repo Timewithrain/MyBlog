@@ -93,7 +93,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="blog,iterStat : ${page.content}">
+                <tr class="tr" th:each="blog : ${page.content}">
                     <td th:text="${blog.id}">1</td>
                     <td th:text="${blog.title}">学习清单</td>
                     <td th:text="${blog.type.name}">认知升级</td>
@@ -102,7 +102,8 @@
                     <td th:text="${blog.updateTime}">2019-12-2 09:27</td>
                     <td>
                         <a href="#" class="ui mini teal button" th:href="@{/admin/blogs-edit/{id}(id=${blog.id})}">编辑</a>
-                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs-delete/{id}(id=${blog.id})}">删除</a>
+<!--                        <a href="#" class="ui mini red button" th:href="@{/admin/blogs-delete/{id}(id=${blog.id})}">删除</a>-->
+                        <a class="ui mini red button del-btn" href="#" th:attr="data-href=|/admin/blogs-delete/${blog.id}|">删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -120,6 +121,26 @@
             </table>
         </div>
 
+    </div>
+</div>
+
+<!--确认框-->
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="red file excel outline icon"></i>
+    </div>
+    <div class="ui header text-center">
+        Are you sure to delete?
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button" id="cancel">
+            <i class="remove icon"></i>
+            No
+        </div>
+        <div class="ui green ok inverted button" id="certain">
+            <i class="checkmark icon"></i>
+            Yes
+        </div>
     </div>
 </div>
 
@@ -171,6 +192,26 @@
 
     $(".ui .dropdown").dropdown({
         on: 'hover'
+    });
+
+    //弹出确认框确认
+    $(function () {
+        var obj = null;
+        $("#table-container").on("click",".del-btn",function () {
+            obj = this;
+            $('.ui.basic.modal').modal('show');
+        });
+        $(".ui.modal").on("click","#cancel",function () {
+            console.log("no");
+        });
+        obj = true;
+        $(".ui.modal").on("click","#certain",function () {
+            console.log("yes");
+            var str = $(obj).data("href");
+            $.get(str,function () {
+                window.location.reload()
+            });
+        });
     });
 
     //获取页面page的查询条件等信息

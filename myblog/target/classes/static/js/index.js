@@ -8,6 +8,26 @@ $(function () {
     $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
 });
 
+//弹出确认框确认
+$(function () {
+    var obj = null;
+    $("#table-container").on("click",".del-btn",function () {
+        obj = this;
+        $('.ui.basic.modal').modal('show');
+    });
+    $(".ui.modal").on("click","#cancel",function () {
+        console.log("no");
+    });
+    obj = true;
+    $(".ui.modal").on("click","#certain",function () {
+        console.log("yes");
+        var str = $(obj).data("href");
+        $.get(str,function () {
+            window.location.reload()
+        });
+    });
+});
+
 /****************************blog page functions******************************/
 
 $(function () {

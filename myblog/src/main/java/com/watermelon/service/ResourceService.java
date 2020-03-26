@@ -81,6 +81,15 @@ public class ResourceService {
         return resourceRepository.findAll(pageable);
     }
 
+    public Page<Resource> listPublicResource(Pageable pageable){
+        return resourceRepository.findAll(new Specification<Resource>() {
+            @Override
+            public Predicate toPredicate(Root<Resource> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.<Boolean>get("isPrivate"), false);
+            }
+        },pageable);
+    }
+
     public Page<Resource> listPicture(Pageable pageable){
         Page<Resource> page =  resourceRepository.findAll(new Specification<Resource>() {
             @Override

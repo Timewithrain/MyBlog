@@ -91,7 +91,7 @@
                     </td>
                     <td>
                         <a href="#" class="ui mini teal button" th:href="@{/admin/resource/download/{id}(id=${resource.id})}"><i class="download icon"></i>下载</a>
-                        <a class="ui mini red button" href="#" id="del-btn" th:attr="data-href=|/admin/resource/delete/${resource.id}|"><i class="trash alternate icon"></i>删除</a>
+                        <a class="ui mini red button del-btn" href="#" th:attr="data-href=|/admin/resource/delete/${resource.id}|"><i class="trash alternate icon"></i>删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -116,11 +116,10 @@
 <!--确认框-->
 <div class="ui basic modal">
     <div class="ui icon header">
-        <i class="trash icon"></i>
-        Are you sure to delete?
+        <i class="red file excel outline icon"></i>
     </div>
-    <div class="content">
-        <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+    <div class="ui header text-center">
+        Are you sure to delete?
     </div>
     <div class="actions">
         <div class="ui red basic cancel inverted button" id="cancel">
@@ -222,17 +221,21 @@
 
     //弹出确认框确认
     $(function () {
-        $("#table-container").on("click",".ui.button",function () {
+        var obj = null;
+        $("#table-container").on("click",".del-btn",function () {
+            obj = this;
             $('.ui.basic.modal').modal('show');
         });
         $(".ui.modal").on("click","#cancel",function () {
             console.log("no");
         });
+        obj = true;
         $(".ui.modal").on("click","#certain",function () {
             console.log("yes");
-            var str = $("#del-btn").data("href");
-            console.log(str);
-            $.get(str);
+            var str = $(obj).data("href");
+            $.get(str,function () {
+                window.location.reload()
+            });
         });
     });
 

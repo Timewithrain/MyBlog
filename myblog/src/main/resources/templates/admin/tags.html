@@ -50,7 +50,7 @@
 
 <!-- 中间内容 -->
 <div id="center" class="container-width clear-fix">
-    <div class="ui container">
+    <div class="ui container" id="table-container">
         <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
             <i class="close icon"></i>
             <div class="header">提示:</div>
@@ -72,7 +72,8 @@
                 <td th:text="${tag.name}">中国制造</td>
                 <td>
                     <a href="#" class="ui mini teal button" th:href="@{/admin/tags/{id}/edit(id=${tag.id})}">编辑</a>
-                    <a href="#" class="ui mini red button" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}">删除</a>
+<!--                    <a href="#" class="ui mini red button" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}">删除</a>-->
+                    <a class="ui mini red button del-btn" href="#" th:attr="data-href=|/admin/tags/${tag.id}/delete|">删除</a>
                 </td>
             </tr>
             </tbody>
@@ -89,6 +90,25 @@
             </tfoot>
         </table>
 
+    </div>
+</div>
+
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="red file excel outline icon"></i>
+    </div>
+    <div class="ui header text-center">
+        Are you sure to delete?
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button" id="cancel">
+            <i class="remove icon"></i>
+            No
+        </div>
+        <div class="ui green ok inverted button" id="certain">
+            <i class="checkmark icon"></i>
+            Yes
+        </div>
     </div>
 </div>
 

@@ -3,13 +3,9 @@ package com.watermelon.myblog;
 import com.watermelon.entity.*;
 import com.watermelon.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -158,7 +154,7 @@ public class IndexController {
     @GetMapping({"/resource.html","/resource"})
     public String resource(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable,Model model){
         System.out.println("-----------resource-------------");
-        model.addAttribute("page",resourceService.listResource(pageable));
+        model.addAttribute("page",resourceService.listPublicResource(pageable));
         return "resource";
     }
 

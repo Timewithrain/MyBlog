@@ -60,9 +60,7 @@ public class ResourceController {
 
     @RequestMapping("/resource/search")
     public String search(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
-        System.out.println("page turning"+pageable.getPageNumber());
         model.addAttribute("page",resourceService.listResource(pageable));
-        System.out.println("page turned"+pageable.getPageNumber());
         return "admin/resource :: list";
     }
 
