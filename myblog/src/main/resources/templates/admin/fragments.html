@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<nav th:fragment="menu(n)" class="ui inverted attached segment" >
+<nav class="ui inverted attached segment nav-footer-color"id="nav" th:fragment="menu(n)" >
     <div id="menu-container" class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
-            <a target="_blank" href="/" th:href="@{/}"><img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}"></a>
+            <a class="a-logo" href="/" target="_blank" th:href="@{/}"><img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}"></a>
             <h2 id="name" class="ui teal header">Blog后台</h2>
             <a href="admin.html" class="menu item mobile-hide" th:href="@{../admin/admin.html}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
-            <a href="types.html" class="menu item mobile-hide" th:href="@{/admin/types.html}" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+            <a class="menu item mobile-hide" href="types.html" th:classappend="${n==2} ? 'active'" th:href="@{../admin/types.html}"><i class="idea icon"></i>分类</a>
             <a href="tags.html" class="menu item mobile-hide" th:href="@{../admin/tags.html}" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
             <a href="resource.html" class="menu item mobile-hide" th:href="@{../admin/resource.html}" th:classappend="${n==4} ? 'active'"><i class="paper plane icon"></i>资源</a>
             <div class="right menu mobile-hide">
@@ -36,7 +36,7 @@
 </nav>
 
 <!-- 底部footer(未使用) -->
-<footer th:fragment="footer" id="footer" class="ui inverted vertical segment">
+<footer class="ui inverted vertical segment nav-footer-color" id="footer" th:fragment="footer">
     <div class="ui center aligned container">
         <div class="ui stackable grid">
             <div class="three wide column">

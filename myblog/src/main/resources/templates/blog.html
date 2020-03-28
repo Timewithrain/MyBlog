@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="actions">
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}">回复</a>
-                                    <a class="delete" data-commentid="1" onclick="del(this)" th:if="${session.user}!=null" th:attr="data-commentid=${comment.id}">删除</a>
+                                    <a class="delete" data-commentid="1" th:attr="data-commentid=${comment.id}" th:if="${session.user}!=null">删除</a>
                                 </div>
                             </div>
 
@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="actions">
                                             <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}">回复</a>
-                                            <a class="delete" data-commentid="1" onclick="del(this)" th:if="${session.user}!=null" th:attr="data-commentid=${reply.id}">删除</a>
+                                            <a class="delete" data-commentid="1" th:attr="data-commentid=${reply.id}" th:if="${session.user}!=null">删除</a>
                                         </div>
                                     </div>
                                 </div>
@@ -277,6 +277,26 @@
     <!-- <img src="../static/img/planar.jpg" alt="" class="ui rounded image planar-width"> -->
 </div>
 
+<!--确认框-->
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="red file excel outline icon"></i>
+    </div>
+    <div class="ui header text-center">
+        Are you sure to delete the comment?
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button" id="cancel">
+            <i class="remove icon"></i>
+            No
+        </div>
+        <div class="ui green ok inverted button" id="certain">
+            <i class="checkmark icon"></i>
+            Yes
+        </div>
+    </div>
+</div>
+
 <br/>
 <br/>
 <!-- 底部footer -->
@@ -383,7 +403,7 @@
         });
     }
 
-    /*提交以后进行清除content*/
+    /***提交以后进行清除content***/
     function clearComment(){
         $("[name='nickname']").val('');
         $("[name='email']").val('');
@@ -399,7 +419,7 @@
         $(window).scrollTo($("#comment-form"),500);
     }
 
-    /*管理员删除评论*/
+    /***管理员删除评论***/
     function del(object){
         console.log("comment:"+ $(object).data('commentid'));
         console.log("blog:"+ $("[name='blog.id']").val());
@@ -410,6 +430,18 @@
             $(window).scrollTo($("#comment-form"),500);
         });
     }
+
+    /***弹出确认框确认删除评论***/
+    $(function () {
+        var obj = null;
+        $("#comment-container").on("click",".delete",function () {
+            obj = this;
+            $('.ui.basic.modal').modal('show');
+        });
+        $(".ui.modal").on("click","#certain",function () {
+            del(obj);
+        });
+    });
 
     $("#bloglist-container").load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog");
 

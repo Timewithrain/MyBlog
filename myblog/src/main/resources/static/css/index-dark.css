@@ -1,11 +1,8 @@
 body {
-    background: url("../img/whale_rise.jpg");
+    background: url("../img/background.jpg");
     background-attachment: fixed;
     background-position: 0% 20%;
     background-size: cover;
-}
-
-#nav{
 }
 
 #menu-container{
@@ -46,35 +43,21 @@ body {
     margin-right: 15px !important;
 }
 
-#search{
-    width: 50px;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-#search-bar{
+#searchbar{
     height: 25px;
-    border: #a4a7a8;
+    border: #439a92;
     border-style: groove;
     border-radius: 7px;
 }
 
-#search-bar:hover {
-    border: #439a92 groove !important;
-}
-
-#search-bar:hover #search{
-    color: #00b5ad;
-    width: 150px;
-}
-
-#search-bar:hover .search.icon{
-    color: #00b5ad !important;
-}
-
 #center {
+    color: aliceblue;
     margin-top: 20px !important;
     min-height: 350px;
+}
+
+span{
+    color: aliceblue;
 }
 
 #md-content {
@@ -213,7 +196,7 @@ body {
 }
 
 .title-color{
-    color: black;
+    color: #dee2ff;
 }
 
 .c-transparent{
@@ -257,13 +240,8 @@ body {
     background: #000000e0 !important;
 }
 
-
-.text-teal {
-    color: #1aba9c !important;
-}
-
-.text-black {
-    color: #333333 !important;
+.text-violet{
+    color: #bfbef7 !important;
 }
 
 .text-red{
@@ -295,7 +273,8 @@ body {
 }
 
 .my-background-main{
-    background-color: #f0f1ffd0 !important;
+    background-color: #53545ac2 !important;
+    border: #45455d solid !important;
 }
 
 .full-transparent{
@@ -393,6 +372,14 @@ body {
 .top-5{
     top: 5px;
     position: relative;
+}
+
+.text-teal {
+    color: #1aba9c !important;
+}
+
+.text-black {
+    color: #333333 !important;
 }
 
 .clear-fix {

@@ -6,11 +6,18 @@ body {
 }
 
 #nav{
-    background: #000000e0;
 }
 
 #menu-container{
     margin-left: 10px !important;
+}
+
+.a-logo{
+    transition: 0.2s;
+}
+
+.a-logo:hover{
+    transform: scale(1.2);
 }
 
 #logo{
@@ -39,15 +46,35 @@ body {
     margin-right: 15px !important;
 }
 
-#searchbar{
+#search{
+    width: 50px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+#search-bar{
     height: 25px;
-    border: #439a92;
+    border: #a4a7a8;
     border-style: groove;
     border-radius: 7px;
 }
 
+#search-bar:hover {
+    border: #439a92 groove !important;
+}
+
+#search-bar:hover #search{
+    color: #00b5ad;
+    width: 150px;
+}
+
+#search-bar:hover .search.icon{
+    color: #00b5ad !important;
+}
+
 #center {
     margin-top: 20px !important;
+    min-height: 350px;
 }
 
 #md-content {
@@ -106,9 +133,9 @@ body {
 }
 
 #footer {
+    width: 100%;
     bottom: 0%;
     padding-top: 25px;
-    background: #000000e0;
 }
 
 #copyright {
@@ -185,7 +212,7 @@ body {
     text-align: justify;
 }
 
-.black-color{
+.title-color{
     color: black;
 }
 
@@ -224,6 +251,19 @@ body {
 .pos-fixed {
     position: fixed !important;
     z-index: 10 !important;
+}
+
+.nav-footer-color{
+    background: #000000e0 !important;
+}
+
+
+.text-teal {
+    color: #1aba9c !important;
+}
+
+.text-black {
+    color: #333333 !important;
 }
 
 .text-red{
@@ -353,14 +393,6 @@ body {
 .top-5{
     top: 5px;
     position: relative;
-}
-
-.text-teal {
-    color: #1aba9c !important;
-}
-
-.text-black {
-    color: #333333 !important;
 }
 
 .clear-fix {
