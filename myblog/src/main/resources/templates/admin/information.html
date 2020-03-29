@@ -54,31 +54,42 @@
         </div>
     </div>
     <div class="ui grid animated bounceInUp">
-        <div class="five wide column margin-auto">
+        <div class="six wide column margin-auto">
             <div class="ui raised segment my-background-teal">
-                <a class="ui teal ribbon label">Username&gt;</a><div class="ui mini teal header show" th:text="${user.username}">zzzx</div>
+                <a class="ui teal ribbon label">Username&gt;</a>
+                <div class="ui input">
+                    <input class="full-transparent infor-input text-teal" name="username" th:value="${user.username}" type="text">
+                </div>
                 <p></p>
             </div>
             <div class="ui raised segment my-background-blue">
-                <a class="ui blue ribbon label">Password&gt;</a><div class="ui mini blue header show top-3" th:text="${user.password}">*******</div>
+                <a class="ui blue ribbon label">Password&gt;</a>
+                <div class="ui input">
+                    <input class="full-transparent infor-input text-blue" name="password" th:value="${user.password}" type="text">
+                </div>
                 <p></p>
             </div>
             <div class="ui raised segment my-background-violet">
-                <a class="ui violet ribbon label">E-mail&gt; </a><div class="ui mini violet header show" th:text="${user.email}">firstone@163c.com</div>
+                <a class="ui violet ribbon label">E-mail&gt; </a>
+                <div class="ui input">
+                    <input class="full-transparent infor-input text-violet" name="email" th:value="${user.email}" type="text">
+                </div>
                 <p></p>
             </div>
         </div>
         <div class="eight wide column margin-auto">
             <div class="ui raised segment my-background-red">
                 <a class="ui red right ribbon label">&lt;Description</a>
-                    <div class="text-red">
-                    一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。
-                    </div>
+                <div class="ui form infor-form1">
+                    <textarea class="full-transparent text-red" id="description" name="description">一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。。</textarea>
+                </div>
                 <p></p>
             </div>
             <div class="ui raised segment my-background-pink">
                 <a class="ui pink right ribbon label">&lt;Words</a>
-                    <div class="text-pink">我愿有一所房子，面朝大海，春暖花开</div>
+                <div class="ui form infor-form2">
+                    <textarea class="full-transparent text-pink" id="words" name="words">我愿有一所房子，面朝大海，春暖花开</textarea>
+                </div>
                 <p></p>
             </div>
 
