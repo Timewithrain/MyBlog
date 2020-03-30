@@ -42,7 +42,8 @@
 </nav>
 
 <!-- 中间内容 -->
-<div id="center" class="container-width clear-fix">
+<div class="container-width clear-fix" id="center" th:object="${user}">
+    <input name="id" th:value="*{id}" type="hidden">
     <div class="ui grid animated bounceInDown">
         <div class="seven wide column margin-auto">
             <div id="avatar-container">
@@ -58,41 +59,66 @@
             <div class="ui raised segment my-background-teal">
                 <a class="ui teal ribbon label">Username&gt;</a>
                 <div class="ui input">
-                    <input class="full-transparent infor-input text-teal" name="username" th:value="${user.username}" type="text">
+                    <input class="full-transparent infor-input text-teal username" name="username" readonly="readonly" th:value="*{username}" type="text">
                 </div>
                 <p></p>
             </div>
             <div class="ui raised segment my-background-blue">
                 <a class="ui blue ribbon label">Password&gt;</a>
                 <div class="ui input">
-                    <input class="full-transparent infor-input text-blue" name="password" th:value="${user.password}" type="text">
+                    <input class="full-transparent infor-input text-blue password" name="password" readonly="readonly" th:value="*{password}" type="text">
                 </div>
                 <p></p>
             </div>
             <div class="ui raised segment my-background-violet">
                 <a class="ui violet ribbon label">E-mail&gt; </a>
                 <div class="ui input">
-                    <input class="full-transparent infor-input text-violet" name="email" th:value="${user.email}" type="text">
+                    <input class="full-transparent infor-input text-violet email" name="email" readonly="readonly" th:value="*{email}" type="text">
                 </div>
                 <p></p>
             </div>
         </div>
         <div class="eight wide column margin-auto">
-            <div class="ui raised segment my-background-red">
-                <a class="ui red right ribbon label">&lt;Description</a>
-                <div class="ui form infor-form1">
-                    <textarea class="full-transparent text-red" id="description" name="description">一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。。</textarea>
+                <div class="ui raised segment my-background-red">
+                    <a class="ui red right ribbon label">&lt;Description</a>
+                    <div class="ui form infor-form1">
+                        <textarea class="full-transparent text-red description" id="description" name="description" readonly="readonly" th:text="*{description}">一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。。</textarea>
+                    </div>
+                    <p></p>
                 </div>
-                <p></p>
-            </div>
-            <div class="ui raised segment my-background-pink">
-                <a class="ui pink right ribbon label">&lt;Words</a>
-                <div class="ui form infor-form2">
-                    <textarea class="full-transparent text-pink" id="words" name="words">我愿有一所房子，面朝大海，春暖花开</textarea>
+                <div class="ui raised segment my-background-pink">
+                    <a class="ui pink right ribbon label">&lt;Words</a>
+                    <div class="ui form infor-form2">
+                        <textarea class="full-transparent text-pink words" id="words" name="words" readonly="readonly" th:text="*{words}">我愿有一所房子，面朝大海，春暖花开</textarea>
+                    </div>
+                    <p></p>
                 </div>
-                <p></p>
             </div>
+    </div>
+    <div class="ui grid">
+        <div class="right aligned column disappear" id="buttons">
+            <button class="ui button" id="restore-btn" type="button">恢复</button>
+            <button class="ui teal button" id="save-btn" type="button" >保存</button>
+        </div>
+    </div>
+</div>
 
+<!--确认框-->
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="blue save outline icon"></i>
+    </div>
+    <div class="ui header text-center">
+        Are you sure to save?
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button" id="cancel">
+            <i class="remove icon"></i>
+            No
+        </div>
+        <div class="ui green ok inverted button" id="certain">
+            <i class="checkmark icon"></i>
+            Yes
         </div>
     </div>
 </div>
@@ -147,15 +173,53 @@
         on: 'hover'
     });
 
-    //重新加载resource页面
-    function page(object){
-        $("[name='page']").val($(object).data("page"));
-        loadResource();
+    $("#center").on("click",".ribbon",function () {
+        var input1 = $(this).next();
+        var input = input1.children();
+        /*使user属性可编辑，并获取焦点*/
+        input.addClass("edited");
+        input.removeAttr("readonly");
+        input.focus();
+        /*显示保存按钮*/
+        $("#buttons").removeClass("disappear");
+        $("#buttons").addClass("appear");
+    });
+
+    $("#center").on("click","#restore-btn",function () {
+        restoreInfor();
+    });
+
+    function restoreInfor(){
+        window.location.reload();
     }
 
-    function loadResource(){
-        $("#table-container").load(/*[[@{/admin/picture/search}]]*/"/admin/picture/search",{
-            page : $("[name='page']").val()
+    //弹出确认框确认
+    $(function () {
+        var obj = null;
+        $("#center").on("click","#save-btn",function () {
+            obj = this;
+            $('.ui.basic.modal').modal('show');
+        });
+        $(".ui.modal").on("click","#cancel",function () {
+            console.log("no");
+        });
+        obj = true;
+        $(".ui.modal").on("click","#certain",function () {
+            console.log("yes");
+            updateInfor();
+        });
+    });
+
+    function updateInfor () {
+        $.post("/admin/infor-update",{
+            "id" : $("[name='id']").val(),
+            "username" : $(".username.edited").val(),
+            "password" : $(".password.edited").val(),
+            "email"    : $(".email.edited").val(),
+            "description"  : $(".description.edited").val(),
+            "words"    : $(".words.edited").val()
+        },function () {
+            window.location.reload();
         });
     }
 </script>

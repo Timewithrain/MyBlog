@@ -7,10 +7,10 @@
 <body>
 
 <!--通过thymeleaf模板对导航栏进行对应的样式改变-->
-<nav th:fragment="menu(n)" id="nav" class="ui inverted attached segment nav-footer-color">
+<nav class="ui inverted attached segment nav-footer-color" id="nav" th:fragment="menu(n)">
     <div id="menu-container" class="ui container">
         <div id="menu" class="ui inverted stackable secondary menu">
-            <a class="a-logo" target="_blank" href="/admin" th:href="@{/admin}"><img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}"></a>
+            <a class="a-logo" href="/admin" target="_blank" th:href="@{/admin}"><img id="logo" src="/img/logo.png" th:src="@{/img/logo.png}"></a>
             <h2 id="name" class="ui teal header">Blog</h2>
             <a href="#" class="menu item mobile-hide" th:href="@{../}" th:classappend="${n==1} ? 'act-col'"><i class="home icon"></i>首页</a>
             <a href="types.html" class="menu item mobile-hide" th:href="@{/types/-1}" th:classappend="${n==2} ? 'act-col'"><i class="idea icon"></i>分类</a>
@@ -19,8 +19,8 @@
             <a class="menu item mobile-hide" href="about.html" th:classappend="${n==5} ? 'act-col'" th:href="@{/about.html}"><i class="info icon"></i>关于</a>
             <div class="menu right item mobile-hide">
                 <form id="search-form" target="_blank" method="post" th:action="@{/searchPage}">
-                    <div id="search-bar" class="ui input inverted transparent">
-                        <input type="text" name="query" id="search" placeholder=" 搜索..." th:value="${query}">
+                    <div class="ui input inverted transparent" id="search-bar">
+                        <input id="search" name="query" placeholder=" 搜索..." th:value="${query}" type="text">
                         <i class="search link icon margin-middle" onclick="document.forms['search-form'].submit()"></i>
                     </div>
                 </form>
@@ -36,7 +36,7 @@
 </nav>
 
 <!-- 底部footer -->
-<footer th:fragment="footer" id="footer" class="ui inverted vertical segment nav-footer-color">
+<footer class="ui inverted vertical segment nav-footer-color" id="footer" th:fragment="footer">
     <div class="ui center aligned container">
         <div class="ui stackable grid">
             <div class="three wide column">

@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="actions">
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}">回复</a>
-                                    <a class="delete" data-commentid="1" th:if="${session.user}!=null" th:attr="data-commentid=${comment.id}">删除</a>
+                                    <a class="delete" data-commentid="1" th:attr="data-commentid=${comment.id}" th:if="${session.user}!=null">删除</a>
                                 </div>
                             </div>
 
@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="actions">
                                             <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}">回复</a>
-                                            <a class="delete" data-commentid="1" th:if="${session.user}!=null" th:attr="data-commentid=${reply.id}">删除</a>
+                                            <a class="delete" data-commentid="1" th:attr="data-commentid=${reply.id}" th:if="${session.user}!=null">删除</a>
                                         </div>
                                     </div>
                                 </div>

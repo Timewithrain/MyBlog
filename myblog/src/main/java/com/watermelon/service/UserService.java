@@ -2,6 +2,9 @@ package com.watermelon.service;
 
 import com.watermelon.DAO.UserRepository;
 import com.watermelon.entity.User;
+import com.watermelon.exception.NotFoundException;
+import com.watermelon.util.MyBeanUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -19,6 +22,15 @@ public class UserService {
         User user = userRepository.getOne(id);
         user.setPassword(encodePassword(user.getPassword()));
         return user;
+    }
+
+    public User updateUser(User  u){
+        User user = userRepository.getOne(u.getId());
+        if (user == null){
+            throw new NotFoundException("此用户未找到！");
+        }
+        BeanUtils.copyProperties(u,user,MyBeanUtils.getNullPropertiesName(u));
+        return userRepository.save(user);
     }
 
     public User checkUser(String username, String password){

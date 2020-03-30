@@ -92,6 +92,14 @@ body {
     overflow: hidden;
 }
 
+.disappear{
+    display: none !important;
+}
+
+.appear{
+    display: block !important;
+}
+
 .update-btn{
     padding: 4px 6px;
     display: none;

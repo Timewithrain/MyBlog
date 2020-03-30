@@ -16,6 +16,9 @@ public class User {
     private String email;
     private String avatar;
     private Integer type;
+    @Lob//长内容类型
+    private String description;
+    private String words;
 
     //建立数据库关系，通过blog中的user属性进行关联
     @OneToMany(mappedBy = "user")
@@ -80,6 +83,22 @@ public class User {
         this.type = type;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
+    }
+
     public List<Blog> getBlogs() {
         return blogs;
     }
@@ -98,6 +117,9 @@ public class User {
                 ", email='" + email + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", type=" + type +
+                ", description='" + description + '\'' +
+                ", words='" + words + '\'' +
+                ", blogs=" + blogs +
                 '}';
     }
 }

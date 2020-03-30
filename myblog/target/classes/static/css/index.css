@@ -92,6 +92,14 @@ body {
     overflow: hidden;
 }
 
+.disappear{
+    display: none !important;
+}
+
+.appear{
+    display: block !important;
+}
+
 .update-btn{
     padding: 4px 6px;
     display: none;
@@ -118,6 +126,32 @@ body {
     padding-top: 35px !important;
     margin-left: 20px !important;
     float: right !important;
+}
+
+.infor-input{
+    border: none !important;
+    font-size: 17px;
+    padding: 5px !important;
+}
+
+.infor-form1{
+    max-height: 70px;
+    overflow: hidden;
+}
+
+.infor-form1 > #description{
+    border: none !important;
+    max-height: 75px !important;
+}
+
+.infor-form2{
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.infor-form2 > #words{
+    border: none !important;
+    max-height: 35px !important;
 }
 
 #v-toolbar {
@@ -262,6 +296,14 @@ body {
     color: #1aba9c !important;
 }
 
+.text-blue {
+    color: #2185d0 !important;
+}
+
+.text-violet {
+    color: #6435c9 !important;
+}
+
 .text-black {
     color: #333333 !important;
 }
@@ -275,23 +317,23 @@ body {
 }
 
 .my-background-teal{
-    background-color: #57c5ac33 !important;
+    background-color: #e7fbf7b0  !important;
 }
 
 .my-background-blue{
-    background-color: #5580e029 !important;
+    background-color: #eff3ffb0 !important;
 }
 
 .my-background-violet{
-    background-color: #7747d638 !important;
+    background-color: #d9ceefb0 !important;
 }
 
 .my-background-red{
-    background-color: #f5040438 !important;
+    background-color: #f5e2e2b0 !important;
 }
 
 .my-background-pink{
-    background-color: #d8215d3d !important;
+    background-color: #efd1dbb0 !important;
 }
 
 .my-background-main{

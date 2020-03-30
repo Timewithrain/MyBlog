@@ -119,8 +119,8 @@
                     <div class="ui header">关于我</div>
                 </div>
                 <div class="ui attached segment my-background-main">
-                    <p>一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家。</p>
-                    <p>我愿有一所房子，面朝大海，春暖花开</p>
+                    <p th:text="${user.description}">一个不那么标准的理工狗，自然科学、人文科学都很喜欢，不求甚解但当涉猎，立志成为一个专精一术的杂家</p>
+                    <p th:text="${user.words}">我愿有一所房子，面朝大海，春暖花开...</p>
                 </div>
                 <div class="ui attached segment my-background-main">
                     <h5>书籍推荐：</h5>

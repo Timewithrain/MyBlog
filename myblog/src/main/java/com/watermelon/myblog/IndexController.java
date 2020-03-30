@@ -18,6 +18,9 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private BlogService blogService;
 
     @Autowired
@@ -164,8 +167,9 @@ public class IndexController {
     }
 
     @GetMapping("/about.html")
-    public String about(){
+    public String about(Model model){
         System.out.println("-----------about-------------");
+        model.addAttribute("user",userService.getUser(1l));
         return "about";
     }
 
