@@ -3,7 +3,6 @@ package com.watermelon.service;
 import com.watermelon.DAO.BlogRepository;
 import com.watermelon.entity.Blog;
 import com.watermelon.entity.BlogQuery;
-import com.watermelon.entity.Tag;
 import com.watermelon.entity.Type;
 import com.watermelon.exception.NotFoundException;
 import com.watermelon.util.MarkdownUtils;
@@ -32,7 +31,7 @@ public class BlogService {
 
     public Blog getBlogAndConvert(Long id){
         Blog blog = blogRepository.getOne(id);
-        if (blog == null){
+        if (blog == null||!blog.getPublished()){
             throw new NotFoundException("博客不存在");
         }
         //获取到blog以后将view值加1

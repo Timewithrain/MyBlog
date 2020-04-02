@@ -1,17 +1,11 @@
 package com.watermelon.myblog;
 
-import com.watermelon.entity.Resource;
 import com.watermelon.entity.User;
 import com.watermelon.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +22,11 @@ import java.io.IOException;
 @RequestMapping("/admin")
 public class ResourceController {
 
-    @Value("${system-params.file.path}")
-    private String filePath;
-
     @Autowired
     private ResourceService resourceService;
 
     @RequestMapping({"/resource.html","/resource"})
-    public String resource(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
+    public String resource(@PageableDefault(sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
         model.addAttribute("page",resourceService.listResource(pageable));
         return "/admin/resource";
     }
@@ -59,7 +50,7 @@ public class ResourceController {
     }
 
     @RequestMapping("/resource/search")
-    public String search(@PageableDefault(size=5,sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
+    public String search(@PageableDefault(sort={"uploadTime"},direction=Sort.Direction.ASC) Pageable pageable, Model model){
         model.addAttribute("page",resourceService.listResource(pageable));
         return "admin/resource :: list";
     }

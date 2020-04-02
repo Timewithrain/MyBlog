@@ -196,14 +196,24 @@ public class ResourceService {
         return sizeStr;
     }
 
+    /**
+     * 转换文件的类型信息，当文件原生类型长度大于20时，仅保留原生类型最后一个“.”之后的部分
+     * 若原生文件类型最后一个“.”之后的信息长度依旧大于20则将类型替换为文件扩展名
+     * @param fileType
+     * @param extName
+     * @return type String
+     */
     private String typeTransform(String fileType,String extName){
-        String type = null;
+        String type = fileType;
         if (fileType.length()>20){
             type = fileType.substring(fileType.lastIndexOf(".")+1);
             if (type.length()>20){
                 type = extName.substring(1);
             }
         }
+        System.out.println(fileType);
+        System.out.println(extName);
+        System.out.println(type);
         return type;
     }
 }
